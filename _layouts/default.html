@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+  </head>
+  <body>
+    {% include navbar.html %}
+    {% include jumbo.html %}
+    <div style='margin: 1em' class='container'>   
+       {{ content}}
+       <div class="container">
+        <div class="row">
+            <div class="col-4 col-md-4">
+                <div class="row">
+                    <h2>Context</h2>
+                </div>
+                <div class='row'>
+                <div class='col' style="column-count: 1;                ">
+                    <div class="card" >
+                        <a class="card-body d-flex flex-row" onclick="selectContext(this,'Context 1');">
+                            <p class="index p-2">1</p>
+                            <p class="body p-2"> Grazing dry - Pastoral
+                                (ruminants)</p>
+                        </a>
+                    </div>
+
+                    <div class="card">
+
+                        <!-- Use 'active' class for highlight it -->
+                        <a class="card-body d-flex flex-row" onclick="selectContext(this,'Context 3');">
+                            <p class="index p-2">3</p>
+                            <p class="body p-2"> Grazing sub-humid
+                                (ruminants)</p>
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <a class="card-body d-flex flex-row" onclick="selectContext(this,'Context 5');">
+                            <p class="index p-2">5</p>
+                            <p class="body p-2"> Mixed crop-livestock,
+                                humid (monogastrics)</p>
+                        </a>
+                    </div>
+                </div>
+                <div class='col' style="column-count: 1;                ">
+
+                    <div class="card">
+                        <a class="card-body d-flex flex-row" onclick="selectContext(this,'Context 2');">
+                            <p class="index p-2">2</p>
+                            <p class="body p-2">Grazing temperate
+                                (ruminants)</p>
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <a class="card-body d-flex flex-row" onclick="selectContext(this,'Context 4');">
+                            <p class="index p-2">4</p>
+                            <p class="body p-2">Mixed crop-livestock, dry
+                                (ruminants)</p>
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <a class="card-body d-flex flex-row" onclick="selectContext(this,'Context 6');">
+                            <p class="index p-2">6</p>
+                            <p class="body p-2">Intensive
+                                (monogastric)</p>
+                        </a>
+                    </div>
+
+
+                </div>
+              </div>
+
+
+            </div>
+            <div class="col-12 col-md-5 offset-md-1">
+                <h2>Principles in focus</h2>
+                <div class="container">
+                    <div class="row">
+
+                        <a class="principle" onclick="selectPrinciple(this, 'Principle 1');">
+                            <p class="header">Principle one</p>
+                            <p class="body">Contribute to
+                                a sustainable
+                                food future</p>
+                        </a>
+
+                        <a class="principle" onclick="selectPrinciple(this, 'Principle 2');">
+                            <p class="header">Principle two</p>
+                            <p class="body">Enhance
+                                carbon stocks</p>
+                        </a>
+
+                        <a class="principle" onclick="selectPrinciple(this, 'Principle 3');">
+                            <p class="header">Principle three</p>
+                            <p class="body">Increase
+                                productivity
+                                at animal and
+                                herd levels</p>
+                        </a>
+
+                        <a class="principle" onclick="selectPrinciple(this, 'Principle 4');">
+                            <p class="header">Principle four</p>
+                            <p class="body">Source feed
+                                sustainably</p>
+                        </a>
+
+                        <a class="principle" onclick="selectPrinciple(this, 'Principle 5');">
+                            <p class="header">Principle five</p>
+                            <p class="body">Couple
+                                livestock to
+                                land</p>
+                        </a>
+
+                        <a class="principle" onclick="selectPrinciple(this, 'Principle 6');">
+                            <p class="header">Principle six</p>
+                            <p class="body">Minimize
+                                fossil fuel use</p>
+                        </a>
+
+                        <a class="principle" onclick="selectPrinciple(this, 'Principle 7');">
+                            <p class="header">Principle seven</p>
+                            <p class="body">Foster an
+                                enabling
+                                environment</p>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+    {% include footer.html %}
+  </body>
+</html>

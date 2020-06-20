@@ -1,0 +1,25 @@
+- index: 1
+  text: "GRAZING DRY PASTORAL 
+  (RUMINANTS)"
+- index: 2
+  text: "GRAZING
+TEMPERATE
+(RUMINANTS)"
+- index: 3
+  text: "GRAZING
+SUB HUMID
+(RUMINANTS)"
+- index: 4
+  text: "MIXED CROP
+LIVESTOCK,
+DRY
+(MONOGASTRIC)"
+- index: 5
+  text: "MIXED CROP
+LIVESTOCK,
+HUMID
+(MONOGASTRIC)"
+- index: 6
+  text: "INTESNSIVE
+(MONOGASTRIC
+& RUMINANTS)"

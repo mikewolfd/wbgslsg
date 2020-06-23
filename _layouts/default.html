@@ -8,9 +8,14 @@
     <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
 </head>
 <style>
+
+    .context-col {
+        max-width: 270px;
+
+    }
     .card {
-        width: 131px;
-        height: 131px;
+        width: 132px;
+        height: 132px;
         margin: 1px;
         border-radius: .5em;
         word-wrap: normal;
@@ -22,14 +27,16 @@
         padding-right: 5px;
         font-size: 16px;
         font-family: "Real Text";
+        line-height: 20px;
         font-weight: 300;
+        padding: 6px;
     }
 
     .PfAH-card a {
         /* font-size: smaller; */
-        padding-left: 5px;
+        /* padding-left: 5px;
         padding-right: 5px;
-        padding-top: 5px;
+        padding-top: 5px; */
 
     }
 
@@ -37,9 +44,6 @@
         /* width: 110px; */
         /* height: 110px; */
     }
-    /* .row {
-        padding-left: 15px; padding-right: 15px;
-    } */
 
     .header h5 {
         font-family: "Real Text";
@@ -64,9 +68,10 @@
     }
     .card-sections {
         margin-top: 15px;
-
-
+        padding-left: 15px;
     }
+
+
 </style>
 
 <body>
@@ -78,11 +83,11 @@
             {{ content}}
         </div>
         <div class="row card-sections">
-            <div class="col-3">
-                <div class="row header" style="padding-left: 15px; padding-right: 15px;">
+            <div class="col context-col">
+                <div class="row header" >
                     <h5>PRODUCTION CONTEXTS</h3>
                 </div>
-                <div class='row' style="padding-left: 15px; padding-right: 15px;">
+                <div class='row'>
                     {% for item in site.data.context %}
                     <div class="card context-card">
                         <a class="card-body" index={{item.index}}>
@@ -95,14 +100,15 @@
                 </div>
             </div>
             <div class='col' style='max-width: 1px;'>
-                <div style="border-left:1px solid #000;height:500px"></div>
+                <div style="border-left:1px solid #000;height:431px"></div>
             </div>
-            <div class="col">
-                <div class="row" style="padding-left: 15px; padding-right: 15px;">
+            <div class="col d-flex flex-column">
+                <div class="row">
+                    <div class='col'>
                     <div class="row header">
                         <h5>PRINCIPLES FOR ENVIRONMENTAL SUSTAINABILITY</h3>
                     </div>
-                    <div class='row' style='flex-wrap: nowrap;'>
+                    <div class='row'>
                         {% for item in site.data.PfAH %}
                         <div class="card PfAH-card">
                             <a class="card-body" index={{item.index}}>
@@ -113,11 +119,13 @@
 
                     </div>
                 </div>
-                <div class="row" style="padding-left: 15px; padding-right: 15px;">
+                </div>
+                <div class="row mt-auto" >
+                <div class='col'>
                     <div class="row header">
                         <h5>PRINCIPLES FOR ANIMAL HEALTH</h3>
                     </div>
-                    <div class='row' style='flex-wrap: nowrap;'>
+                    <div class='row'>
                         {% for item in site.data.PfES %}
                         <div class="card PfAH-card">
                             <a class="card-body" index={{item.index}}>
@@ -127,6 +135,7 @@
                         {% endfor %}
 
                     </div>
+                </div>
                 </div>
             </div>
 

@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'Wingdings 3';
+    src: url('Wingdings3.woff2') format('woff2'),
+        url('Wingdings3.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Wingdings';
+    src: url('Wingdings-Regular.woff2') format('woff2'),
+        url('Wingdings-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Minion Pro';
+    src: url('MinionPro-Regular.woff2') format('woff2'),
+        url('MinionPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Real Text';
+    src: url('RealText-Medium.woff2') format('woff2'),
+        url('RealText-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Real Text';
+    src: url('RealText-Bold.woff2') format('woff2'),
+        url('RealText-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Real Text';
+    src: url('RealText-Light.woff2') format('woff2'),
+        url('RealText-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Real Text Ultra';
+    src: url('RealText-UltraLight.woff2') format('woff2'),
+        url('RealText-UltraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Real Text';
+    src: url('RealText-Thin.woff2') format('woff2'),
+        url('RealText-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Real Text';
+    src: url('RealText.woff2') format('woff2'),
+        url('RealText.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

@@ -1,10 +1,21 @@
 <style>
   ul.nav.flex-column {
     margin-left: auto;
-    /* margin-top: 270px; */
+    position: absolute;
+    margin-top: 100px;
+    right: 0px;
   }
   nav.navbar {
     min-height: 320px;
+    padding-left: 0em;
+    padding-right: 0em;
+    margin-top:35px;
+    padding-top: 35px;
+
+  }
+  nav .titlebar {
+/* padding-left: 0em; */
+
   }
   .navbar-collapse {
     /* position: fixed; */
@@ -14,16 +25,16 @@
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light row justify-content-between">
-  <div class='col' style='height: 270px;'>
-    <div class="row justify-content-between">
-      <div class='col'>
-        <img src="{{ "/assets/images/wb_logo.png" | relative_url }}" height='45'>
+  <div class='col-8 titlebar' style='height: 270px;'>
+    <div class="row">
+      <div class='col-4'>
+        <img src="{{ "/assets/images/wb_logo.png" | relative_url }}" height='32'>
       </div>
-      <div class='col'>
-        <img src="{{ "/assets/images/FAO_logo.png" | relative_url }}" height='55'>
+      <div class='col-1'>
+        <img src="{{ "/assets/images/FAO_logo.png" | relative_url }}" height='36'>
       </div>
     </div>
-    <div class="row" style='padding-top: 10px;'>
+    <div class="row" style='padding-top: 37px;'>
       {% include jumbo.html %}
     </div>
   </div>

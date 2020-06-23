@@ -21,7 +21,8 @@
         padding-left: 7px;
         padding-right: 7px;
         font-size: 11px;
-        font-family: RealText-light;
+        font-family: "Real Text";
+        font-weight: 300;
     }
 
     .PfAH-card a {
@@ -36,14 +37,33 @@
         /* width: 110px; */
         /* height: 110px; */
     }
-    .row {
+    /* .row {
         padding-left: 15px; padding-right: 15px;
-    }
+    } */
 
     .header h5 {
-        font-family: RealText-medium;
-        font-size: 13px;
-
+        font-family: "Real Text";
+        font-weight: 500;
+        font-size: 18px;
+        color: rgba(150, 146, 157, 1);
+    }
+    .content {
+        font-family: "Real Text";
+        font-weight: 300;
+        max-width: 1076px;
+        line-height: 21pt;
+        font-size: 16px;
+        margin-left: 15px;
+        margin-bottom: 15px;
+        color: rgba(78, 79, 84, 1)
+    }
+    .wave {
+        position: absolute;
+        opacity: 20%;
+        margin-left: -50px;
+    }
+    .card-sections {
+        margin-top: 15px;
 
 
     }
@@ -51,12 +71,14 @@
 
 <body>
     <div class='container'>
+        <img class='wave' src='/assets/images/thing.png'>
+
         {% include navbar.html %}
-        <div class='row'>
+        <div class='row content'>
             {{ content}}
         </div>
-        <div class="row">
-            <div class="col card-sections" style='max-width: 214px;'>
+        <div class="row card-sections">
+            <div class="col" style='max-width: 214px;'>
                 <div class="row header" style="padding-left: 15px; padding-right: 15px;">
                     <h5>PRODUCTION CONTEXTS</h3>
                 </div>

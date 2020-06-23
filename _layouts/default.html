@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
 </head>
 <style>
-
     .context-col {
         max-width: 270px;
 
     }
+
     .card {
         width: 132px;
         height: 132px;
@@ -51,6 +51,7 @@
         font-size: 18px;
         color: rgba(150, 146, 157, 1);
     }
+
     .content {
         font-family: "Real Text";
         font-weight: 300;
@@ -61,17 +62,17 @@
         margin-bottom: 15px;
         color: rgba(78, 79, 84, 1)
     }
+
     .wave {
         position: absolute;
         opacity: 20%;
         margin-left: -50px;
     }
+
     .card-sections {
         margin-top: 15px;
         padding-left: 15px;
     }
-
-
 </style>
 
 <body>
@@ -84,7 +85,7 @@
         </div>
         <div class="row card-sections">
             <div class="col context-col">
-                <div class="row header" >
+                <div class="row header">
                     <h5>PRODUCTION CONTEXTS</h3>
                 </div>
                 <div class='row'>
@@ -105,37 +106,37 @@
             <div class="col d-flex flex-column">
                 <div class="row">
                     <div class='col'>
-                    <div class="row header">
-                        <h5>PRINCIPLES FOR ENVIRONMENTAL SUSTAINABILITY</h3>
-                    </div>
-                    <div class='row'>
-                        {% for item in site.data.PfAH %}
-                        <div class="card PfAH-card">
-                            <a class="card-body" index={{item.index}}>
-                                {{item.index}} {{ item.text }}
-                            </a>
+                        <div class="row header">
+                            <h5>PRINCIPLES FOR ENVIRONMENTAL SUSTAINABILITY</h3>
                         </div>
-                        {% endfor %}
+                        <div class='row'>
+                            {% for item in site.data.PfAH %}
+                            <div class="card PfAH-card">
+                                <a class="card-body" index={{item.index}}>
+                                    {{item.index}} {{ item.text }}
+                                </a>
+                            </div>
+                            {% endfor %}
 
-                    </div>
-                </div>
-                </div>
-                <div class="row mt-auto" >
-                <div class='col'>
-                    <div class="row header">
-                        <h5>PRINCIPLES FOR ANIMAL HEALTH</h3>
-                    </div>
-                    <div class='row'>
-                        {% for item in site.data.PfES %}
-                        <div class="card PfAH-card">
-                            <a class="card-body" index={{item.index}}>
-                                {{item.index}} {{ item.text }}
-                            </a>
                         </div>
-                        {% endfor %}
-
                     </div>
                 </div>
+                <div class="row mt-auto">
+                    <div class='col'>
+                        <div class="row header">
+                            <h5>PRINCIPLES FOR ANIMAL HEALTH</h3>
+                        </div>
+                        <div class='row'>
+                            {% for item in site.data.PfES %}
+                            <div class="card PfAH-card">
+                                <a class="card-body" index={{item.index}}>
+                                    {{item.index}} {{ item.text }}
+                                </a>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
                 </div>
             </div>
 

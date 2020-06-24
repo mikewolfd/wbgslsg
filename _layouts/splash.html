@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+    <meta charset="utf-8">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+</head>
+<style>
+    .container-fluid {
+        position: absolute;
+        background-image: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url('/assets/images/HERD OF SHEEP STROLLING.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .main-text {
+        font-family: "Real Text";
+        font-weight: 500;
+        color: rgb(78, 79, 84);
+        font-size: 26px;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+    }
+
+    .splash-text-link {
+        color: rgb(107, 138, 21)
+    }
+
+    .footer nav a {
+        color: white !important;
+    }
+</style>
+
+<body>
+    <!-- <img class='thing' src='/assets/images/HERD OF SHEEP STROLLING.jpg'> -->
+
+    <div class='container-fluid d-flex h-100 p-3 mx-auto flex-column'>
+        {% include navbar.html %}
+
+        <main class="main-text">
+            <p>INVESTING IN SUSTAINABLE LIVESTOCK (ISL) GUIDE <a class='splash-text-link' href='entry.html'>ENTER</a> </p>
+        </main>
+
+        {% include footer.html %}
+    </div>
+</body>
+
+</html>

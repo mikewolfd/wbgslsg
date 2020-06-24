@@ -1,32 +1,33 @@
 <style>
   .topnav {
-    min-height: 320px;
+    display: block;
+    /* min-height: 320px;
     padding-left: 0em;
     padding-right: 0em;
-    margin-top: 35px;
+    margin-top: 35px; */
     padding-top: 35px;
+  }
 
+  /* .topnav .navbar-brand {
+    padding-top: 50px;
+  } */
+  .wb_logo {
+    padding-right: 110px;
   }
 </style>
 
-<nav class="navbar topnav navbar-expand-lg navbar-light row justify-content-between">
-  <div class='col-8 titlebar' style='height: 270px;'>
-    <div class="row">
-      <div class='col-4'>
-        <img src="{{ "/assets/images/wb_logo.png" | relative_url }}" height='32'>
-      </div>
-      <div class='col-1'>
-        <img src="{{ "/assets/images/FAO_logo.png" | relative_url }}" height='36'>
-      </div>
-    </div>
-    {% if page.show_jumbo %}
-
-    <div class="row" style='padding-top: 37px;'>
-      {% include jumbo.html %}
-    </div>
-    {% endif %}
-
+<nav class="navbar topnav navbar-expand-lg navbar-light">
+  <div class="navbar-brand">
+    <img class='wb_logo' src="{{ "/assets/images/wb_logo.png" | relative_url }}" height='32'>
+    <img class='fao_logo' src="{{ "/assets/images/FAO_logo.png" | relative_url }}" height='36'>
   </div>
+  {% if page.show_jumbo %}
+
+  <div class="row" style='padding-top: 37px;'>
+    {% include jumbo.html %}
+  </div>
+  {% endif %}
+
   {% if page.sidenav %}
   {% include sidenav.html %}
   {% endif %}

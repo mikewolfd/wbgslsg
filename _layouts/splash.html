@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
 </head>
 <style>
-    .container-fluid {
-        position: absolute;
-        background-image: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url('/assets/images/HERD OF SHEEP STROLLING.jpg');
+    .container {
+        background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .8)), url('/assets/images/HERD OF SHEEP STROLLING.jpg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        min-width: 100vw;
+        min-height: 100vh;
     }
 
     .main-text {
@@ -41,11 +42,12 @@
 <body>
     <!-- <img class='thing' src='/assets/images/HERD OF SHEEP STROLLING.jpg'> -->
 
-    <div class='container-fluid d-flex h-100 p-3 mx-auto flex-column'>
+    <div class='container d-flex h-100 p-3 mx-auto flex-column'>
         {% include navbar.html %}
 
         <main class="main-text">
-            <p>INVESTING IN SUSTAINABLE LIVESTOCK (ISL) GUIDE <a class='splash-text-link' href='entry.html'>ENTER</a> </p>
+            <p>INVESTING IN SUSTAINABLE LIVESTOCK (ISL) GUIDE <a class='splash-text-link' href='entry.html'>ENTER</a>
+            </p>
         </main>
 
         {% include footer.html %}

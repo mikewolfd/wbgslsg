@@ -9,8 +9,9 @@
 </head>
 <style>
     .container-fluid {
-        position: absolute;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url('/assets/images/SHEEP IN THE FOG.jpg');
+        min-width: 100vw;
+        min-height: 100vh;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/images/SHEEP IN THE FOG.jpg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -19,68 +20,114 @@
     .main-text {
         font-family: "Real Text";
         font-weight: 500;
-        color: rgb(150, 146, 157);
-        font-size: 16px;
-        text-align: left;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
+        color: rgb(203, 200, 206) !important;
+        font-size: 15px;
     }
+
     .footer nav a {
         color: white !important;
     }
 
-    .top-header{
+    .top-header {
         font-size: 76px;
-        font-weight: 200;
-        color: rgb(212, 159, 0)
+        font-weight: 300;
+        color: rgb(212, 159, 0);
+    }
+
+    .bottom-header {
+        font-size: 25px;
+    }
+
+    .main-text .entry-buttons {
+        font-size: 30px;
+        font-weight: 300;
+    }
+
+    .main-text .entry-buttons .titles {
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    .main-text .theory-button a {
+        font-weight: 500;
+        font-size: 17px;
+        color: rgb(203, 200, 206) !important;
+
     }
 </style>
 
 <body>
-    <div class='container-fluid d-flex h-100 p-3 mx-auto flex-column'>
-        {% include navbar.html %}
-        <main class=" container main-text">
-
-
-            <p class='top-header'>WELCOME...</h3>
-            <p class='bottom-header'>This web-based platform is both a practical instrument and an information
-                resource for developing sustainable livestock production systems.</p>
-
-                <div class='text-content'>
-                <p>
-                    The Investing in Sustainable Livestock Guide provides guidance for common activities and, interventions, and indicators
-                    needed to ensure livestock projects are sustainable according to environmental and animal health dimensions.
-                </p>
-            <p>This site also offers the theory and evidence that underpin the guidance. It includes a deep dive into the principles and
-                trade-offs for environmental sustainability and animal health in the livestock sector that underpin, this tool. We have
-                considered a variety of geographic contexts and tailored the guidance to each. So, whatever and wherever you are
-                implementing, we have recommendations for you.</p>
-                <p>
-                    To apply the tool to an existing project (Project in Implementation) click on the left.
-                </p>
-                <p>
-                    If you are developing a new project (Project in Preparation), click on the right.
-
-                </p>
-                <p>
-                    Interested in the theory behind the ISL Guide?, Click down below.
-
-                </p>
+    <div class='container-fluid d-flex flex-column'>
+        <div class='row'>
+            <div class='col'>
+                {% include navbar.html %}
+            </div>
+        </div>
+        <div class="container main-text my-auto">
+            <div class='row'>
+                <div class='col'>
+                    <p class='top-header'>WELCOME...</p>
                 </div>
-<button>
-    PROJECT IN IMPLEMENTATION 
-</button>
-<button>
-    PROJECT IN PREPERATION
-</button>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p class='bottom-header'>This web-based platform is both a practical instrument and an information
+                        resource for developing sustainable livestock production systems.</p>
+                </div>
+            </div>
 
+            <div class='row text-content'>
+                <div class='col'>
+                    <p>
+                        The Investing in Sustainable Livestock Guide provides guidance for common activities and,
+                        interventions, and indicators
+                        needed to ensure livestock projects are sustainable according to environmental and animal health
+                        dimensions.
+                    </p>
+                    <p>This site also offers the theory and evidence that underpin the guidance. It includes a deep dive
+                        into the principles and
+                        trade-offs for environmental sustainability and animal health in the livestock sector that
+                        underpin,
+                        this tool. We have
+                        considered a variety of geographic contesxts and tailored the guidance to each. So, whatever and
+                        wherever you are
+                        implementing, we have recommendations for you.</p>
 
+                    <p>
+                        Interested in the theory behind the ISL Guide?, Click down below.
 
-        </main>
+                    </p>
+                </div>
+            </div>
+            <div class='row entry-buttons'>
+                <div class='col-md-auto'>
+                    <p class='titles mb-0'>
+                        To apply the tool to an existing project use:
+                    </p>
+                    <a class='button'>
+                        <span class='right-arrow'> &#10132;</span>
+                        PROJECT IN IMPLEMENTATION
+                    </a>
+                </div>
+                <div class='col-md-auto'>
+                    <p class='titles mb-0'>
+                        If you are developing a new project use:
 
+                    </p>
+                    <a class='button'>
+                        <span class='right-arrow'> &#10132;</span>
+                        PROJECT IN PREPERATION
+                    </a>
+                </div>
+            </div>
+            <div class='row theory-button mt-5 pt-5'>
+                <div class='col'>
+                    <a class='button' href='/theory.html'>
+                        <span class='right-arrow'> &#10132;</span>
+                        THEORY BEHIND THE ISL GUIDE </a>
+                </div>
+            </div>
+        </div>
         {% include footer.html %}
     </div>
 </body>

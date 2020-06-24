@@ -14,6 +14,9 @@
   .wb_logo {
     padding-right: 110px;
   }
+  .jumbo-container {
+    padding-top: 37px;
+  }
 </style>
 
 <nav class="navbar topnav navbar-expand-lg navbar-light">
@@ -22,8 +25,7 @@
     <img class='fao_logo' src="{{ "/assets/images/FAO_logo.png" | relative_url }}" height='36'>
   </div>
   {% if page.show_jumbo %}
-
-  <div class="row" style='padding-top: 37px;'>
+  <div class='jumbo-container'>
     {% include jumbo.html %}
   </div>
   {% endif %}

@@ -8,6 +8,12 @@
 
 
 @media (min-width: 576px ) {
+    .grid-container {
+        grid-template-areas: 
+          "topnav topnav topnav topnav"
+          'midnav midnav midnav midnav'
+          "jumbo jumbo jumbo jumbo" !important;
+      }
     .sidenavr {
         grid-area: midnav;
     }
@@ -15,17 +21,21 @@
 }
 
 @media (min-width: 768px ) {
+    .grid-container {
+        grid-template-areas: 
+          "topnav topnav topnav topnav"
+          "jumbo jumbo sidenav sidenav" !important;
+      }
     .sidenavr {
         grid-area: sidenav;
+        display: block;
     }
     
 
 }
 
 @media (min-width: 992px) {
-    .sidenavr {
-        display: block;
-    }
+
 }
 
 @media (min-width: 1200px) {

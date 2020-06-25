@@ -1,6 +1,15 @@
 <style>
+  .grid-container {
+    display:grid;
+    width: 100%;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-areas: 
+      "topnav topnav topnav topnav"
+      'midnav midnav midnav midnav'
+      "jumbo jumbo sidenav sidenav"
+  }
   .topnav {
-    display: block;
+    grid-area: topnav;
     /* min-height: 320px;
     padding-left: 0em;
     padding-right: 0em;
@@ -14,16 +23,31 @@
   .wb_logo {
     padding-right: 110px;
   }
+
   .jumbo-container {
+    grid-area: jumbo;
     padding-top: 37px;
   }
-</style>
 
-<nav class="navbar topnav navbar-expand-lg navbar-light">
+  .sidenav {
+    /* grid-area: sidenav; */
+  }
+</style>
+<div class=grid-container>
+<nav class="navbar topnav d-flex navbar-expand-lg navbar-light">
   <div class="navbar-brand">
     <img class='wb_logo' src="{{ "/assets/images/wb_logo.png" | relative_url }}" height='32'>
     <img class='fao_logo' src="{{ "/assets/images/FAO_logo.png" | relative_url }}" height='36'>
   </div>
+  {% if page.sidenav %}
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  {% endif %}
+</nav>
   {% if page.show_jumbo %}
   <div class='jumbo-container'>
     {% include jumbo.html %}
@@ -31,7 +55,6 @@
   {% endif %}
 
   {% if page.sidenav %}
-  {% include sidenav.html %}
+   {% include sidenav.html %}
   {% endif %}
-
-</nav>
+</div>

@@ -2,7 +2,7 @@
 ---
 @import "bootstrap/bootstrap";
 
-@import url("/assets/fonts/stylesheet.css");
+@import url({{"/assets/fonts/stylesheet.css" | relative_url }});
 
 
 @media (min-width: 768px) {

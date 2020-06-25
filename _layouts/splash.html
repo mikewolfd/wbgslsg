@@ -9,7 +9,7 @@
 </head>
 <style>
     .container {
-        background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .8)), url('/assets/images/HERD OF SHEEP STROLLING.jpg');
+        background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .8)), url("{{ 'assets/images/HERD OF SHEEP STROLLING.jpg' | relative_url }}");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -46,7 +46,7 @@
         {% include navbar.html %}
 
         <main class="main-text">
-            <p>INVESTING IN SUSTAINABLE LIVESTOCK (ISL) GUIDE <a class='splash-text-link' href='entry.html'>ENTER</a>
+            <p>INVESTING IN SUSTAINABLE LIVESTOCK (ISL) GUIDE <a class='splash-text-link' href="{{'entry.html' | relative_url }}">ENTER</a>
             </p>
         </main>
 

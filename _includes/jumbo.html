@@ -1,13 +1,33 @@
 <style>
-  .jumbo h1 {
+  .jumbo .jumbo-title {
     color: rgba(107, 138, 21, 1);
     font-size: 82px;
     font-family: "Real Text";
     font-weight: 200;
-    /* width: 600px; */
     line-height: .8em;
   }
 
+  .jumbo .title {
+    font-size: 24px;
+    font-family: "Real Text";
+    font-weight: normal;
+    color: rgba(107, 138, 21, 1);
+
+  }
+  .jumbo .main_title {
+    font-size: 50px;
+    font-family: "Real Text";
+    font-weight: 200;
+    color: rgba(78, 79, 84, 1);
+
+  }
+  .jumbo .sub_title {
+    font-size: 24px;
+    font-family: "Real Text";
+    font-weight: normal;
+    color: rgba(78, 79, 84, 1);
+
+  }
   .jumbo {
     width: 100%;
     padding: 1em;
@@ -15,5 +35,13 @@
 </style>
 
 <div class="jumbo">
-  <h1>{{ page.title }}</h1>
+  {% if page.main_title %}
+  <h4 class='title'>{{ page.title}}</h4>
+  <h1 class='main_title'>{{ page.main_title}}</h1>
+  <h5 class='sub_title'>{{page.sub_title}}</h5>
+
+  {% else %}
+  <h1 class='jumbo-title'>{{ page.title }}</h1>
+  {% endif %}
+
 </div>

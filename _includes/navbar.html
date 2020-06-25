@@ -2,10 +2,11 @@
   .grid-container {
     display:grid;
     width: 100%;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    grid-template-areas: 
-      "topnav topnav topnav topnav"
-      "jumbo jumbo sidenav sidenav"
+    grid-template-columns: 3fr 1fr 1fr 2fr;
+        grid-template-areas: 
+          "topnav topnav topnav topnav"
+          'midnav midnav midnav midnav'
+          "jumbo jumbo jumbo jumbo";
   }
   .topnav {
     grid-area: topnav;
@@ -20,7 +21,7 @@
     padding-top: 50px;
   } */
   .wb_logo {
-    padding-right: 110px;
+    padding-right: 2em;
   }
 
   .jumbo-container {
@@ -32,7 +33,7 @@
 <div class=grid-container>
 <nav class="navbar topnav d-flex navbar-expand-md navbar-light">
   <div class="navbar-brand">
-    <img class='wb_logo' src="{{ "/assets/images/wb_logo.png" | relative_url }}" height='32'>
+    <img class='wb_logo mr-sm-5 pr-sm-5' src="{{ "/assets/images/wb_logo.png" | relative_url }}" height='32'>
     <img class='fao_logo' src="{{ "/assets/images/FAO_logo.png" | relative_url }}" height='36'>
   </div>
   {% if page.sidenav %}
@@ -44,7 +45,7 @@
 
   {% endif %}
 </nav>
-  {% if page.show_jumbo %}
+  {% if page.show_jumbo or page.main_title %}
   <div class='jumbo-container'>
     {% include jumbo.html %}
   </div>

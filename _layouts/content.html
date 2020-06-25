@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+    <meta charset="utf-8">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+</head>
+<style>
+    .content {
+        font-family: "Real Text";
+        font-weight: 300;
+        line-height: 21pt;
+        font-size: 16px;
+        color: rgba(78, 79, 84, 1);
+        /* height: 50vh;
+        position: relative;
+        overflow-y: scroll; */
+    }
+    .content-container {
+        margin-left: 15px;
+        margin-bottom: 15px;
+        padding-top:50px;
+
+    }
+    .card-group {
+        /* position: fixed; */
+        /* width:140px; */
+        font-family: "Real Text";
+        font-weight: 300;
+        line-height: 16pt;
+        font-size: 16px;
+        color: rgba(78, 79, 84, 1);
+        position: sticky;
+        position: -webkit-sticky;
+        align-self: flex-end;
+        bottom: 5em;
+    }
+
+    #navbar {
+  background-color: #333; /* Black background color */
+  position: fixed; /* Make it stick/fixed */
+  top: -61px; /* Hide the navbar 50 px outside of the top view */
+  width: 100%; /* Full width */
+  transition: top 0.3s; /* Transition effect when sliding down (and up) */
+  z-index: 2;
+}
+</style>
+
+<script>
+    window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-61px";
+  }
+}
+</script>
+<body data-spy="scroll" data-target="#content-buttons"  data-offset="0">
+    <div class='d-flex content-buttons' id='navbar'>
+            <div class="" id="content-buttons">
+                {% for item in page.topics %}
+                <a class="py-1 px-2" href="#topic-{{ forloop.index }}">{{item.topic}}</a>
+                {% endfor %}
+            </div>
+        </div>
+    <div class='container'>
+        {% include wave.html %}
+        {% include navbar.html %}
+
+        <div class='row content-container'>
+            <div class='col content'>
+                {{ content}}
+            </div>
+            <div class='col-2 d-flex align-items-start content-buttons'>
+                <div class="card card-group">
+                    <div class="list-group list-group-flush" id="content-buttons">
+                        {% for item in page.topics %}
+                        <a class="list-group-item list-group-item-action py-1 px-2" href="#topic-{{ forloop.index }}">{{item.topic}}</a>
+                        {% endfor %}
+                    </div>
+                  </div>
+            </div>
+        </div>
+        {% include footer.html %}
+    </div>
+</body>
+
+</html>

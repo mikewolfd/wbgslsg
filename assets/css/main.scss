@@ -1,67 +1,50 @@
----
+--- 
 ---
 @import "bootstrap/bootstrap";
 
 @import url("/assets/fonts/stylesheet.css");
 
 
-
-
-@media (min-width: 576px ) {
+@media (min-width: 768px) {
     .grid-container {
-        grid-template-areas: 
-          "topnav topnav topnav topnav"
-          'midnav midnav midnav midnav'
-          "jumbo jumbo jumbo jumbo" !important;
-      }
-    .sidenavr {
-        grid-area: midnav;
+        grid-template-areas:
+            "topnav topnav topnav topnav"
+            "jumbo jumbo sidenav sidenav" !important;
     }
 
-}
-
-@media (min-width: 768px ) {
-    .grid-container {
-        grid-template-areas: 
-          "topnav topnav topnav topnav"
-          "jumbo jumbo sidenav sidenav" !important;
-      }
     .sidenavr {
-        grid-area: sidenav;
-        display: block;
+        grid-area: sidenav !important;;
+        display  : block;
     }
-    
+
 
 }
 
-@media (min-width: 992px) {
-
-}
+@media (min-width: 992px) {}
 
 @media (min-width: 1200px) {
     .container {
         max-width: 1370px;
     }
-    
+
     .col-lg-custom {
-        flex: 0 0 25%;
+        flex     : 0 0 25%;
         max-width: 25%;
     }
-    .sidenavr {
-        grid-area: sidenav;
-    }
-    }
+
+}
 
 .nav.flex-column li {
-    padding: 0em;
-    height: 20px;
-    text-align:right;
+    padding   : 0em;
+    height    : 20px;
+    text-align: right;
 }
 
 .nav.nav.flex-column a:not(.disabled) {
 
     color: black;
 }
+
 .nav.nav.flex-column a:not(.disabled) {
 
     font-weight: bold;

@@ -38,6 +38,13 @@
         bottom: 5em;
     }
 
+    .list-group-item.active {
+        background-color: rgba(107, 138, 21, 1);
+        border-color: rgba(107, 138, 21, 1);
+
+
+    }
+
     #navbar {
   background-color: #333; /* Black background color */
   position: fixed; /* Make it stick/fixed */
@@ -48,7 +55,7 @@
 }
 </style>
 
-<script>
+<!-- <script>
     window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
@@ -58,15 +65,15 @@ function scrollFunction() {
     document.getElementById("navbar").style.top = "-61px";
   }
 }
-</script>
+</script> -->
 <body data-spy="scroll" data-target="#content-buttons"  data-offset="0">
-    <div class='d-flex content-buttons' id='navbar'>
+    <!-- <div class='d-flex content-buttons' id='navbar'>
             <div class="" id="content-buttons">
                 {% for item in page.topics %}
                 <a class="py-1 px-2" href="#topic-{{ forloop.index }}">{{item.topic}}</a>
                 {% endfor %}
             </div>
-        </div>
+        </div> -->
     <div class='container'>
         {% include wave.html %}
         {% include navbar.html %}

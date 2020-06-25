@@ -6,7 +6,8 @@
         grid-template-areas: 
           "topnav topnav topnav topnav"
           'midnav midnav midnav midnav'
-          "jumbo jumbo jumbo jumbo";
+          "jumbo jumbo jumbo jumbo"
+          "image image image .";
   }
   .topnav {
     grid-area: topnav;
@@ -49,6 +50,10 @@
   <div class='jumbo-container'>
     {% include jumbo.html %}
   </div>
+  {% endif %}
+ 
+  {% if page.image_path %}
+  {% include image.html %}
   {% endif %}
 
   {% if page.sidenav %}

@@ -1,0 +1,22 @@
+<style>
+    .jumbo-image {
+        z-index: -1;
+        /* max-height: 364px; */
+    }
+
+    .img-container {
+        grid-area: image;
+        display: flex;
+        background: rgb(107,138,21);
+        background: linear-gradient(90deg, rgba(107,138,21,1) 0%, rgba(107,138,21,0.23012955182072825) 24%, rgba(0,0,0,0) 89%);
+        flex-direction: row-reverse;
+        /* overflow: hidden;
+        position: absolute;
+        max-width: 100vw;
+        margin-left: -50px; */
+    }
+</style>
+
+<div class='img-container'>
+    <img class='jumbo-image img-fluid' src={{ page.image_path }}>
+</div>

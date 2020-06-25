@@ -12,7 +12,10 @@
         max-width: 287px;
 
     }
-
+    .card:hover {
+    background-color: rgba(107, 138, 21, 1);
+    border-color: rgba(107, 138, 21, 1);
+}
     .card {
         width: 134px;
         height: 134px;
@@ -22,7 +25,7 @@
 
     }
 
-    .card div {
+    .card a {
         padding: 4px;
         font-size: 16px;
         font-family: "Real Text";
@@ -30,6 +33,9 @@
         font-weight: 300;
     }
 
+    .card-body p {
+        color: black;
+    }
     .header h5 {
         font-family: "Real Text";
         font-weight: 500;
@@ -70,9 +76,9 @@
                     <div class='col d-flex flex-row flex-wrap'>
                         {% for item in site.data.context %}
                         <div class="card context-card ">
-                            <div class="card-body d-flex align-items-center" index={{item.index}}>
-                                <p> {{item.index}} {{ item.text }} </p>
-                            </div>
+                            <a class="card-body d-flex align-items-center" href="context_{{item.index}}.html">
+                                <p > {{item.index}} {{ item.text }} </p>
+                            </a>
                         </div>
                         {% endfor %}
 
@@ -97,9 +103,9 @@
                             <div class='col d-flex flex-row flex-wrap'>
                                 {% for item in site.data.PfAH %}
                                 <div class="card PfAH-card">
-                                    <div class="card-body d-flex align-items-center" index={{item.index}}>
+                                    <a class="card-body d-flex align-items-center" href="principle_e_{{item.index}}.html">
                                         <p> {{item.index}} {{ item.text }} </p>
-                                    </div>
+                                    </a>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -118,9 +124,9 @@
                                 <div class='col d-flex flex-row flex-wrap'>
                                     {% for item in site.data.PfES %}
                                     <div class="card PfAH-card">
-                                        <div class="card-body d-flex align-items-center" index={{item.index}}>
+                                        <a class="card-body d-flex align-items-center" href="principle_a_{{item.index}}.html">
                                             <p> {{item.index}} {{ item.text }} </p>
-                                        </div>
+                                        </a>
                                     </div>
                                     {% endfor %}
                                 </div>

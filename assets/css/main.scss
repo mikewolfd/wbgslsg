@@ -9,7 +9,8 @@
     .grid-container {
         grid-template-areas:
             "topnav topnav topnav topnav"
-            "jumbo jumbo sidenav sidenav" !important;
+            "jumbo jumbo sidenav sidenav" 
+            "image image image ." !important;
     }
 
     .sidenavr {

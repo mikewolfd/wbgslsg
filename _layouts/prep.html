@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+    <meta charset="utf-8">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+</head>
+<style>
+    .col-card {
+        max-width: min-content;
+
+    }
+
+    .card:hover {
+        background-color: rgba(107, 138, 21, 1);
+        border-color: rgba(107, 138, 21, 1);
+    }
+
+     .thin-col .card {
+        width: 140px;
+        height: 140px;
+    }
+
+    .inter-col .card {
+        width: 200px;
+        height: 150px;
+    }
+    .card {
+        margin: 2px;
+        border-radius: .5em;
+        word-wrap: normal;
+
+    }
+
+    .card div {
+        padding: 4px;
+        font-size: 16px;
+        font-family: "Real Text";
+        line-height: 20px;
+        font-weight: 300;
+        text-decoration: none;
+
+    }
+
+    .card-body p {
+        color: black;
+    }
+
+    .header h5 {
+        font-family: "Real Text";
+        font-weight: 500;
+        font-size: 18px;
+        color: rgba(150, 146, 157, 1);
+    }
+
+    .content {
+        font-family: "Real Text";
+        font-weight: 300;
+        max-width: 1076px;
+        line-height: 21pt;
+        font-size: 16px;
+        color: rgba(78, 79, 84, 1)
+    }
+
+    .container {
+        min-height: 100vh;
+    }
+
+    .selected {
+        background-color: rgba(107, 138, 21, 1);
+        border-color: rgba(107, 138, 21, 1);    
+        }
+
+    .slide-right {
+	-webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+</style>
+<script>
+    const highlightFunction = (e) => {
+        if (e.classList.contains('selected')) {
+                e.classList.remove('selected')
+        } else {
+            let old = e.parentElement.getElementsByClassName("selected")
+                if (old.length > 0 ) {
+                    old[0].classList.remove('selected')
+                }
+            e.classList.add('selected')
+        }
+    }
+</script>
+<body>
+    <div class='container d-flex flex-column'>
+        <div class='row'>
+        {% include wave.html %}
+        {% include navbar.html %}
+        </div>
+        <div class='row content'>
+            <div class='col'>
+                {{ content}}
+            </div>
+        </div>
+        <div class="row card-sections">
+            <div class="col col-card thin-col  pr-2">
+                <div class="row header">
+                    <div class='col'>
+                        <h5>CONTEXTS</h5>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col btn-group d-flex flex-column flex-wrap'>
+                        {% for item in site.data.context %}
+                        <div class="card context-card" onclick="highlightFunction(this)">
+                            <div class="card-body d-flex align-items-center" href="context_{{forloop.index}}.html">
+                                <p> {{forloop.index}} {{ item.text }} </p>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+            <div class="col thin-col col-card px-2">
+                <div class="row header">
+                    <div class='col'>
+                        <h5>OBJECTIVES</h5>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col d-flex flex-column flex-wrap'>
+                        {% for item in site.data.objectives %}
+                        <div class="card context-card" onclick="highlightFunction(this)">
+                            <div class="card-body d-flex align-items-center" href="context_{{forloop.index}}.html">
+                                <p> {{forloop.index}} {{ item.text }} </p>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+            <div class="col pl-2">
+                <div class="row header">
+                    <div class='col'>
+                        <h5>INTERVENTIONS</h5>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col inter-col d-flex flex-row flex-wrap'>
+                        {% for item in site.data.interventions %}
+                        <div class="card context-card " onclick="highlightFunction(this)">
+                            <div class="card-body d-flex align-items-center" href="context_{{forloop.index}}.html">
+                                <p> {{forloop.index}} {{ item.text }} </p>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% include footer.html %}
+    </div>
+</body>
+
+</html>

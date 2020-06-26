@@ -12,10 +12,12 @@
         max-width: 287px;
 
     }
+
     .card:hover {
-    background-color: rgba(107, 138, 21, 1);
-    border-color: rgba(107, 138, 21, 1);
-}
+        background-color: rgba(107, 138, 21, 1);
+        border-color: rgba(107, 138, 21, 1);
+    }
+
     .card {
         width: 134px;
         height: 134px;
@@ -31,13 +33,14 @@
         font-family: "Real Text";
         line-height: 20px;
         font-weight: 300;
-        text-decoration:none;
+        text-decoration: none;
 
     }
 
     .card-body p {
         color: black;
     }
+
     .header h5 {
         font-family: "Real Text";
         font-weight: 500;
@@ -56,12 +59,17 @@
         color: rgba(78, 79, 84, 1)
     }
 
+    .container {
+        min-height: 100vh;
+    }
 </style>
 
 <body>
-    <div class='container'>
+    <div class='container d-flex flex-column'>
+        <div class='row'>
         {% include wave.html %}
         {% include navbar.html %}
+        </div>
         <div class='row content'>
             <div class='col'>
                 {{ content}}
@@ -79,7 +87,7 @@
                         {% for item in site.data.context %}
                         <div class="card context-card ">
                             <a class="card-body d-flex align-items-center" href="context_{{item.index}}.html">
-                                <p > {{item.index}} {{ item.text }} </p>
+                                <p> {{item.index}} {{ item.text }} </p>
                             </a>
                         </div>
                         {% endfor %}
@@ -97,15 +105,16 @@
                             <div class='col d-flex flew-row'>
 
                                 <h5>PRINCIPLES FOR ENVIRONMENTAL SUSTAINABILITY &nbsp</h5>
-                                <img src="{{ '/assets/images/iconfinder_minimal_sustainability_5-512.png' | relative_url }}" width=37 height=37
-                                    style='margin-top: -15px;'>
+                                <img src="{{ '/assets/images/iconfinder_minimal_sustainability_5-512.png' | relative_url }}"
+                                    width=37 height=37 style='margin-top: -15px;'>
                             </div>
                         </div>
                         <div class='row'>
                             <div class='col d-flex flex-row flex-wrap'>
                                 {% for item in site.data.PfAH %}
                                 <div class="card PfAH-card">
-                                    <a class="card-body d-flex align-items-center" href="principle_e_{{item.index}}.html">
+                                    <a class="card-body d-flex align-items-center"
+                                        href="principle_e_{{item.index}}.html">
                                         <p> {{item.index}} {{ item.text }} </p>
                                     </a>
                                 </div>
@@ -119,29 +128,29 @@
                         <div class="row header mt-3">
                             <div class='col d-flex flew-row'>
                                 <h5>PRINCIPLES FOR ANIMAL HEALTH &nbsp</h5>
-                                <img src="{{ '/assets/images/cow-milk-black-cattle-white-agriculture-512.png' | relative_url }}" width=37
-                                    height=37 style='margin-top: -15px;'>
+                                <img src="{{ '/assets/images/cow-milk-black-cattle-white-agriculture-512.png' | relative_url }}"
+                                    width=37 height=37 style='margin-top: -15px;'>
                             </div>
-                            <div class='row'>
-                                <div class='col d-flex flex-row flex-wrap'>
-                                    {% for item in site.data.PfES %}
-                                    <div class="card PfAH-card">
-                                        <a class="card-body d-flex align-items-center" href="principle_a_{{item.index}}.html">
-                                            <p> {{item.index}} {{ item.text }} </p>
-                                        </a>
-                                    </div>
-                                    {% endfor %}
+                        </div>
+                        <div class='row'>
+                            <div class='col d-flex flex-row flex-wrap'>
+                                {% for item in site.data.PfES %}
+                                <div class="card PfAH-card">
+                                    <a class="card-body d-flex align-items-center"
+                                        href="principle_a_{{item.index}}.html">
+                                        <p> {{item.index}} {{ item.text }} </p>
+                                    </a>
                                 </div>
-
+                                {% endfor %}
                             </div>
+
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
-        {% include footer.html %}
+    {% include footer.html %}
     </div>
 </body>
+
 </html>

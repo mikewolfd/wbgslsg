@@ -25,13 +25,13 @@
 </style>
 <script>
 let switchNavMenuItem = ()  => {
-    var current = location.pathname.split('/')[1];
+    var current = location.pathname.split('/').pop();
     if (current === "") return;
     var menuItems = document.querySelectorAll('.sidenavr ul li a');
     console.log(menuItems);
     for (var menuItem of menuItems) {
       console.log(menuItem);
-        if (menuItem.getAttribute("href").indexOf(current) !== -1) {
+        if (location.pathname.includes(menuItem.getAttribute("href").split('/').pop())) {
             menuItem.className = "active";
         }
     }

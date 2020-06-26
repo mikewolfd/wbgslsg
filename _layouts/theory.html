@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
+{% include header.html %}
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
-    <meta charset="utf-8">
-    <title>{{ page.title }} - {{ site.title }}</title>
-    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
-</head>
 <style>
-
     body {
         overflow-x: hidden;
     }
+
     .context-col {
         max-width: 306px;
 
@@ -65,14 +58,13 @@
     .container {
         min-height: 100vh;
     }
-
 </style>
 
 <body>
     <div class='container d-flex flex-column'>
         <div class='row'>
-        {% include wave.html %}
-        {% include navbar.html %}
+            {% include wave.html %}
+            {% include navbar.html %}
         </div>
         <div class='row content'>
             <div class='col'>
@@ -153,8 +145,7 @@
                 </div>
             </div>
         </div>
-    {% include footer.html %}
+        {% include bottom_nav.html %}
     </div>
 </body>
-
-</html>
+{% include footer.html %}

@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
-    <meta charset="utf-8">
-    <title>{{ page.title }} - {{ site.title }}</title>
-    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
-</head>
+{% include header.html %}
 <style>
     .container {
         background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, .7)), url("{{ 'assets/images/HERD OF SHEEP STROLLING.jpg' | relative_url }}");
@@ -50,8 +42,7 @@
             </p>
         </main>
 
-        {% include footer.html %}
+        {% include bottom_nav.html %}
     </div>
 </body>
-
-</html>
+{% include footer.html %}

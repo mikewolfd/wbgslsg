@@ -1,8 +1,12 @@
 --- 
 ---
+:root {
+  --splashgrade: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, .7));
+  --entrygrade: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
 
 @import "bootstrap/bootstrap";
-
+@import "backgrounds.scss";
 @import url({{"/assets/fonts/stylesheet.css"|relative_url}});
 
 @media (min-width: 768px) {

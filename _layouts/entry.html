@@ -4,7 +4,7 @@
     .container-fluid {
         min-width: 100vw;
         min-height: 100vh;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ '/assets/images/SHEEP IN THE FOG.jpg' | relative_url }}");
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ '/assets/images/sheep-fog-400w.jpg' | relative_url }}");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -46,11 +46,15 @@
         font-size: 17px;
         color: rgb(203, 200, 206) !important;
 
-    }
+   }
+   .entry-buttons a {
+    color: rgb(203, 200, 206) !important;
+
+   }
 </style>
 
 <body>
-    <div class='container-fluid d-flex flex-column'>
+    <div class='container-fluid d-flex flex-column' id='entry-container'>
         <div class='row'>
             <div class='col'>
                 {% include navbar.html %}
@@ -108,7 +112,7 @@
                         If you are developing a new project use:
 
                     </p>
-                    <a class='button'>
+                    <a class='button' href="{{'/prep.html' | relative_url }}">
                         PROJECT IN PREPERATION
                         <span class='right-arrow'> &#10132;</span>
 

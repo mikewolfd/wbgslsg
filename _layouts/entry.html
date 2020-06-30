@@ -32,7 +32,8 @@
     }
 
     .main-text .entry-buttons {
-        font-size: 30px;
+        font-size: 40px;
+        margin-top: 1em;
         font-weight: 500;
     }
 
@@ -48,9 +49,14 @@
 
    }
    .entry-buttons a {
-    color: rgb(203, 200, 206) !important;
+    color: white !important;
 
    }
+   .grid-container {
+    grid-template-areas:
+        "topnav topnav topnav topnav" !important;
+        grid-template-rows: auto !important;
+}
 </style>
 
 <body>
@@ -119,7 +125,7 @@
                     </a>
                 </div>
             </div>
-            <div class='row theory-button pt-3'>
+            <div class='row theory-button pt-4'>
                 <div class='col-md-auto'>
                     <a class='button' href="{{'/theory.html' | relative_url }}">
                         THEORY BEHIND THE ISL GUIDE </a>

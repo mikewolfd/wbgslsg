@@ -10,6 +10,7 @@
   );
   --entrygrade: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   --grey_copy: rgba(78, 79, 84, 1);
+  --weird_green: rgb(107, 138, 21);
   --aquamarine: rgba(1, 108, 136, 1);
   --column_1: rgba(102, 196, 202, 1);
   --column_2: rgba(102, 162, 150, 1);
@@ -21,6 +22,7 @@
 
 @import "bootstrap/bootstrap";
 @import "backgrounds.scss";
+@import "text_animations.scss";
 @import "animations.scss";
 
 @import url({{"/assets/fonts/stylesheet.css"|relative_url}});

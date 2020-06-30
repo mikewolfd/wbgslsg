@@ -12,9 +12,8 @@
     }
 
     .main-text {
-        font-family: Roboto;
         font-weight: 500;
-        color: rgb(78, 79, 84);
+        color: var(--grey_copy);
         font-size: 26px;
         text-align: center;
         position: absolute;
@@ -25,11 +24,10 @@
     }
 
     .splash-text-link {
-        color: rgb(107, 138, 21)
-    }
+        color: var(--weird_green);
+        text-decoration: none;
+        padding: 4px;
 
-    .footer nav a {
-        color: white !important;
     }
 </style>
 
@@ -40,12 +38,10 @@
         {% include navbar.html %}
 
         <main class="main-text">
-            <p>INVESTING IN SUSTAINABLE LIVESTOCK (ISL) GUIDE <a class='splash-text-link'
+            <p class='box-fill '>INVESTING IN SUSTAINABLE LIVESTOCK (ISL) GUIDE <a class='splash-text-link'
                     href="{{'entry.html' | relative_url }}">ENTER</a>
             </p>
         </main>
-
-        {% include bottom_nav.html %}
     </div>
 </body>
 {% include footer.html %}

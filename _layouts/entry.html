@@ -4,7 +4,8 @@
     .container-fluid {
         min-width: 100vw;
         min-height: 100vh;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ '/assets/images/sheep-fog-400w.jpg' | relative_url }}");
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("{{ '/assets/images/sheep-fog-400w.jpg' | relative_url }}");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -47,16 +48,26 @@
         font-size: 17px;
         color: rgb(203, 200, 206) !important;
 
-   }
-   .entry-buttons a {
-    color: white !important;
+    }
 
-   }
-   .grid-container {
-    grid-template-areas:
-        "topnav topnav topnav topnav" !important;
+    .entry-buttons a {
+        text-decoration: none;
+
+        color: white
+    }
+
+    .entry-buttons a:hover {
+        background-color: #a9a9a982;
+        border-radius: 4px;
+        color: #000000a8;
+        transition: all .2s ease;
+    }
+
+    .grid-container {
+        grid-template-areas:
+            "topnav topnav topnav topnav" !important;
         grid-template-rows: auto !important;
-}
+    }
 </style>
 
 <body>
@@ -129,13 +140,13 @@
                 <div class='col-md-auto'>
                     <a class='button' href="{{'/theory.html' | relative_url }}">
                         THEORY BEHIND THE ISL GUIDE </a>
-                        <span class='right-arrow'> &#10132;</span>
+                    <span class='right-arrow'> &#10132;</span>
 
                 </div>
                 <div class='col'>
                     <a class='button' href="{{'/theory.html' | relative_url }}">
                         OVERVIEW OF THE ISL GUIDE </a>
-                        <span class='right-arrow'> &#10132;</span>
+                    <span class='right-arrow'> &#10132;</span>
 
                 </div>
             </div>

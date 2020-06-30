@@ -62,8 +62,8 @@
 
         <nav class='nav-bread sticky-top' aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/entry.html">HOME</a></li>
-                <li class="breadcrumb-item"><a href="/theory.html">THEORY</a></li>
+                <li class="breadcrumb-item"><a href="{{ 'entry.html' | relative_url }}">HOME</a></li>
+                <li class="breadcrumb-item"><a href="{{ '/theory.html' | relative_url }}">THEORY</a></li>
                 <li class="breadcrumb-item active" aria-current="page"> {{ page.full_title}} - {{ page.main_title}}</li>
             </ol>
         </nav>

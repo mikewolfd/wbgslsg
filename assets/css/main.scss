@@ -1,17 +1,22 @@
 --- 
 ---
-:root {
-  --splashgrade: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, .7));
-  --entrygrade: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  --grey_copy:  rgba(78, 79, 84, 1);
-  --aquamarine: rgba(1, 108, 136, 1);
-  --column_1:  rgba(102, 196, 202, 1);
-  --column_2:  rgba(102, 162, 150, 1);
-  --column_3:  rgba(152, 37, 43, 1);
-  --column_4:  rgba(102, 102, 102, 1);
-  --column_5:   rgba(212, 186, 119, 1);
-  --prep: rgba(0, 100, 80, 1);
 
+:root {
+  --splashgrade: linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.7)
+  );
+  --entrygrade: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  --grey_copy: rgba(78, 79, 84, 1);
+  --aquamarine: rgba(1, 108, 136, 1);
+  --column_1: rgba(102, 196, 202, 1);
+  --column_2: rgba(102, 162, 150, 1);
+  --column_3: rgba(152, 37, 43, 1);
+  --column_4: rgba(102, 102, 102, 1);
+  --column_5: rgba(212, 186, 119, 1);
+  --prep: rgba(0, 100, 80, 1);
 }
 
 @import "bootstrap/bootstrap";
@@ -64,38 +69,41 @@
 
 @keyframes nav-fade-in {
   0% {
-      background-color: white;
+    background-color: white;
   }
 
   100% {
-      background-color: rgba(234, 233, 235, 1);
+    background-color: rgba(234, 233, 235, 1);
   }
 }
 
 @keyframes nav-fade-out {
   100% {
-      background-color: white;
+    background-color: white;
   }
 
   0% {
-      background-color: rgba(234, 233, 235, 1);
+    background-color: rgba(234, 233, 235, 1);
   }
 }
 
 .breadcrumb {
   background-color: white;
-  border-radius: .5em;
+  border-radius: 0.5em;
   margin-bottom: 16px;
 }
 
-.breadcrumb-item{
-z-index: 2;
+.breadcrumb-item {
+  z-index: 2;
+}
+.breadcrumb-item br {
+  display: none;
 }
 .breadcrumb.fadein {
-  animation: nav-fade-in .5s;
+  animation: nav-fade-in 0.5s;
   background-color: rgba(234, 233, 235, 1);
 }
 
 .breadcrumb.fadeout {
-  animation: nav-fade-out .5s;
+  animation: nav-fade-out 0.5s;
 }

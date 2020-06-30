@@ -6,12 +6,6 @@
     line-height: .8em;
   }
 
-  @media (min-width: 992px) {
-    .jumbo .jumbo-title {
-      font-size: 82px;
-    }
-  }
-
   .jumbo .title {
     grid-area: title;
     font-size: 24px;
@@ -22,49 +16,80 @@
 
   .jumbo .main_title {
     grid-area: main_title;
-    font-size: 50px;
-    font-weight: 200;
+    font-size: 29px;
+    font-weight: 300;
     color: rgba(78, 79, 84, 1);
 
   }
 
   .jumbo .sub_title {
     grid-area: sub_title;
-    font-size: 24px;
-    font-weight: normal;
+    font-size: 19px;
+    font-weight: 200;
     color: rgba(78, 79, 84, 1);
+
+  }
+
+  @media (min-width: 992px) {
+    .jumbo .jumbo-title {
+      font-size: 82px;
+    }
+
+    .jumbo .main_title {
+      font-size: 43px;
+      font-weight: 200;
+    }
+
+    .jumbo .sub_title {
+      font-size: 24px;
+      font-weight: normal;
+
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .jumbo .main_title {
+      font-size: 50px;
+      font-weight: 200;
+
+    }
 
   }
 
   .jumbo {
     width: 100%;
+    height: 100%;
     padding: 1em;
   }
-  { % if page.icon_path % }
-  .title-layout {
-
-    display: grid;
-    width: 100%;
-    grid-template-columns: 150px 2fr 2fr;
-    grid-template-areas: "icon title title "
-    'icon main_title main_title '
-    "sub_title sub_title sub_title"
-
-  }
-  { % endif % }
 
   .icon {
     grid-area: icon;
     z-index: 2;
     filter: brightness(0.8);
-    max-width: 150px;
+    min-width: 98px;
   }
 </style>
+
+{% if page.icon_path %}
+<style>
+  .title-layout {
+
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-areas: ". title title "
+      'icon main_title main_title '
+      "sub_title sub_title sub_title"
+
+  }
+</style>
+{% endif %}
 
 <div class="jumbo">
   {% if page.main_title %}
   <div class='title-layout'>
-    <img class='icon' src={{ page.icon_path  | relative_url }}>
+    <img class='icon img-fluid' src={{ page.icon_path  | relative_url }}>
     <h4 class='title'>{{ page.title}}</h4>
     <h1 class='main_title'>{{ page.main_title}}</h1>
     <h5 class='sub_title'>{{page.sub_title}}</h5>

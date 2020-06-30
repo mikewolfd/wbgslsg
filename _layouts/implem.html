@@ -8,6 +8,7 @@
             max-height: 544px;
         }
     }
+
     /* Card Column Coloring */
 
     #context-data .card:hover {
@@ -132,6 +133,7 @@
         transition: opacity .3s, min-height .6s ease-in;
         transition-delay: .2s;
     }
+
     @media (min-width: 768px) {
         #card-section {
             min-height: 704px;
@@ -164,9 +166,19 @@
         let first = e.getBoundingClientRect()
         const deltaX = first.left - last.left;
         const deltaY = first.top - last.top;
+
         e.onclick = null;
+
         let parent = document.getElementById('intervention-section')
-        Object.values(parent.getElementsByClassName('button-card')).filter(item => item != e).forEach(function (item) {
+        let breadcrumb = document.getElementById(e.parentElement.attributes['data-target'].value)
+        const interventions = Object.values(parent.getElementsByClassName('button-card'))
+
+        breadcrumb.getElementsByTagName('span')[0].innerText = e.innerText
+
+        interventions.filter(item => item != e).forEach(function (item) {
+            let style = getComputedStyle(item.getElementsByTagName('p')[0])
+            let dropdown = breadcrumb.getElementsByTagName('div')[0]
+            dropdown.innerHTML += `<a class="dropdown-item" href="#" style='color:${style.color};'>${item.innerText}</a>`
             item.onclick = null;
             item.classList.add("flipOutY");
             setTimeout(function () {
@@ -186,13 +198,14 @@
                 });
             }, 1000);
         });
+
         parent.classList.remove('intervention-section-max');
+
         setTimeout(function () {
             const hidCol = document.getElementById('context-section');
             hidCol.classList.remove('hidden-object');
             hidCol.classList.add('fadeInUp');
         }, 1100)
-        document.getElementById(e.parentElement.attributes['data-target'].value).innerText = e.innerText
     }
 </script>
 
@@ -205,7 +218,8 @@
         {% include tool_nav.html %}
         <div id='card-section'>
             <div class='row'>
-                <div class='col-auto card-col-header'> <span class='title'>INTERVENTIONS</span> <span class='option'>SELECT
+                <div class='col-auto card-col-header'> <span class='title'>INTERVENTIONS</span> <span
+                        class='option'>SELECT
                         ONE</span></div>
             </div>
             <div class="row justify-content-around intervention-section-max no-gutters" id="intervention-section">
@@ -319,7 +333,14 @@
         <div class='row data-section hidden-object'>
             <div class='col my-3'>
                 <ul class='breadcrumb-data px-0 '>
-                    <li>INTERVENTIONS: <span id='inter-header'></span></li>
+                    <li id='inter-header'> <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            INTERVENTIONS: <span></span>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        </div>
+                    </li>
                     <li>CONTEXT: <span id='context-header'></span></li>
                 </ul>
             </div>

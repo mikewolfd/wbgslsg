@@ -44,7 +44,7 @@
     }
 
     /* Bump Nav */
-    .breadcrumb-data {
+    .breadcrumb-data a {
         list-style: none;
         color: var(--aquamarine);
         font-weight: 600;
@@ -52,6 +52,10 @@
 
     }
 
+    .breadcrumb-data .dropdown-item {
+        pointer-events: none;
+   cursor: default;
+    }
     /* Transition and animation stuff */
     .data-section {
         opacity: 1;

@@ -2,111 +2,120 @@
 
 <style>
     .col-card {
-        max-width: min-content;
+        max-width: 334px;
+        min-width: 334px;
 
-    }
-
-    .card:hover {
-        background-color: rgba(107, 138, 21, 1);
-        border-color: rgba(107, 138, 21, 1);
-    }
-
-     .thin-col .card {
-        width: 140px;
-        height: 140px;
-    }
-
-    .inter-col .card {
-        width: 200px;
-        height: 150px;
-    }
-    .card {
-        margin: 2px;
-        border-radius: .5em;
-        word-wrap: normal;
-
-    }
-
-    .card div {
-        padding: 4px;
-        font-size: 16px;
-        font-family: "Real Text";
-        line-height: 20px;
-        font-weight: 300;
-        text-decoration: none;
-
-    }
-
-    .card-body p {
-        color: black;
-    }
-
-    .header h5 {
-        font-family: "Real Text";
-        font-weight: 500;
-        font-size: 18px;
-        color: rgba(150, 146, 157, 1);
-    }
-
-    .content {
-        font-family: "Real Text";
-        font-weight: 300;
-        max-width: 1076px;
-        line-height: 21pt;
-        font-size: 16px;
-        color: rgba(78, 79, 84, 1)
-    }
-
-    .container {
-        min-height: 100vh;
     }
 
     .selected {
-        background-color: rgba(107, 138, 21, 1);
-        border-color: rgba(107, 138, 21, 1);    
-        }
+        background-color: var(--aquamarine);
+        border-color: var(--aquamarine);
+    }
 
-    .slide-right {
-	-webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
+    .col-card .card:hover {
+        background-color: var(--aquamarine);
+        border-color: var(--aquamarine);
+    }
+
+    .col-card .card:hover .card-body p {
+        color: white !important;
+    }
+
+    #card-section {
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: opacity 1s, height .6s ease-in;
+        transition-delay: .2s;
+    }
+
+    .card-section-max {
+        height: 485px !important;
+        overflow: hidden;
+        opacity: 1 !important;
+    }
+
+    .card-col {
+        transition: opacity 1s, max-width 2s;
+    }
+
+    .hidden-section {
+        visibility: hidden;
+    }
+
+    .card.hidden-object {
+        max-width: 0 !important;
+    }
+
 </style>
 <script>
+    const prep_state = { context: undefined, objectives: undefined, interventions: undefined };
+
     const highlightFunction = (e) => {
-        if (e.classList.contains('selected')) {
-                e.classList.remove('selected')
-        } else {
-            let old = e.parentElement.getElementsByClassName("selected")
-                if (old.length > 0 ) {
-                    old[0].classList.remove('selected')
-                }
-            e.classList.add('selected')
-        }
+        let last = e.parentElement.children[0].getBoundingClientRect();
+        let first = e.getBoundingClientRect()
+        const deltaX = first.left - last.left;
+        const deltaY = first.top - last.top;
+        Object.values(e.parentElement.children).filter(item => item != e).forEach(function (item) {
+            item.onclick = null;
+            item.classList.add("flipOutY");
+            setTimeout(function () {
+                item.classList.add('hidden-object')
+
+                e.animate([{
+                    transformOrigin: 'bottom right',
+                    transform: `
+                        translate(${deltaX}px, ${deltaY}px)
+                                `
+                }, {
+                    transformOrigin: 'top left',
+                    transform: 'none'
+                }], {
+                    duration: 300,
+                    easing: 'ease-in-out',
+                    fill: 'both'
+                });
+            }, 1000);
+        });
+        setTimeout(function () {
+            const hidCol = document.getElementsByClassName('hidden-section animated card-col')
+            if (hidCol.length == 0) {
+                document.getElementById('card-section').classList.remove('card-section-max')
+                Object.values(document.getElementsByClassName('data-section')).forEach((elm) => {
+                    elm.classList.remove('hidden-object')
+                })
+            }
+            if (hidCol.length > 0) {
+                const col = hidCol[0]
+                col.classList.remove('hidden-section')
+                col.classList.add('fadeInLeft')
+            }
+        }, 1100)
+
+        document.getElementById(e.parentElement.attributes['data-target'].value).innerText = e.innerText
     }
 </script>
+
 <body>
     <div class='container d-flex flex-column'>
         <div class='row'>
-        {% include wave.html %}
-        {% include navbar.html %}
+            {% include wave.html %}
+            {% include navbar.html %}
         </div>
-        <div class='row content'>
-            <div class='col'>
-                {{ content}}
-            </div>
-        </div>
-        <div class="row card-sections">
-            <div class="col col-card thin-col  pr-2">
-                <div class="row header">
-                    <div class='col'>
+        {% include tool_nav.html %}
+        <div class="row justify-content-around card-section-max no-gutters" id="card-section">
+            <div class="col-auto">
+                <div class="row no-gutters header">
+                    <div class='col-auto'>
                         <h5>CONTEXTS</h5>
                     </div>
                 </div>
-                <div class='row'>
-                    <div class='col btn-group d-flex flex-column flex-wrap'>
+                <div class='row no-gutters'>
+                    <div class='col col-card d-flex flex-row flex-wrap' id='context-data' data-target="context-header">
                         {% for item in site.data.context %}
-                        <div class="card context-card" onclick="highlightFunction(this)">
-                            <div class="card-body d-flex align-items-center" href="context_{{forloop.index}}.html">
+                        <div class="card animated" onclick="highlightFunction(this)">
+                            <div class="card-body text-center d-flex align-items-center"
+                                href="context_{{forloop.index}}.html">
                                 <p> {{forloop.index}} {{ item.text }} </p>
                             </div>
                         </div>
@@ -115,17 +124,18 @@
                     </div>
                 </div>
             </div>
-            <div class="col thin-col col-card px-2">
-                <div class="row header">
-                    <div class='col'>
+            <div class="col-auto hidden-section animated card-col">
+                <div class="row no-gutters header">
+                    <div class='col-auto'>
                         <h5>OBJECTIVES</h5>
                     </div>
                 </div>
-                <div class='row'>
-                    <div class='col d-flex flex-column flex-wrap'>
+                <div class='row no-gutters'>
+                    <div class='col col-card d-flex flex-row flex-wrap' id='obj-data' data-target='obj-header'>
                         {% for item in site.data.objectives %}
-                        <div class="card context-card" onclick="highlightFunction(this)">
-                            <div class="card-body d-flex align-items-center" href="context_{{forloop.index}}.html">
+                        <div class="card animated" onclick="highlightFunction(this)">
+                            <div class="card-body text-center d-flex align-items-center"
+                                href="objectives_{{forloop.index}}.html">
                                 <p> {{forloop.index}} {{ item.text }} </p>
                             </div>
                         </div>
@@ -134,18 +144,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col pl-2">
-                <div class="row header">
+            <div class="col-auto hidden-section card-col animated">
+                <div class="row no-gutters header" data-anijs="if: click, do: flipInY animated">
                     <div class='col'>
                         <h5>INTERVENTIONS</h5>
                     </div>
                 </div>
-                <div class='row'>
-                    <div class='col inter-col d-flex flex-row flex-wrap'>
-                        {% for item in site.data.interventions %}
-                        <div class="card context-card " onclick="highlightFunction(this)">
-                            <div class="card-body d-flex align-items-center" href="context_{{forloop.index}}.html">
-                                <p> {{forloop.index}} {{ item.text }} </p>
+                <div class='row no-gutters'>
+                    <div class='col col-card d-flex flex-row flex-wrap' id='inter-data' data-target='inter-header'>
+                        {% for item in site.data.interventions.column_1 %}
+                        <div class="card animated" onclick="highlightFunction(this)">
+                            <div class="card-body text-center d-flex align-items-center"
+                                href="interventions_{{forloop.index}}.html">
+                                <p> {{ item.text }} </p>
                             </div>
                         </div>
                         {% endfor %}
@@ -154,6 +165,16 @@
                 </div>
             </div>
         </div>
+        <div class='row data-section hidden-object'>
+            <div class='col my-3'>
+                <ul class='breadcrumb-data px-0 '>
+                    <li>CONTEXT: <span id='context-header'></span></li>
+                    <li>OBJECTIVES: <span id='obj-header'></span></li>
+                    <li>INTERVENTIONS: <span id='inter-header'></span></li>
+                </ul>
+            </div>
+        </div>
+        {% include data-scroll.html %}
         {% include bottom_nav.html %}
     </div>
 </body>

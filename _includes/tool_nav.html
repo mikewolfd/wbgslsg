@@ -1,0 +1,81 @@
+<style>
+    /* Card styling */
+    .col-card .card {
+        margin: 2px;
+        border-radius: .5em;
+        word-wrap: normal;
+        width: 132px;
+        height: 132px;
+        max-height: 132px;
+        background-color: rgba(229, 229, 229, .13);
+    }
+
+    .col-card .card div {
+        padding: 4px;
+        font-size: 16px;
+        font-family: "Roboto Condensed";
+        line-height: 20px;
+        font-weight: 500;
+        text-decoration: none;
+
+    }
+
+    /* Card Section Title Styling */
+    .card-header .title {
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    .card-header {
+        color: var(--grey_copy);
+    }
+
+    /* Top Content Styling */
+    .content {
+        font-weight: 300;
+        max-width: 1076px;
+        line-height: 21pt;
+        font-size: 16px;
+        color: rgba(78, 79, 84, 1)
+    }
+
+    .container {
+        min-height: 100vh;
+    }
+
+    /* Bump Nav */
+    .breadcrumb-data {
+        list-style: none;
+        color: var(--aquamarine);
+        font-weight: 600;
+        font-size: 17px;
+
+    }
+
+    /* Transition and animation stuff */
+    .data-section {
+        opacity: 1;
+        transition: opacity .6s ease-in;
+    }
+
+    .hidden-object {
+        max-height: 0 !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        opacity: 0;
+        overflow: hidden;
+    }
+</style>
+
+<nav class='nav' aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/entry.html">HOME</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ page.title}}</li>
+    </ol>
+</nav>
+<div class='row content'>
+    <div class='col'>
+        {{ content}}
+    </div>
+</div>

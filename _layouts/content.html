@@ -1,7 +1,8 @@
 {% include header.html %}
 <style>
+
     .content {
-        font-family: "Real Text";
+        font-family: Roboto;
         font-weight: 300;
         line-height: 21pt;
         font-size: 16px;
@@ -10,16 +11,16 @@
         position: relative;
         overflow-y: scroll; */
     }
+
     .content-container {
         margin-left: 15px;
         margin-bottom: 15px;
-        padding-top:50px;
+        padding-top: 50px;
 
     }
-    .card-group {
-        /* position: fixed; */
-        /* width:140px; */
-        font-family: "Real Text";
+
+    .list-group {
+        font-family: Roboto;
         font-weight: 300;
         line-height: 16pt;
         font-size: 16px;
@@ -31,57 +32,53 @@
     }
 
     .list-group-item.active {
-        background-color: rgba(107, 138, 21, 1);
+        background-color: rgba(107, 138, 21, 1) !important;
         border-color: rgba(107, 138, 21, 1);
-
-
     }
 
-    #navbar {
-  background-color: #333; /* Black background color */
-  position: fixed; /* Make it stick/fixed */
-  top: -61px; /* Hide the navbar 50 px outside of the top view */
-  width: 100%; /* Full width */
-  transition: top 0.3s; /* Transition effect when sliding down (and up) */
-  z-index: 2;
-}
+    .list-group-item {
+        background-color: rgba(234, 233, 235);
+        border-radius: .5em !important;
+        max-width: 9em;
+    }
+
+
 </style>
 
-<!-- <script>
-    window.onscroll = function() {scrollFunction()};
+<script>
+    $(document).ready(function(){
+    window.addEventListener('scroll', function () { toggleScrollClass() });
+    $('.list-group-item-action').click(function(e) {
+        e.preventDefault()
+        document.getElementById(e.currentTarget.attributes.href.value.slice(1)).scrollIntoView({behavior: "smooth", block: "end"});
+        });
+    })
+        </script>
 
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("navbar").style.top = "0";
-  } else {
-    document.getElementById("navbar").style.top = "-61px";
-  }
-}
-</script> -->
-<body data-spy="scroll" data-target="#content-buttons"  data-offset="0">
-    <!-- <div class='d-flex content-buttons' id='navbar'>
-            <div class="" id="content-buttons">
-                {% for item in page.topics %}
-                <a class="py-1 px-2" href="#topic-{{ forloop.index }}">{{item.topic}}</a>
-                {% endfor %}
-            </div>
-        </div> -->
-    <div class='container' id="topic-1">
+<body data-spy="scroll" data-target="#content-buttons" data-offset="0">
+    <div class='container'>
         {% include wave.html %}
         {% include navbar.html %}
 
+        <nav class='nav-bread sticky-top' aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/entry.html">HOME</a></li>
+                <li class="breadcrumb-item"><a href="/theory.html">THEORY</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> {{ page.full_title}} - {{ page.main_title}}</li>
+            </ol>
+        </nav>
+        
         <div class='row content-container'>
             <div class='col content'>
                 {{ content}}
             </div>
-            <div class='col-2 d-flex align-items-start content-buttons'>
-                <div class="card card-group">
-                    <div class="list-group list-group-flush" id="content-buttons">
-                        {% for item in page.topics %}
-                        <a class="list-group-item list-group-item-action py-1 px-2" href="#topic-{{ forloop.index }}">{{item.topic}}</a>
-                        {% endfor %}
-                    </div>
-                  </div>
+            <div class='col-auto d-flex align-items-start'>
+                <div class="list-group" id="content-buttons">
+                    {% for item in page.topics %}
+                    <a class="list-group-item list-group-item-action m-1 py-1 px-2"
+                        href="#topic-{{ forloop.index }}">{{item.topic}}</a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
         {% include bottom_nav.html %}

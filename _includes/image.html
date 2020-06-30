@@ -1,22 +1,26 @@
 <style>
     .jumbo-image {
         z-index: -1;
+        border-radius: .3em;
+        max-width: 95%;
+
+        /* max-width: 916px; */
         /* max-height: 364px; */
     }
-
+    .color-block {
+        background: rgb(107,138,21);
+        min-width: 4%;
+        margin-right: 4px;
+        border-radius: .3em;
+    }
     .img-container {
         grid-area: image;
         display: flex;
-        background: rgb(107,138,21);
-        background: linear-gradient(90deg, rgba(107,138,21,1) 0%, rgba(107,138,21,0.23012955182072825) 24%, rgba(0,0,0,0) 89%);
-        flex-direction: row-reverse;
-        /* overflow: hidden;
-        position: absolute;
-        max-width: 100vw;
-        margin-left: -50px; */
+        flex-direction: row;
     }
 </style>
 
 <div class='img-container'>
+    <div class='color-block'></div>
     <img class='jumbo-image img-fluid' src={{ page.image_path  | relative_url }}>
 </div>

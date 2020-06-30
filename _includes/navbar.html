@@ -28,9 +28,7 @@ let switchNavMenuItem = ()  => {
     var current = location.pathname.split('/').pop();
     if (current === "") return;
     var menuItems = document.querySelectorAll('.sidenavr ul li a');
-    console.log(menuItems);
     for (var menuItem of menuItems) {
-      console.log(menuItem);
         if (location.pathname.includes(menuItem.getAttribute("href").split('/').pop())) {
             menuItem.className = "active";
         }

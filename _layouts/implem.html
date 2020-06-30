@@ -1,0 +1,331 @@
+{% include header.html %}
+
+<style>
+    /* Column auto-sizing for columns with 5+ items */
+    @media (min-width: 1200px) {
+        .double-col-card {
+            min-width: 272px;
+            max-height: 544px;
+        }
+    }
+    /* Card Column Coloring */
+
+    #context-data .card:hover {
+        background-color: var(--aquamarine);
+        border-color: var(--aquamarine);
+    }
+
+    #context-data .card:hover .card-body p {
+        color: white !important;
+    }
+
+    #column_1 .card-body p {
+        color: var(--column_1);
+    }
+
+    #column_1 .col-card .card {
+        border-color: var(--column_1);
+    }
+
+    #column_1 .col-card .card:hover {
+        background-color: var(--column_1);
+    }
+
+    #column_1 .col-card .card:hover .card-body p {
+        color: white !important;
+    }
+
+    #column_2 .card-body p {
+        color: var(--column_2);
+    }
+
+    #column_2 .col-card .card {
+        border-color: var(--column_2);
+    }
+
+    #column_2 .col-card .card:hover {
+        background-color: var(--column_2);
+        border-color: var(--column_2);
+    }
+
+    #column_2 .col-card .card:hover .card-body p {
+        color: white !important;
+    }
+
+    #column_3 .card-body p {
+        color: var(--column_3);
+    }
+
+    #column_3 .col-card .card {
+        border-color: var(--column_3);
+    }
+
+    #column_3 .col-card .card:hover {
+        background-color: var(--column_3);
+        border-color: var(--column_3);
+    }
+
+    #column_3 .col-card .card:hover .card-body p {
+        color: white !important;
+    }
+
+    #column_4 .card-body p {
+        color: var(--column_4);
+    }
+
+    #column_4 .col-card .card {
+        border-color: var(--column_4);
+    }
+
+    #column_4 .col-card .card:hover {
+        background-color: var(--column_4);
+        border-color: var(--column_4);
+    }
+
+    #column_4 .col-card .card:hover .card-body p {
+        color: white !important;
+    }
+
+    #column_5 .card-body p {
+        color: var(--column_5);
+    }
+
+    #column_5 .col-card .card {
+        border-color: var(--column_5);
+    }
+
+    #column_5 .col-card .card:hover {
+        background-color: var(--column_5);
+        border-color: var(--column_5);
+    }
+
+    #column_5 .col-card .card:hover .card-body p {
+        color: white !important;
+    }
+
+    /* Responsive Sizing for Context Card Section */
+    @media (min-width: 992px) {
+        #context-data {
+            max-width: max-content !important;
+        }
+    }
+
+    #context-data {
+        max-width: 438px;
+    }
+
+
+    /* Transition and animation stuff */
+
+    #intervention-section {
+        height: 136px;
+        transition: height .8s ease-in;
+    }
+
+    .intervention-section-max {
+        height: min-content !important;
+    }
+
+    #card-section {
+        min-height: 1248px;
+        opacity: 1;
+        transition: opacity .3s, min-height .6s ease-in;
+        transition-delay: .2s;
+    }
+    @media (min-width: 768px) {
+        #card-section {
+            min-height: 704px;
+        }
+    }
+</style>
+<script>
+    const prep_state = { context: undefined, interventions: undefined };
+
+    const contextFunction = (e) => {
+        e.onclick = null;
+        let parent = document.getElementById('context-section')
+        Object.values(parent.getElementsByClassName('button-card')).filter(item => item != e).forEach(function (item) {
+            item.onclick = null;
+            item.classList.add("flipOutY");
+        })
+        document.getElementById(e.parentElement.attributes['data-target'].value).innerText = e.innerText
+        setTimeout(function () {
+            const cardSection = document.getElementById('card-section');
+            cardSection.classList.add('hidden-object');
+            Object.values(document.getElementsByClassName('data-section')).forEach(function (item) {
+                item.classList.remove('hidden-object')
+            })
+
+        }, 1100)
+
+    }
+    const interventionFunction = (e) => {
+        let last = e.parentElement.children[0].getBoundingClientRect();
+        let first = e.getBoundingClientRect()
+        const deltaX = first.left - last.left;
+        const deltaY = first.top - last.top;
+        e.onclick = null;
+        let parent = document.getElementById('intervention-section')
+        Object.values(parent.getElementsByClassName('button-card')).filter(item => item != e).forEach(function (item) {
+            item.onclick = null;
+            item.classList.add("flipOutY");
+            setTimeout(function () {
+                item.classList.add('hidden-object')
+                e.animate([{
+                    transformOrigin: 'bottom right',
+                    transform: `
+                        translate(${deltaX}px, ${deltaY}px)
+                                `
+                }, {
+                    transformOrigin: 'top left',
+                    transform: 'none'
+                }], {
+                    duration: 300,
+                    easing: 'ease-in-out',
+                    fill: 'both'
+                });
+            }, 1000);
+        });
+        parent.classList.remove('intervention-section-max');
+        setTimeout(function () {
+            const hidCol = document.getElementById('context-section');
+            hidCol.classList.remove('hidden-object');
+            hidCol.classList.add('fadeInUp');
+        }, 1100)
+        document.getElementById(e.parentElement.attributes['data-target'].value).innerText = e.innerText
+    }
+</script>
+
+<body>
+    <div class='container d-flex flex-column'>
+        <div class='row'>
+            {% include wave.html %}
+            {% include navbar.html %}
+        </div>
+        {% include tool_nav.html %}
+        <div id='card-section'>
+            <div class='row'>
+                <div class='col-auto inter-header'> <span class='title'>INTERVENTIONS</span> <span class='option'>SELECT
+                        ONE</span></div>
+            </div>
+            <div class="row justify-content-around intervention-section-max no-gutters" id="intervention-section">
+                <div class="col-auto" id='column_1'>
+                    <div class='row no-gutters'>
+                        <div class='col col-card d-flex flex-column flex-wrap' data-target='inter-header'>
+                            {% for item in site.data.interventions.column_1 %}
+                            <div class="card animated button-card" onclick="interventionFunction(this)">
+                                <div class="card-body text-center d-flex align-items-center"
+                                    href="context_{{forloop.index}}.html">
+                                    <p> {{ item.text }} </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto" id='column_2'>
+
+                    <div class='row no-gutters'>
+                        <div class='col col-card d-flex flex-column flex-wrap' data-target='inter-header'>
+                            {% for item in site.data.interventions.column_2 %}
+                            <div class="card animated button-card" onclick="interventionFunction(this)">
+                                <div class="card-body text-center d-flex align-items-center"
+                                    href="objectives_{{forloop.index}}.html">
+                                    <p> {{ item.text }} </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto" id='column_3'>
+
+                    <div class='row no-gutters'>
+                        <div class='col col-card d-flex flex-column flex-wrap' data-target='inter-header'>
+                            {% for item in site.data.interventions.column_3 %}
+                            <div class="card animated button-card" onclick="interventionFunction(this)">
+                                <div class="card-body text-center d-flex align-items-center"
+                                    href="objectives_{{forloop.index}}.html">
+                                    <p> {{ item.text }} </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto" id='column_4'>
+
+                    <div class='row no-gutters'>
+                        <div class='col col-card double-col-card d-flex flex-column flex-wrap'
+                            data-target='inter-header'>
+                            {% for item in site.data.interventions.column_4 %}
+                            <div class="card animated button-card" onclick="interventionFunction(this)">
+                                <div class="card-body text-center d-flex align-items-center"
+                                    href="objectives_{{forloop.index}}.html">
+                                    <p> {{ item.text }} </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto" id='column_5'>
+                    <div class='row no-gutters'>
+                        <div class='col col-card double-col-card d-flex flex-column flex-wrap'
+                            data-target='inter-header'>
+                            {% for item in site.data.interventions.column_5 %}
+                            <div class="card animated button-card" onclick="interventionFunction(this)">
+                                <div class="card-body text-center d-flex align-items-center"
+                                    href="objectives_{{forloop.index}}.html">
+                                    <p> {{ item.text }} </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='hidden-object animated' id='context-section'>
+                <div class='row mt-3'>
+                    <div class='col-auto context-header'> <span class='title'>CONTEXTS</span> <span
+                            class='option'>SELECT ONE</span></div>
+                </div>
+
+                <div class="row no-gutters justify-content-center">
+                    <div class="col-auto">
+                        <div class='row'>
+                            <div class='col col-card d-flex flex-row flex-wrap' id='context-data'
+                                data-target="context-header">
+                                {% for item in site.data.context %}
+                                <div class="card button-card animated" onclick="contextFunction(this)">
+                                    <div class="card-body text-center d-flex align-items-center"
+                                        href="context_{{forloop.index}}.html">
+                                        <p> {{forloop.index}} {{ item.text }} </p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='row data-section hidden-object'>
+            <div class='col my-3'>
+                <ul class='breadcrumb-data px-0 '>
+                    <li>INTERVENTIONS: <span id='inter-header'></span></li>
+                    <li>CONTEXT: <span id='context-header'></span></li>
+                </ul>
+            </div>
+        </div>
+        {% include data-scroll.html %}
+        {% include bottom_nav.html %}
+    </div>
+</body>
+{% include footer.html %}

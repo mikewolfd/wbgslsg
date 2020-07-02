@@ -1,0 +1,46 @@
+{
+  "name": "wbgslsg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "autoprefixer": "^9.8.4",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-dom": "^1.0.0",
+    "gulp-jsdom": "^1.1.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-stylelint": "^13.0.0",
+    "gulp-uncss": "^1.0.6",
+    "gulp-useref": "^4.0.1",
+    "gulp-processhtml": "^1.2.0",
+    "gulp-postcss": "^8.0.0",
+    "postcss-uncss": "^0.17.0",
+    "prettier": "^2.0.5",
+    "stylelint": "^13.6.1",
+    "stylelint-config-standard": "^20.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@linthtml/linthtml": "^0.4.2",
+    "browserslist": "^4.12.2",
+    "gulp-babel": "^8.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bundle install",
+    "build": "jekyll build && sleep 2 && gulp",
+    "clean": "jekyll clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikewolfd/wbgslsg.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikewolfd/wbgslsg/issues"
+  },
+  "homepage": "https://github.com/mikewolfd/wbgslsg#readme"
+}

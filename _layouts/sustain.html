@@ -1,0 +1,38 @@
+{% include header.html %}
+<style type="text/css">
+        .scroll-buttons .list-group-item:not(.collapsed){
+        background-color: var(--prep) !important;
+        border-color: var(--prep);
+        color: white !important;
+    }
+
+    .scroll-buttons {
+        /* min-height: 80vh; */
+        position: sticky;
+        top: 3em;
+    }
+</style>
+
+<body>
+    <div class='container'>
+        <div class='mb-4'>
+        {% include wave.html %}
+        {% include navbar.html %}
+    </div>
+    <div class='row'>
+    {% include tabbed-scroll.html %}
+    <div class='col-auto ml-2 d-flex flex-column'>
+        <div class="scroll-buttons" id="content-buttons">
+            {% for item in page.topic %}
+            <a class="list-group-item list-group-item-action m-1 py-1 px-2 {% if forloop.first == false %} collapsed {% endif %}" id="tab-{{ forloop.index }}"
+                data-toggle="collapse" role="button" data-target="#tabbed-{{ forloop.index }}"
+                aria-controls="tabbed-{{ forloop.index }}"
+                aria-expanded="{% if forloop.first %} true {% else %} false {% endif %}">{{item}}</a>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    </div>
+    {% include bottom_nav.html %}
+</body>
+{% include footer.html %}

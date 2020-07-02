@@ -1,0 +1,171 @@
+{% include header.html %}
+<style type="text/css">
+    .card:not(.no-hover):hover p {
+        color: white !important;
+    }
+    
+    #active-cards .card:not(.no-hover):hover {
+        background-color: var(--weirdGold);
+        border-color: var(--weirdGold);
+    }
+    #prev-cards .card:not(.no-hover):hover {
+        background-color: var(--grey_copy);
+        border-color: var(--grey_copy);
+    }
+    .card {
+        width: 136px;
+        height: 136px;
+        margin: 1px;
+        border-radius: .5em;
+        word-wrap: normal;
+    }
+
+    .card p {
+        margin-bottom: auto !important;
+        margin-top: 5px !important;
+    }
+
+    .card a {
+        padding: 10px;
+
+    }
+    .card a p {
+        font-size: 13px;
+        line-height: 17px;
+        font-weight: 400;
+        opacity: .7;
+        color: var(--grey_copy);
+        text-decoration: none;
+    }
+    .card:hover span {
+        color: white !important;
+    }
+    
+    .card span:hover a {
+        color: var(--column_1) !important;
+
+        cursor: pointer;
+    }
+    .card span {
+        font-size: 14px;
+    margin-bottom: 11px;
+    font-weight: 500;
+    color: var(--grey_copy);
+    opacity: .7;
+
+    }  
+    #active-cards .card span{
+        color: var(--weirdGold);
+    }
+
+    .card span a {
+    padding: 0;
+    padding-right: 2px;
+    padding-right: 2px;
+    
+    }
+    #active-cards .card a:not(.title) p {
+        color: var(--weirdGold);
+    }
+
+    .card a.title p{
+        font-size: 18px;
+        font-weight: 400;
+        opacity: .5;
+    }
+
+    .card-body p {
+        color: black;
+    }
+
+</style>
+
+<body>
+    <div class='container'>
+        {% include wave.html %}
+        {% include navbar.html %}
+
+        <div class='row card-section mt-5'>
+            <div class='col-6 d-flex flex-row flex-wrap' id='active-cards'>
+                <div class="card no-hover context-card ">
+                    <a class="card-body title d-flex align-items-center">
+                        <p> ACTIVE
+                            REPORTS </p>
+                    </a>
+
+                </div>
+                <div class="card context-card ">
+                    <a class="card-body d-flex align-items-center">
+                        <p> 10 MAY 2020
+                            CONTEXT 5
+                            OBJECTIVE 3
+                            INTERVENTION 8 </p>
+                    </a>
+                    <span class='text-center'><a class='print'>PRINT</a> | <a class='del'>DELETE</a></span>
+
+                </div>
+                <div class="card context-card ">
+                    <a class="card-body d-flex align-items-center">
+                        <p>12 JUNE 2020
+                            CONTEXT 2
+                            OBJECTIVE 5
+                            INTERVENTION 3</p>
+                    </a>
+                    <span class='text-center'><a class='print'>PRINT</a> | <a class='del'>DELETE</a></span>
+
+                </div>
+            </div>
+            <div class='col-6 d-flex flex-row flex-wrap' id='prev-cards'>
+                <div class="card no-hover context-card ">
+                    <a class="card-body title d-flex align-items-center">
+                        <p> PREVIOUS
+                            REPORTS </p>
+                    </a>
+
+                </div>
+                <div class="card context-card ">
+                    <a class="card-body d-flex align-items-center">
+                        <p> 10 MAY 2020
+                            CONTEXT 5
+                            OBJECTIVE 3
+                            INTERVENTION 8 </p>
+                    </a>
+                    <span class='text-center'><a class='print'>PRINT</a> | <a class='del'>DELETE</a></span>
+                </div>
+                <div class="card context-card ">
+                    <a class="card-body d-flex align-items-center">
+                        <p>12 JUNE 2020
+                            CONTEXT 2
+                            OBJECTIVE 5
+                            INTERVENTION 3</p>
+                    </a>
+                    <span class='text-center'><a class='print'>PRINT</a> | <a class='del'>DELETE</a></span>
+
+                </div>
+                <div class="card context-card ">
+                    <a class="card-body d-flex align-items-center">
+                        <p> 08 FEB 2020
+                            CONTEXT 6
+                            OBJECTIVE 3
+                            INTERVENTION 6 </p>
+                    </a>
+                    <span class='text-center'><a class='print'>PRINT</a> | <a class='del'>DELETE</a></span>
+
+                </div>
+                <div class="card context-card ">
+                    <a class="card-body d-flex align-items-center">
+                        <p>28 JAN 2020
+                            CONTEXT 2
+                            OBJECTIVE 6
+                            INTERVENTION 5</p>
+                    </a>
+                    <span class='text-center'><a class='print'>PRINT</a> | <a class='del'>DELETE</a></span>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% include bottom_nav.html %}
+</body>
+{% include footer.html %}

@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
     <meta charset="utf-8">
-    <title>{{ page.title }} - {{ site.title }}</title>
+    <title>{{ page.title | capitalize_all }} - {{ site.title }}</title>
     <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
     <link rel="stylesheet" href="{{ page.name | remove: '.html' | append : '.css' | prepend: '/assets/css/' | relative_url }}">
     <script src='{{ "/assets/js/jquery-3.5.1.slim.min.js" | relative_url }}'></script>

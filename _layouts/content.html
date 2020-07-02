@@ -1,15 +1,10 @@
 {% include header.html %}
-<style>
-
+<style type="text/css">
     .content {
-        font-family: Roboto;
         font-weight: 300;
         line-height: 21pt;
         font-size: 16px;
         color: rgba(78, 79, 84, 1);
-        /* height: 50vh;
-        position: relative;
-        overflow-y: scroll; */
     }
 
     .content-container {
@@ -19,69 +14,56 @@
 
     }
 
-    .list-group {
-        font-family: Roboto;
-        font-weight: 300;
-        line-height: 16pt;
-        font-size: 16px;
-        color: rgba(78, 79, 84, 1);
+    .scroll-buttons .list-group-item:not(.collapsed){
+        background-color: var(--prep) !important;
+        border-color: var(--prep);
+        color: white !important;
+    }
+    .scroll-buttons {
+        /* min-height: 80vh; */
         position: sticky;
-        position: -webkit-sticky;
-        align-self: flex-end;
-        bottom: 5em;
+        top: 3em;
     }
-
-    .list-group-item.active {
-        background-color: rgba(107, 138, 21, 1) !important;
-        border-color: rgba(107, 138, 21, 1);
-    }
-
-    .list-group-item {
-        background-color: rgba(234, 233, 235);
-        border-radius: .5em !important;
-        max-width: 9em;
-    }
-
-
 </style>
 
-<script>
-    $(document).ready(function(){
-    window.addEventListener('scroll', function () { toggleScrollClass() });
-    $('.list-group-item-action').click(function(e) {
-        e.preventDefault()
-        document.getElementById(e.currentTarget.attributes.href.value.slice(1)).scrollIntoView({behavior: "smooth", block: "end"});
-        });
-    })
-        </script>
-
-<body data-spy="scroll" data-target="#content-buttons" data-offset="0">
+<body>
     <div class='container'>
         {% include wave.html %}
         {% include navbar.html %}
 
-        <nav class='nav-bread sticky-top' aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ 'entry.html' | relative_url }}">HOME</a></li>
-                <li class="breadcrumb-item"><a href="{{ '/theory.html' | relative_url }}">THEORY</a></li>
-                <li class="breadcrumb-item active" aria-current="page"> {{ page.full_title}} - {{ page.main_title}}</li>
-            </ol>
-        </nav>
-        
-        <div class='row content-container'>
-            <div class='col content'>
-                {{ content}}
+
+        <div class='row no-gutters ' id="accordionContent" data-default="1">
+            <div class='col content tab-content' id="nav-tabContent">
+                {% for item in page.data %}
+                <div class="{% if forloop.first %} show {% endif %} collapse" id="tabbed-{{ forloop.index }}"
+                    aria-labelledby="tab-{{ forloop.index }}" data-parent='#accordionContent'> {{item}}
+                </div>
+                {% endfor %}
             </div>
-            <div class='col-auto d-flex align-items-start'>
-                <div class="list-group" id="content-buttons">
-                    {% for item in page.topics %}
-                    <a class="list-group-item list-group-item-action m-1 py-1 px-2"
-                        href="#topic-{{ forloop.index }}">{{item.topic}}</a>
+            <script>
+                $(document).ready(() => {
+                    /* always keep at least 1 open by preventing the current to close itself */
+                    $('[data-toggle="collapse"]').on('click', function (e) {
+                        if (true === JSON.parse(e.currentTarget.getAttribute('aria-expanded'))) {
+                                e.stopPropagation();
+                        }
+                })
+            });
+            </script>
+            <div class='col-auto ml-2 d-flex flex-column'>
+                <div class="scroll-buttons" id="content-buttons">
+                    {% for item in page.topic %}
+                    <a class="list-group-item list-group-item-action m-1 py-1 px-2 {% if forloop.first == false %} collapsed {% endif %}" id="tab-{{ forloop.index }}"
+                        data-toggle="collapse" role="button" data-target="#tabbed-{{ forloop.index }}"
+                        aria-controls="tabbed-{{ forloop.index }}"
+                        aria-expanded="{% if forloop.first %} true {% else %} false {% endif %}">{{item}}</a>
                     {% endfor %}
                 </div>
             </div>
+            </div>
         </div>
-        {% include bottom_nav.html %}
     </div>
+    {% include bottom_nav.html %}
+
 </body>
 {% include footer.html %}

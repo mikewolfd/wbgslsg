@@ -1,13 +1,21 @@
-<style>
+<style type="text/css">
+
     /* Card styling */
     .col-card .card {
-        margin: 2px;
+        margin: 5px;
         border-radius: .5em;
         word-wrap: normal;
-        width: 132px;
-        height: 132px;
-        max-height: 132px;
+        width: 140px;
+        height: 140px;
+        max-height: 140px;
         background-color: rgba(229, 229, 229, .13);
+    }
+
+    .col-card .card p {
+        margin-bottom: auto !important;
+        margin-top: 5px !important;
+        /* margin-top:auto !important; */
+        /* margin-bottom: auto !important; */
     }
 
     .col-card .card div {
@@ -17,7 +25,6 @@
         line-height: 20px;
         font-weight: 500;
         text-decoration: none;
-
     }
 
     /* Card Section Title Styling */
@@ -44,18 +51,36 @@
     }
 
     /* Bump Nav */
-    .breadcrumb-data a {
+    .breadcrumb-data>li {
         list-style: none;
+        font-size: 16px;
+        line-height: 25px;
+        font-weight: 400;
+    }
+
+    .breadcrumb-data div li {
+        list-style: outside;
+    }
+
+    .breadcrumb-data .card {
+        background-color: rgba(229, 229, 229, .13);
+    }
+
+    .breadcrumb-data li a {
         color: var(--aquamarine);
         font-weight: 600;
         font-size: 17px;
-
     }
 
     .breadcrumb-data .dropdown-item {
         pointer-events: none;
-   cursor: default;
+        cursor: default;
     }
+
+    .breadcrumb-data {
+        margin: 0;
+    }
+
     /* Transition and animation stuff */
     .data-section {
         opacity: 1;
@@ -71,13 +96,12 @@
         overflow: hidden;
     }
 </style>
-
-<nav class='nav' aria-label="breadcrumb">
+<!-- <nav class='nav' aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ '/entry.html' | relative_url }}">HOME</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ page.title}}</li>
     </ol>
-</nav>
+</nav> -->
 <div class='row content'>
     <div class='col'>
         {{ content}}

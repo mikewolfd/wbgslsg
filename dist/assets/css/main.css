@@ -2217,8 +2217,6 @@ body { min-width: 100vw !important; min-height: 100vh !important; display: flex 
 @keyframes nav-fade-out { 100% { background-color: white; }
   0% { background-color: #e5e5e5; } }
 
-.breadcrumb { background-color: white; border-radius: 0.5em; margin-bottom: 16px; }
-
 .breadcrumb-item { z-index: 2; }
 
 .breadcrumb-item br { display: none; }

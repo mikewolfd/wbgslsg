@@ -13,8 +13,10 @@ All templating and dataloading is done in Jekyll, javascript script tags and css
 The full composed site is in _site, and can be takene and worked on from there.
 
 If you want to continue making changes in Jekyll, you will need to run Jekyll and gulp seperately as I have yet to integrate the two. 
-Running the following command will clean, build, and integrate this package. 
+Running the following command will clean, build, and integrate this package into _site.
 `jekyll clean && jekyll b && gulp`
 </p>
 
-Nothing is minified. The only browser optimization I did was to dynamic
+Nothing is minified.
+
+in prep.html (Preperation) and implem.html (Implementation) there is a variable in the javascript to disable/enable some of the animations I had attempted to do. 

@@ -44,6 +44,7 @@
   .topnav {
     grid-area: topnav;
     padding-top: 35px;
+    margin-bottom: 2em;
   }
 
   .wb_logo {
@@ -52,6 +53,7 @@
 
   .jumbo-container {
     grid-area: jumbo;
-    padding-top: 37px;
+    align-self: flex-end;
+    /* padding-top: 37px; */
     height: 100%;
   }

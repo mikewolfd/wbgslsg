@@ -1,14 +1,13 @@
-<style>
+<style type="text/css">
     .jumbo-image {
         z-index: -1;
         border-radius: .3em;
         max-width: 95%;
-
         /* max-width: 916px; */
         /* max-height: 364px; */
     }
     .color-block {
-        background: rgb(107,138,21);
+        background: var(--prep);
         min-width: 4%;
         margin-right: 4px;
         border-radius: .3em;
@@ -17,9 +16,17 @@
         grid-area: image;
         display: flex;
         flex-direction: row;
+        margin-top: 1em;
+        margin-bottom: 1em;
     }
 </style>
-
+{% if page.color %}
+<style>
+    .color-block {
+        background: var({{ page.color }});
+    }
+</style>
+{% endif %}
 <div class='img-container'>
     <div class='color-block'></div>
     <img class='jumbo-image img-fluid' src={{ page.image_path  | relative_url }}>

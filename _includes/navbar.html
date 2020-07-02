@@ -1,18 +1,21 @@
-<style>
+<style type="text/css">
+
   .grid-container {
-    display:grid;
+    display: grid;
     width: 100%;
     grid-template-columns: 3fr 1fr 1fr 2fr;
-        grid-template-areas: 
-          "topnav topnav topnav topnav"
-          'midnav midnav midnav midnav'
-          "jumbo jumbo jumbo jumbo"
-          "image image image .";
+    grid-template-areas:
+      "topnav topnav topnav topnav"
+      'midnav midnav midnav midnav'
+      "jumbo jumbo jumbo jumbo"
+      "image image image image";
   }
+
   .topnav {
     grid-area: topnav;
     padding-top: 35px;
   }
+
   .wb_logo {
     padding-right: 2em;
   }
@@ -22,51 +25,46 @@
     padding-top: 37px;
     height: 100%;
   }
-
 </style>
+{% if page.sidenav %}
 <script>
-let switchNavMenuItem = ()  => {
-    var current = location.pathname.split('/').pop();
+  let switchNavMenuItem = () => {
+    let current = location.pathname.split('/').pop();
     if (current === "") return;
-    var menuItems = document.querySelectorAll('.sidenavr ul li a');
-    for (var menuItem of menuItems) {
-        if (location.pathname.includes(menuItem.getAttribute("href").split('/').pop())) {
-            menuItem.className = "active";
-        }
+    let menuItems = document.querySelectorAll('.sidenavr ul li a');
+    for (let menuItem of menuItems) {
+      if (location.pathname.includes(menuItem.getAttribute("href").split('/').pop())) {
+        menuItem.className = "active";
+      }
     }
-}
-
-$(document).ready(() => {   
-switchNavMenuItem()
-})
-
+  }
+  $(document).ready(() => {
+    switchNavMenuItem()
+  })
 </script>
+{% endif %}
 <div class=grid-container>
-<nav class="navbar topnav d-flex navbar-expand-md navbar-light">
-  <div class="navbar-brand">
-    <img class='wb_logo mr-sm-5 pr-sm-5' src="{{ "/assets/images/wb_logo.png" | relative_url }}" height='32'>
-    <img class='fao_logo' src="{{ "/assets/images/FAO_logo.png" | relative_url }}" height='36'>
-  </div>
-  {% if page.sidenav %}
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  {% endif %}
-</nav>
+  <nav class="navbar topnav d-flex navbar-expand-md navbar-light">
+    <div class="navbar-brand">
+      <img class='wb_logo mr-sm-5 pr-sm-5' src="{{ "/assets/images/wb_logo.png" | relative_url }}" height='32'>
+      <img class='fao_logo' src="{{ "/assets/images/FAO_logo.png" | relative_url }}" height='36'>
+    </div>
+    {% if page.sidenav %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    {% endif %}
+  </nav>
   {% if page.show_jumbo or page.main_title %}
   <div class='jumbo-container'>
     {% include jumbo.html %}
   </div>
   {% endif %}
- 
   {% if page.image_path %}
   {% include image.html %}
   {% endif %}
-
   {% if page.sidenav %}
-   {% include sidenav.html %}
+  {% include sidenav.html %}
   {% endif %}
 </div>

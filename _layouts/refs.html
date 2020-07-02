@@ -1,0 +1,171 @@
+{% include header.html %}
+<style type="text/css">
+    /* .scroll-box {
+        overflow-y: scroll;
+        direction: rtl;
+
+    }
+    .content-col {
+        max-height: calc(100vh - 451px);
+        direction: ltr !important;
+    } */
+    .scroll-box::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+
+    .scroll-box::-webkit-scrollbar {
+        width: 12px;
+        background-color: #F5F5F5;
+    }
+
+    .scroll-box::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+        background-color: #555;
+    }
+
+    .content-col h5 a {
+        font-size: 45px;
+        font-weight: 200;
+        color: var(--grey_copy);
+        opacity: .5;
+    }
+
+    .content-col h5 a:hover .bi {
+        transform: rotate(45deg);
+    }
+
+    .content-col h5 a .bi {
+        -webkit-transition: all 0.2s linear;
+        margin-bottom: -23px;
+        margin-left: -20px;
+        width: 80px;
+        height: 80px;
+    }
+    .content-col hr {
+        margin: 1px;
+    }
+</style>
+
+<body>
+    <div class='container d-flex flex-column'>
+        <div class='row mb-4'>
+            {% include wave.html %}
+            {% include navbar.html %}
+        </div>
+        <div class='row scroll-box'>
+            <div class='col content-col'>
+                <div id="accordion">
+                    <div class="">
+                        <h5 class="mb-0">
+                            <a class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                aria-controls="collapseOne">
+                                CONTEXT <svg width="3em" height="3em" viewBox="0 0 16 16"
+                                    class="bi bi-arrow-right-short" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M8.146 4.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.793 8 8.146 5.354a.5.5 0 0 1 0-.708z" />
+                                    <path fill-rule="evenodd"
+                                        d="M4 8a.5.5 0 0 1 .5-.5H11a.5.5 0 0 1 0 1H4.5A.5.5 0 0 1 4 8z" />
+                                </svg>
+                            </a>
+                        </h5>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                            data-parent="#accordion">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                            squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                            quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
+                            squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                            butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                            nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="">
+                        <h5 class="mb-0">
+                            <a class=" collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                aria-expanded="false" aria-controls="collapseTwo">
+                                PRINCIPLES FOR <br> ENVIRONMENTAL SUSTAINABILITY
+                                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-arrow-right-short"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M8.146 4.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.793 8 8.146 5.354a.5.5 0 0 1 0-.708z" />
+                                    <path fill-rule="evenodd"
+                                        d="M4 8a.5.5 0 0 1 .5-.5H11a.5.5 0 0 1 0 1H4.5A.5.5 0 0 1 4 8z" />
+                                </svg>
+                            </a>
+                        </h5>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                            squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                            quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
+                            squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                            butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                            nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="">
+                        <h5 class="mb-0">
+                            <a class=" collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                aria-expanded="false" aria-controls="collapseThree">
+                                PRINCIPLES FOR ANIMAL SAFTEY <svg width="3em" height="3em" viewBox="0 0 16 16"
+                                    class="bi bi-arrow-right-short" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M8.146 4.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.793 8 8.146 5.354a.5.5 0 0 1 0-.708z" />
+                                    <path fill-rule="evenodd"
+                                        d="M4 8a.5.5 0 0 1 .5-.5H11a.5.5 0 0 1 0 1H4.5A.5.5 0 0 1 4 8z" />
+                                </svg>
+                            </a>
+                        </h5>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-parent="#accordion">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                            squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                            quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
+                            squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                            butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                            nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="">
+                        <h5 class="mb-0">
+                            <a class=" collapsed" data-toggle="collapse" data-target="#collapseFour"
+                                aria-expanded="false" aria-controls="collapseFour">
+                                SUSTAINABILITY ISSUES <svg width="3em" height="3em" viewBox="0 0 16 16"
+                                    class="bi bi-arrow-right-short" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M8.146 4.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.793 8 8.146 5.354a.5.5 0 0 1 0-.708z" />
+                                    <path fill-rule="evenodd"
+                                        d="M4 8a.5.5 0 0 1 .5-.5H11a.5.5 0 0 1 0 1H4.5A.5.5 0 0 1 4 8z" />
+                                </svg>
+                            </a>
+                        </h5>
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                            squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                            quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
+                            squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                            butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                            nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include bottom_nav.html %}
+</body>
+{% include footer.html %}

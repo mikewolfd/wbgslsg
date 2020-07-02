@@ -1,23 +1,26 @@
 {% include header.html %}
-
-<style>
-    /* Column auto-sizing for columns with 5+ items */
-    @media (min-width: 1200px) {
-        .double-col-card {
-            min-width: 272px;
-            max-height: 544px;
-        }
-    }
-
+<style type="text/css">
     /* Card Column Coloring */
-
-    #context-data .card:hover {
+    #context-data .card-hover:hover {
         background-color: var(--aquamarine);
         border-color: var(--aquamarine);
     }
 
-    #context-data .card:hover .card-body p {
+    #context-data .card.selected {
+        background-color: var(--aquamarine);
+        border-color: var(--aquamarine);
+    }
+
+    #context-data .card-hover:hover .card-body p {
         color: white !important;
+    }
+
+    #context-data .card.selected .card-body p {
+        color: white !important;
+    }
+
+    .column_1 {
+        color: var(--column_1) !important;
     }
 
     #column_1 .card-body p {
@@ -28,11 +31,19 @@
         border-color: var(--column_1);
     }
 
-    #column_1 .col-card .card:hover {
+    #column_1 .col-card .card-hover:hover {
         background-color: var(--column_1);
     }
 
-    #column_1 .col-card .card:hover .card-body p {
+    #column_1 .col-card .card-hover:hover .card-body p {
+        color: white !important;
+    }
+
+    #column_1 .col-card .card.selected {
+        background-color: var(--column_1);
+    }
+
+    #column_1 .col-card .card.selected .card-body p {
         color: white !important;
     }
 
@@ -40,17 +51,34 @@
         color: var(--column_2);
     }
 
+    .column_2 {
+        color: var(--column_2) !important;
+    }
+
     #column_2 .col-card .card {
         border-color: var(--column_2);
     }
 
-    #column_2 .col-card .card:hover {
+    #column_2 .col-card .card-hover:hover {
         background-color: var(--column_2);
         border-color: var(--column_2);
     }
 
-    #column_2 .col-card .card:hover .card-body p {
+    #column_2 .col-card .card-hover:hover .card-body p {
         color: white !important;
+    }
+
+    #column_2 .col-card .card.selected {
+        background-color: var(--column_2);
+        border-color: var(--column_2);
+    }
+
+    #column_2 .col-card .card.selected .card-body p {
+        color: white !important;
+    }
+
+    .column_3 {
+        color: var(--column_3) !important;
     }
 
     #column_3 .card-body p {
@@ -61,13 +89,26 @@
         border-color: var(--column_3);
     }
 
-    #column_3 .col-card .card:hover {
+    #column_3 .col-card .card-hover:hover {
         background-color: var(--column_3);
         border-color: var(--column_3);
     }
 
-    #column_3 .col-card .card:hover .card-body p {
+    #column_3 .col-card .card-hover:hover .card-body p {
         color: white !important;
+    }
+
+    #column_3 .col-card .card.selected {
+        background-color: var(--column_3);
+        border-color: var(--column_3);
+    }
+
+    #column_3 .col-card .card.selected .card-body p {
+        color: white !important;
+    }
+
+    .column_4 {
+        color: var(--column_4) !important;
     }
 
     #column_4 .card-body p {
@@ -78,13 +119,26 @@
         border-color: var(--column_4);
     }
 
-    #column_4 .col-card .card:hover {
+    #column_4 .col-card .card-hover:hover {
         background-color: var(--column_4);
         border-color: var(--column_4);
     }
 
-    #column_4 .col-card .card:hover .card-body p {
+    #column_4 .col-card .card-hover:hover .card-body p {
         color: white !important;
+    }
+
+    #column_4 .col-card .card.selected {
+        background-color: var(--column_4);
+        border-color: var(--column_4);
+    }
+
+    #column_4 .col-card .card.selected .card-body p {
+        color: white !important;
+    }
+
+    .column_5 {
+        color: var(--column_5) !important;
     }
 
     #column_5 .card-body p {
@@ -95,13 +149,61 @@
         border-color: var(--column_5);
     }
 
-    #column_5 .col-card .card:hover {
+    #column_5 .col-card .card-hover:hover {
         background-color: var(--column_5);
         border-color: var(--column_5);
     }
 
-    #column_5 .col-card .card:hover .card-body p {
+    #column_5 .col-card .card-hover:hover .card-body p {
         color: white !important;
+    }
+
+    #column_5 .col-card .card.selected {
+        background-color: var(--column_5);
+        border-color: var(--column_5);
+    }
+
+    #column_5 .col-card .card.selected .card-body p {
+        color: white !important;
+    }
+
+    /* Column auto-sizing for columns with 5+ items */
+    @media (min-width: 1200px) {
+        .double-col-card {
+            min-width: 272px;
+            max-height: 544px;
+        }
+    }
+
+    .double-col-card {
+        flex-direction: row !important;
+        max-width: 468px;
+    }
+
+    @media (max-width: 767px) {
+        .double-col-card .card {
+            margin: 8px !important;
+        }
+    }
+
+    @media (min-width: 768px) {
+        #column_4 .col-card {
+            flex-direction: column !important;
+        }
+
+        #column_5 .col-card {
+            max-width: 750px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        #column_5 .col-card {
+            flex-direction: column !important;
+        }
+
+        #context-data {
+            max-width: 930px;
+        }
     }
 
     /* Responsive Sizing for Context Card Section */
@@ -112,14 +214,12 @@
     }
 
     #context-data {
-        max-width: 438px;
+        max-width: 480px;
     }
 
-
     /* Transition and animation stuff */
-
     #intervention-section {
-        height: 136px;
+        height: 156px;
         transition: height .8s ease-in;
     }
 
@@ -128,84 +228,185 @@
     }
 
     #card-section {
-        min-height: 1248px;
+        min-height: 777px;
         opacity: 1;
-        transition: opacity .3s, min-height .6s ease-in;
+        transition: opacity .3s, min-height .5s ease-in-out;
         transition-delay: .2s;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 767px) {
         #card-section {
-            min-height: 704px;
+            min-height: 927px
         }
+    }
+
+    #card-section.reduced {
+        min-height: 356px !important;
+    }
+
+    /* disables clicking events */
+    .unclickable {
+        pointer-events: none;
     }
 </style>
 <script>
+    $(document).ready(function () {
+        // for the scrolling breadcrumb nav with relevant card selections
+        window.addEventListener('scroll', function () { toggleScrollClass() });
+    })
     const prep_state = { context: undefined, interventions: undefined };
 
+    // Animation settings for this page, active: true hides all the cards when done, partial leaves the selected cards viewable. 
+    // If animations are disabled, scrolling nav dropdown will be disabled aswell 
+    const cardAnimationSettings = { active: true, partial: true }
+
+    // for the context button selection, happens last before data is shown
     const contextFunction = (e) => {
-        e.onclick = null;
+
+        // highlights button
+        e.classList.add('selected');
+        // get context column
         let parent = document.getElementById('context-section')
-        Object.values(parent.getElementsByClassName('button-card')).filter(item => item != e).forEach(function (item) {
+
+        // disables buttons, removes hover animation, hides cards if active
+        Object.values(parent.getElementsByClassName('button-card')).forEach(function (item) {
             item.onclick = null;
-            item.classList.add("flipOutY");
+            if (cardAnimationSettings.active == true && item != e) {
+                item.classList.add("flipOutY");
+            }
+            item.classList.remove('card-hover');
         })
-        document.getElementById(e.parentElement.attributes['data-target'].value).innerText = e.innerText
+
+        // gets scrolling breadcrumb nav with relevant card selections
+        let breadcrumb = document.getElementById(parent.attributes['data-target'].value)
+        // Update span with selected card text
+        breadcrumb.getElementsByTagName('span')[0].innerText = e.innerText
+        // Search and remove selected card from dropdown 
+        let dropdown = breadcrumb.getElementsByTagName('div')[0]
+        dropdown.getElementsByClassName(e.attributes['index'].value)[0].remove()
+        // if animation is disabled, disables the scrolling nav dropdown feature
+        if (cardAnimationSettings.active == false) {
+            breadcrumb.classList.add('unclickable');
+            breadcrumb.getElementsByTagName('a')[0].classList.remove('dropdown-toggle');
+        }
+
         setTimeout(function () {
-            const cardSection = document.getElementById('card-section');
-            cardSection.classList.add('hidden-object');
+            // This sections enables the animated hiding
+            if (cardAnimationSettings.active == true) {
+                const cardSection = document.getElementById('card-section');
+                if (cardAnimationSettings.partial == true) {
+                    cardSection.classList.add('reduced');
+                } else {
+                    cardSection.classList.add('hidden-object');
+                }
+            }
+            // Un-hides the content section
             Object.values(document.getElementsByClassName('data-section')).forEach(function (item) {
                 item.classList.remove('hidden-object')
             })
-
-        }, 1100)
-
+            // scrolls down to the data section
+            setTimeout(() => {
+                breadcrumb.parentElement.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 700)
+        }, 700)
     }
+
+    // for the intervention button selection, happens first, at the end of this is when 
+    // you can modify which cards you want in the context-section
+
     const interventionFunction = (e) => {
-        let last = e.parentElement.children[0].getBoundingClientRect();
-        let first = e.getBoundingClientRect()
-        const deltaX = first.left - last.left;
-        const deltaY = first.top - last.top;
+        // highlights button
+        e.classList.add('selected');
 
-        e.onclick = null;
-
+        // get internvention column
         let parent = document.getElementById('intervention-section')
-        let breadcrumb = document.getElementById(e.parentElement.attributes['data-target'].value)
+
+        //get all intervention cards
         const interventions = Object.values(parent.getElementsByClassName('button-card'))
 
+        // gets scrolling breadcrumb nav with relevant card selections
+        let breadcrumb = document.getElementById(parent.attributes['data-target'].value)
+
+        // Update span with selected card text
         breadcrumb.getElementsByTagName('span')[0].innerText = e.innerText
 
-        interventions.filter(item => item != e).forEach(function (item) {
-            let style = getComputedStyle(item.getElementsByTagName('p')[0])
-            let dropdown = breadcrumb.getElementsByTagName('div')[0]
-            dropdown.innerHTML += `<a class="dropdown-item" href="#" style='color:${style.color};'>${item.innerText}</a>`
-            item.onclick = null;
-            item.classList.add("flipOutY");
-            setTimeout(function () {
-                item.classList.add('hidden-object')
-                e.animate([{
-                    transformOrigin: 'bottom right',
-                    transform: `
+        // Search and remove selected card from dropdown 
+        let dropdown = breadcrumb.getElementsByTagName('div')[0]
+        let duplicateItem = dropdown.getElementsByClassName(e.attributes['index'].value)[0].remove()
+
+        // Color the dropdown text based on the column colors, it gets the id value and 
+        // adds it as a class, which I have added as a css style
+        breadcrumb.getElementsByTagName('a')[0].classList.add(e.closest('.parent').id)
+
+        // if animation is disabled, disables the scrolling nav dropdown feature
+        if (cardAnimationSettings.active == false) {
+            breadcrumb.classList.add('unclickable');
+            breadcrumb.getElementsByTagName('a')[0].classList.remove('dropdown-toggle');
+        }
+
+        // if animated
+        if (cardAnimationSettings.active == true) {
+            // disables button
+            e.onclick = null;
+            // finds the difference between the position of the clicked button and the first button in it's column
+            let last = e.parentElement.children[0].getBoundingClientRect();
+            let first = e.getBoundingClientRect()
+            const deltaX = first.left - last.left;
+            const deltaY = first.top - last.top;
+            let animated = false; 
+            // iterates over non-clicked buttons
+            interventions.filter(item => item != e).forEach(function (item) {
+                // removes hover styling
+                item.classList.remove('card-hover');
+                // hides unclicked cards
+                item.classList.add("flipOutY");
+                // hides cards, and initiates the slide up animation
+                setTimeout(function () {
+                    item.classList.add('hidden-object')
+                    if (!animated) { 
+                    animated = true;
+                    e.animate([{
+                        transformOrigin: 'bottom right',
+                        transform: `
                         translate(${deltaX}px, ${deltaY}px)
                                 `
-                }, {
-                    transformOrigin: 'top left',
-                    transform: 'none'
-                }], {
-                    duration: 300,
-                    easing: 'ease-in-out',
-                    fill: 'both'
-                });
-            }, 1000);
-        });
-
-        parent.classList.remove('intervention-section-max');
-
+                    }, {
+                        transformOrigin: 'top left',
+                        transform: 'none'
+                    }], {
+                        duration: 500,
+                        easing: 'ease-in-out',
+                        fill: 'both'
+                    });
+                    }
+                }, 1000);
+            });
+            // Shrinks the intervention section
+            parent.classList.remove('intervention-section-max');
+        } else {
+            // If not animated
+            // loops over all the cards
+            interventions.forEach(function (item) {
+                //removes hover and disables clicking
+                item.classList.remove('card-hover');
+                item.onclick = null;
+            })
+        }
+        // Here is where is unhides the context card section
+        // Here is where you could modify which cards in there
         setTimeout(function () {
+            //finds context card section
             const hidCol = document.getElementById('context-section');
+            //unhides and animates it
             hidCol.classList.remove('hidden-object');
             hidCol.classList.add('fadeInUp');
-        }, 1100)
+            // if not animated, it scrolls down to the context section, as the intervention section is tall
+            if (cardAnimationSettings.active == false) {
+                setTimeout(() => {
+                    hidCol.scrollIntoView({ behavior: "smooth", block: "end" });
+                }, 600)
+            }
+        }, 900)
     }
 </script>
 
@@ -222,129 +423,141 @@
                         class='option'>SELECT
                         ONE</span></div>
             </div>
-            <div class="row justify-content-around intervention-section-max no-gutters" id="intervention-section">
-                <div class="col-auto" id='column_1'>
+            <div class="row justify-content-around intervention-section-max no-gutters" id="intervention-section"
+                data-target='inter-header'>
+                <div class="col-auto parent" id='column_1'>
                     <div class='row no-gutters'>
-                        <div class='col col-card d-flex flex-column flex-wrap' data-target='inter-header'>
+                        <div class='col col-card d-flex flex-column flex-wrap'>
                             {% for item in site.data.interventions.column_1 %}
-                            <div class="card animated button-card" onclick="interventionFunction(this)">
-                                <div class="card-body text-center d-flex align-items-center"
-                                    href="context_{{forloop.index}}.html">
+                            <div class="card card-hover animated button-card" onclick="interventionFunction(this)"
+                                index="column_1_{{forloop.index}}">
+                                <div class="card-body  d-flex align-items-center">
                                     <p> {{ item.text }} </p>
                                 </div>
                             </div>
                             {% endfor %}
-
                         </div>
                     </div>
                 </div>
-                <div class="col-auto" id='column_2'>
-
+                <div class="col-auto parent" id='column_2'>
                     <div class='row no-gutters'>
-                        <div class='col col-card d-flex flex-column flex-wrap' data-target='inter-header'>
+                        <div class='col col-card d-flex flex-column flex-wrap'>
                             {% for item in site.data.interventions.column_2 %}
-                            <div class="card animated button-card" onclick="interventionFunction(this)">
-                                <div class="card-body text-center d-flex align-items-center"
-                                    href="objectives_{{forloop.index}}.html">
+                            <div class="card card-hover animated button-card" onclick="interventionFunction(this)"
+                                index="column_2_{{forloop.index}}">
+                                <div class="card-body  d-flex align-items-center">
                                     <p> {{ item.text }} </p>
                                 </div>
                             </div>
                             {% endfor %}
-
                         </div>
                     </div>
                 </div>
-                <div class="col-auto" id='column_3'>
-
+                <div class="col-auto parent" id='column_3'>
                     <div class='row no-gutters'>
-                        <div class='col col-card d-flex flex-column flex-wrap' data-target='inter-header'>
+                        <div class='col col-card d-flex flex-column flex-wrap'>
                             {% for item in site.data.interventions.column_3 %}
-                            <div class="card animated button-card" onclick="interventionFunction(this)">
-                                <div class="card-body text-center d-flex align-items-center"
-                                    href="objectives_{{forloop.index}}.html">
+                            <div class="card card-hover animated button-card" onclick="interventionFunction(this)"
+                                index="column_3_{{forloop.index}}">
+                                <div class="card-body  d-flex align-items-center">
                                     <p> {{ item.text }} </p>
                                 </div>
                             </div>
                             {% endfor %}
-
                         </div>
                     </div>
                 </div>
-                <div class="col-auto" id='column_4'>
-
+                <div class="col-auto parent" id='column_4'>
                     <div class='row no-gutters'>
-                        <div class='col col-card double-col-card d-flex flex-column flex-wrap'
-                            data-target='inter-header'>
+                        <div class='col col-card double-col-card d-flex flex-column flex-wrap'>
                             {% for item in site.data.interventions.column_4 %}
-                            <div class="card animated button-card" onclick="interventionFunction(this)">
-                                <div class="card-body text-center d-flex align-items-center"
-                                    href="objectives_{{forloop.index}}.html">
+                            <div class="card card-hover animated button-card" onclick="interventionFunction(this)"
+                                index="column_4_{{forloop.index}}">
+                                <div class="card-body  d-flex align-items-center">
                                     <p> {{ item.text }} </p>
                                 </div>
                             </div>
                             {% endfor %}
-
                         </div>
                     </div>
                 </div>
-                <div class="col-auto" id='column_5'>
+                <div class="col-auto parent" id='column_5'>
                     <div class='row no-gutters'>
-                        <div class='col col-card double-col-card d-flex flex-column flex-wrap'
-                            data-target='inter-header'>
+                        <div class='col col-card double-col-card d-flex flex-column flex-wrap'>
                             {% for item in site.data.interventions.column_5 %}
-                            <div class="card animated button-card" onclick="interventionFunction(this)">
-                                <div class="card-body text-center d-flex align-items-center"
-                                    href="objectives_{{forloop.index}}.html">
+                            <div class="card card-hover animated button-card" onclick="interventionFunction(this)"
+                                index="column_5_{{forloop.index}}">
+                                <div class="card-body  d-flex align-items-center">
                                     <p> {{ item.text }} </p>
                                 </div>
                             </div>
                             {% endfor %}
-
                         </div>
                     </div>
                 </div>
             </div>
-            <div class='hidden-object animated' id='context-section'>
+            <div class='hidden-object animated' id='context-section' data-target="context-header">
                 <div class='row mt-3'>
                     <div class='col-auto card-col-header'> <span class='title'>CONTEXTS</span> <span
                             class='option'>SELECT ONE</span></div>
                 </div>
-
                 <div class="row no-gutters justify-content-center">
                     <div class="col-auto">
                         <div class='row'>
-                            <div class='col col-card d-flex flex-row flex-wrap' id='context-data'
-                                data-target="context-header">
+                            <div class='col col-card d-flex flex-row flex-wrap' id='context-data'>
                                 {% for item in site.data.context %}
-                                <div class="card button-card animated" onclick="contextFunction(this)">
-                                    <div class="card-body text-center d-flex align-items-center"
-                                        href="context_{{forloop.index}}.html">
-                                        <p> {{forloop.index}} {{ item.text }} </p>
+                                <div class="card card-hover button-card animated" onclick="contextFunction(this)"
+                                    index="context_{{forloop.index}}">
+                                    <div class="card-body  d-flex align-items-center">
+                                        <p> {{ item.text }} </p>
                                     </div>
                                 </div>
                                 {% endfor %}
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class='row data-section hidden-object'>
-            <div class='col my-3'>
-                <ul class='breadcrumb-data px-0 '>
-                    <li id='inter-header'> <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            INTERVENTIONS: <span></span>
+        <nav class='row data-section hidden-object nav-bread sticky-top my-4'>
+            <div class='col'>
+                <ul class='breadcrumb-data p-2'>
+                    <li id='inter-header'>
+                        <a class='dropdown-toggle' data-toggle="collapse" href="#collapseInterventions" role="button"
+                            aria-expanded="false" aria-controls="collapseInterventions"> INTERVENTION:
+                            <span></span>
                         </a>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <div class="collapse" id="collapseInterventions">
+                            <div class='card card-body'>
+                                <ul>
+                                    {% for item in site.data.interventions %}
+                                    {% for col in item[1] %}
+                                    <li class="{{ item[0] }} {{ item[0] }}_{{ forloop.index }}" href="#">
+                                        {{ col.text }}</li>
+                                    {% endfor %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
                     </li>
-                    <li>CONTEXT: <span id='context-header'></span></li>
+                    <li id='context-header'>
+                        <a class='dropdown-toggle' data-toggle="collapse" href="#collapseContext" role="button"
+                            aria-expanded="false" aria-controls="collapseContext"> CONTEXT: <span></span>
+                        </a>
+                        <div class="collapse" id="collapseContext">
+                            <div class='card card-body'>
+                                <ul>
+                                    {% for item in site.data.context %}
+                                    <li class="context_{{ forloop.index }}" href="#">
+                                        {{ item.text }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
-        </div>
+        </nav>
         {% include data-scroll.html %}
         {% include bottom_nav.html %}
     </div>

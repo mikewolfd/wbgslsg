@@ -1,105 +1,55 @@
-<style>
-    /* Text Scroll Buttons */
-    .content-scroll .nav-link a {
-        font-size: 18px;
-        color: var(--grey_copy);
-    }
-
-    .list-group {
-        font-weight: 300;
-        line-height: 16pt;
-        font-size: 16px;
-        color: rgba(78, 79, 84, 1);
+<style type="text/css">
+    .scroll-container {
+        min-height: 80vh;
         position: sticky;
-        position: -webkit-sticky;
-        align-self: flex-start;
-        top: 75vh;
+        top: 19vh;
     }
-
-    .list-group-item.active {
-        background-color: rgba(107, 138, 21, 1) !important;
-        border-color: var(--aquamarine);
-    }
-
-    .list-group-item {
-        background-color: rgba(234, 233, 235);
-        border-radius: .5em !important;
-        max-width: 9em;
-    }
-
     /* Principle Icons */
     .rel-princp .card img {
         width: 63px;
         height: 63px;
     }
-
     .rel-princp .card {
         margin: 3px;
+        border: 0;
     }
-
-
     .rel-princp {
         max-width: 142px;
-        position: sticky;
-        top: 4em;
     }
-
     .rel-princp p {
         font-weight: 500;
     }
-
 </style>
 <script>
-        // Reset Button
+    // Reset Button
     const refreshFunction = () => {
         location.reload()
     };
 </script>
 <div class='row data-section hidden-object'>
-    <div class='col content-scroll'>
-        <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="envrioGuidance-tab" data-toggle="tab" href="#envrioGuidance"
-                    role="tab" aria-controls="envrioGuidance" aria-selected="true">ENVIRONMENTAL GUIDANCE <img
-                        src="{{ '/assets/images/Leaf.svg' | relative_url }}" height=30></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="aniGuidance-tab" data-toggle="tab" href="#aniGuidance" role="tab"
-                    aria-controls="aniGuidance" aria-selected="false">ANIMAL HEALTH GUIDANCE</a>
-            </li>
-        </ul>
-        <div class="tab-content pt-3" id="myTabContent">
-            <div class="tab-pane fade show active" id="envrioGuidance" role="tabpanel"
-                aria-labelledby="envrioGuidance-tab">
-                {{ site.data.guidance.text }}
-            </div>
-            <div class="tab-pane fade" id="aniGuidance" role="tabpanel" aria-labelledby="aniGuidance-tab">
-                {{ site.data.guidance.text }}
-            </div>
-        </div>
-    </div>
-    <div class='col-auto flex-column d-flex'>
+    {% include tabbed-scroll.html %}
+    <div class='col-2 col-lg-auto'>
+        <div class='d-flex flex-column scroll-container'>
         <div class='d-flex flex-row flex-wrap rel-princp'>
             <p>RELEVANT PRINCIPALS</p>
             <div class='card'>
-                <img class=card-img>
+                <img class='card-img' src="{{ '/assets/images/32px_Principle-3.svg' | relative_url }}">
             </div>
             <div class='card'>
-                <img class=card-img>
+                <img class='card-img' src="{{ '/assets/images/32px_Principle-3.svg' | relative_url }}">
             </div>
             <div class='card'>
-                <img class=card-img>
+                <img class='card-img' src="{{ '/assets/images/32px_Principle-3.svg' | relative_url }}">
             </div>
         </div>
-        <div class="list-group d-flex flex-column">
-            <a class="list-group-item list-group-item-action py-1 px-2 my-1"
-                href="#topic-{{ forloop.index }}">ADD TO
+        <div class="d-flex flex-column scroll-buttons mt-auto mb-auto">
+            <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="#topic-{{ forloop.index }}">ADD TO
                 MY REPORTS</a>
-            <a class="list-group-item list-group-item-action py-1 px-2 my-1"
-                href="#topic-{{ forloop.index }}">GO TO
+            <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="#topic-{{ forloop.index }}">GO TO
                 MY REPORTS</a>
             <a class="list-group-item list-group-item-action py-1 px-2 my-1" href='#'
                 onclick=refreshFunction()>RESET</a>
+        </div>
         </div>
     </div>
 </div>

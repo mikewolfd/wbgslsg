@@ -1,9 +1,9 @@
 {% include header.html %}
-<style>
+<style type="text/css">
+
     #splash-container {
         background-image: var(--splashgrade),
         url("{{ 'assets/images/herd-sheep-400w.jpg' | relative_url }}");
-
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -27,16 +27,12 @@
         color: var(--weird_green);
         text-decoration: none;
         padding: 4px;
-
     }
 </style>
 
 <body>
-    <!-- <img class='thing' src='/assets/images/HERD OF SHEEP STROLLING.jpg'> -->
-
     <div class='container d-flex h-100 p-3 mx-auto flex-column' id='splash-container'>
         {% include navbar.html %}
-
         <main class="main-text">
             <p class='box-fill'>INVESTING IN SUSTAINABLE LIVESTOCK (ISL) GUIDE <a class='splash-text-link'
                     href="{{'entry.html' | relative_url }}">ENTER</a>

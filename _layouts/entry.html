@@ -1,6 +1,6 @@
 {% include header.html %}
+<style type="text/css">
 
-<style>
     .container-fluid {
         min-width: 100vw;
         min-height: 100vh;
@@ -12,7 +12,6 @@
     }
 
     .main-text {
-        font-family: Roboto;
         font-weight: 500;
         color: rgb(203, 200, 206) !important;
         font-size: 15px;
@@ -47,22 +46,21 @@
         font-weight: 500;
         font-size: 17px;
         color: rgb(203, 200, 206) !important;
-
+        text-decoration: none;
     }
 
     .entry-buttons a {
         text-decoration: none;
-
         color: white
     }
-/* 
+
+    /* 
     .entry-buttons a:hover {
         background-color: #a9a9a982;
         border-radius: 4px;
         color: #000000a8;
         transition: all .2s ease;
     } */
-
     .grid-container {
         grid-template-areas:
             "topnav topnav topnav topnav" !important;
@@ -89,7 +87,6 @@
                         resource for developing sustainable livestock production systems.</p>
                 </div>
             </div>
-
             <div class='row text-content'>
                 <div class='col'>
                     <p>
@@ -106,33 +103,28 @@
                         considered a variety of geographic contesxts and tailored the guidance to each. So, whatever and
                         wherever you are
                         implementing, we have recommendations for you.</p>
-
                     <p>
                         Interested in the theory behind the ISL Guide?, Click down below.
-
                     </p>
                 </div>
             </div>
             <div class='row entry-buttons'>
-                <div class='col-md-auto box-fill'>
+                <div class='col-auto box-fill'>
                     <p class='titles mb-0'>
                         To apply the tool to an existing project use:
                     </p>
                     <a class='button' href="{{ 'implem.html' | relative_url }}">
                         PROJECT IN IMPLEMENTATION
                         <span class='right-arrow'> &#10132;</span>
-
                     </a>
                 </div>
-                <div class='col box-fill'>
+                <div class='col-auto box-fill'>
                     <p class='titles mb-0'>
                         If you are developing a new project use:
-
                     </p>
                     <a class='button' href="{{'/prep.html' | relative_url }}">
                         PROJECT IN PREPERATION
                         <span class='right-arrow'> &#10132;</span>
-
                     </a>
                 </div>
             </div>
@@ -141,13 +133,11 @@
                     <a class='button' href="{{'/theory.html' | relative_url }}">
                         THEORY BEHIND THE ISL GUIDE </a>
                     <span class='right-arrow'> &#10132;</span>
-
                 </div>
                 <div class='col'>
-                    <a class='button' href="{{'/theory.html' | relative_url }}">
+                    <a class='button' href="{{ 'overview.html' | relative_url }}">
                         OVERVIEW OF THE ISL GUIDE </a>
                     <span class='right-arrow'> &#10132;</span>
-
                 </div>
             </div>
         </div>

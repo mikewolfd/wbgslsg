@@ -76,6 +76,17 @@
     padding: 5px;
   }
 
+  .title-layout {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 150px 2fr 2fr;
+    grid-template-rows: .5fr 1fr .5fr .5fr;
+    grid-template-areas: "title title title"
+      'main_title main_title main_title'
+      "sub_title sub_title sub_title"
+      'bread bread bread'
+  }
 
 .breadcrumb {
   background-color: #ffffff99;
@@ -90,8 +101,7 @@
 
 #breadcrumb-nav {
   grid-area: bread;
-  align-self: flex-end;
-
+  align-self: flex-start;
   height: min-content;
 }
 </style>
@@ -104,29 +114,21 @@
 </style>
 {% endif %}
 
-{% if page.icon_path %}
-<style type="text/css">
-
-  .title-layout {
-    display: grid;
-    width: 100%;
-    height: 100%;
-    grid-template-columns: 150px 2fr 2fr;
-    grid-template-areas: "icon title title "
-      'icon main_title main_title '
-      "sub_title sub_title sub_title"
-      'bread bread bread'
-  }
-</style>
-{% endif %}
-
 
 <div class="jumbo">
-  {% if page.main_title %}
   <div class='title-layout'>
     {% if page.icon_path %}
+    <style type="text/css">
+      .title-layout {
+        grid-template-areas: "icon title title "
+          'icon main_title main_title '
+          "sub_title sub_title sub_title"
+          'bread bread bread'
+      }
+    </style>
     <img class='icon img-fluid' src={{ page.icon_path  | relative_url }}>
     {% endif %}
+    {% if page.main_title %}
     <h4 class='title'>{{ page.title}}</h4>
     <h1 class='main_title'>{{ page.main_title}}</h1>
     <h5  id='sub_title' class='sub_title'>{{page.sub_title}}</h5>
@@ -136,25 +138,20 @@
           <li class="breadcrumb-item active" aria-current="page">{{ page.title}}</li>
       </ol>
   </nav>
-  </div>
   {% else %}
     {% if page.intro %}
     <style type="text/css">
-
       .title-layout {
-        display: grid;
-        width: 100%;
-        height: 100%;
-        grid-template-rows: auto auto auto;
+        grid-template-rows: .5fr 1fr .5fr .5fr;
         grid-template-areas: "jumbo-title jumbo-title jumbo-title "
           'jumbo-title jumbo-title jumbo-title '
           'bread bread bread'
           "intro intro intro"
       }
+      .jumbo-title {
+        align-self: center;
+      }
     </style>
-
-
-    <div class='title-layout'>
       <h1 class='jumbo-title'>{{ page.title }}</h1>
       <nav class='nav' id='breadcrumb-nav' aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -163,10 +160,23 @@
         </ol>
     </nav>
     <h5  id='intro' class='sub_title'>{{page.intro}}</h5>
-    </div>
     {% else %}
-    <h1 class='jumbo-title'>{{ page.title }}</h1>
+    <style type="text/css">
+      .title-layout {
+        grid-template-rows: 3fr .5fr .5fr;
+        grid-template-areas: "jumbo-title jumbo-title jumbo-title "
+          'jumbo-title jumbo-title jumbo-title '
+          'bread bread bread'
+      }
+    </style>
+      <h1 class='jumbo-title'>{{ page.title }}</h1>
+      <nav class='nav' id='breadcrumb-nav' aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ '/entry.html' | relative_url }}">HOME</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ page.title}}</li>
+        </ol>
+    </nav>
     {% endif %}
   {% endif %}
-
+</div>
 </div>

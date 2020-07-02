@@ -1,15 +1,5 @@
 {% include header.html %}
-
-<style>
-    body {
-        overflow-x: hidden;
-    }
-
-    .context-col {
-        max-width: 306px;
-
-    }
-
+<style type="text/css">
     .card:hover {
         background-color: rgba(107, 138, 21, 1);
         border-color: rgba(107, 138, 21, 1);
@@ -21,15 +11,20 @@
         margin: 1px;
         border-radius: .5em;
         word-wrap: normal;
+        background-color: rgba(229, 229, 229, .13);
+    }
 
+    .card p {
+        margin-bottom: auto !important;
+        margin-top: 5px !important;
     }
 
     .card a {
-        padding: 4px;
+        padding: 10px;
         font-size: 16px;
-        font-family: Roboto;
+        font-family: "Roboto Condensed";
         line-height: 20px;
-        font-weight: 300;
+        font-weight: 500;
         text-decoration: none;
     }
 
@@ -38,16 +33,19 @@
     }
 
     .header h5 {
-        font-family: Roboto;
         font-weight: 500;
         font-size: 18px;
         color: rgba(150, 146, 157, 1);
     }
 
+    .header div img {
+        width: 37px;
+        height: 37px;
+        margin-top: -15px;
+    }
+
     .content {
-        font-family: Roboto;
         font-weight: 300;
-        max-width: 1076px;
         line-height: 21pt;
         font-size: 16px;
         margin-left: 15px;
@@ -55,8 +53,59 @@
         color: rgba(78, 79, 84, 1)
     }
 
-    .container {
-        min-height: 100vh;
+    .context-col {
+        max-width: 507px;
+    }
+
+    .data-row {
+        max-width: 507px;
+        padding-top: 11px;
+    }
+
+    .hr-bar {
+        display: none;
+    }
+
+    @media (min-width: 576px) {}
+
+    @media (min-width: 768px) {
+        .context-col {
+            max-width: 168px;
+        }
+
+        .data-row {
+            max-width: 549px;
+            padding-top: 0;
+
+        }
+
+        .hr-bar {
+            display: block;
+        }
+
+    }
+
+    @media (min-width: 992px) {
+        .context-col {
+            max-width: 306px;
+        }
+
+        .data-row {
+            max-width: 582px;
+
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .data-row {
+            max-width: 720px;
+        }
+    }
+
+    @media (min-width: 1400px) {
+        .data-row {
+            max-width: 996px;
+        }
     }
 </style>
 
@@ -66,20 +115,20 @@
             {% include wave.html %}
             {% include navbar.html %}
         </div>
-        <div class='row content'>
+        <div class='row content mt-5 mt-lg-0'>
             <div class='col'>
                 {{ content}}
             </div>
         </div>
-        <div class="row card-sections justify-content-center ml-3">
-            <div class="col-lg-auto col-sm-4 col-md-3">
+        <div class="row card-sections justify-content-center no-gutters">
+            <div class="col-auto">
                 <div class="row header">
-                    <div class='col'>
+                    <div class='col  context-col'>
                         <h5>PRODUCTION CONTEXTS</h5>
                     </div>
                 </div>
                 <div class='row'>
-                    <div class='col context-col d-flex flex-row flex-wrap'>
+                    <div class='col col-card context-col d-flex flex-row flex-wrap'>
                         {% for item in site.data.context %}
                         <div class="card context-card ">
                             <a class="card-body d-flex align-items-center" href="context_{{forloop.index}}.html">
@@ -87,26 +136,24 @@
                             </a>
                         </div>
                         {% endfor %}
-
                     </div>
                 </div>
             </div>
-            <div class='col-auto'>
+            <div class='col-auto mx-3 hr-bar'>
                 <div style="border-left:1px solid #000;height:100%"></div>
             </div>
-            <div class="col d-flex flex-column">
+            <div class="col-auto d-flex flex-column">
                 <div class="row">
-                    <div class='col'>
+                    <div class='col '>
                         <div class="row header">
-                            <div class='col d-flex flew-row flex-wrap-reverse'>
-
+                            <div class='col  d-flex data-row flew-row flex-wrap'>
                                 <h5>PRINCIPLES FOR ENVIRONMENTAL SUSTAINABILITY &nbsp</h5>
-                                <img src="{{ '/assets/images/iconfinder_minimal_sustainability_5-512.png' | relative_url }}"
-                                    width=37 height=37 style='margin-top: -15px;'>
+                                <img
+                                    src="{{ '/assets/images/iconfinder_minimal_sustainability_5-512.png' | relative_url }}">
                             </div>
                         </div>
                         <div class='row'>
-                            <div class='col d-flex flex-row flex-wrap'>
+                            <div class='col col-card data-row d-flex flex-row flex-wrap'>
                                 {% for item in site.data.PfAH %}
                                 <div class="card">
                                     <a class="card-body d-flex align-items-center"
@@ -122,14 +169,14 @@
                 <div class="row mt-auto">
                     <div class='col'>
                         <div class="row header mt-3">
-                            <div class='col d-flex flew-row flex-wrap-reverse'>
+                            <div class='col d-flex data-row flew-row flex-wrap-reverse'>
                                 <h5>PRINCIPLES FOR ANIMAL HEALTH &nbsp</h5>
-                                <img src="{{ '/assets/images/cow-milk-black-cattle-white-agriculture-512.png' | relative_url }}"
-                                    width=37 height=37 style='margin-top: -15px;'>
+                                <img
+                                    src="{{ '/assets/images/cow-milk-black-cattle-white-agriculture-512.png' | relative_url }}">
                             </div>
                         </div>
                         <div class='row'>
-                            <div class='col d-flex flex-row flex-wrap'>
+                            <div class='col col-card data-row d-flex flex-row flex-wrap'>
                                 {% for item in site.data.PfES %}
                                 <div class="card">
                                     <a class="card-body d-flex align-items-center"
@@ -139,13 +186,13 @@
                                 </div>
                                 {% endfor %}
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        {% include bottom_nav.html %}
     </div>
+    {% include bottom_nav.html %}
+
 </body>
 {% include footer.html %}

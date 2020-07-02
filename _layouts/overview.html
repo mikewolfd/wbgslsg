@@ -1,0 +1,53 @@
+{% include header.html %}
+<style type="text/css">
+    .spacer {
+        height: 38vh;
+    }
+
+    .scroll-box {
+        overflow-y: scroll;
+        max-height: 18vh;
+        direction: rtl;
+
+    }
+
+    .scroll-box::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+
+    .scroll-box::-webkit-scrollbar {
+        width: 12px;
+        background-color: #F5F5F5;
+    }
+
+    .scroll-box::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+        background-color: #555;
+    }
+</style>
+
+<body>
+    <div class='container'>
+        <div class='row mb-4'>
+            {% include wave.html %}
+            {% include navbar.html %}
+        </div>
+        <div class='row'>
+            <div class='col'> {{ content }}
+            </div>
+        </div>
+        <div class='row spacer'>
+            <div class='col'>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col scroll-box'> {{ page.data }}
+            </div>
+        </div>
+    </div>
+    {% include bottom_nav.html %}
+</body>
+{% include footer.html %}

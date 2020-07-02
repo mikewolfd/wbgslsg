@@ -1,29 +1,35 @@
-<style>
+<style type="text/css">
   .footer a {
     font-size: x-small;
+    color: black !important;
+    text-decoration: none;
+
   }
 
   .footer {
     padding-top: 30px;
   }
+
+  .bottom-nav-sep {
+    font-size: 9px;
+  }
+
 </style>
 <nav class="footer navbar mt-auto">
-
   <nav class="mr-auto">
     <img src="{{ "/assets/images/wb_logo.png" | relative_url }}" height='15' style='padding-right: 1em;'>
-
-    <a>HOME</a>
-    |
+    <a href=" {{ 'entry.html' | relative_url }}">HOME</a>
+    <span class='bottom-nav-sep'> |</span>
     <a>ABOUT</a>
-    |
-    <a>SUSTAINABILITY ISSUES</a>
-    |
-    <a>PRINT</a>
-    |
+    <span class='bottom-nav-sep'> |</span>
+    <a href="{{ 'sustain.html' | relative_url }}">SUSTAINABILITY ISSUES</a>
+    <span class='bottom-nav-sep'> |</span>
+    <a href="{{ 'print.html' | relative_url }}">PRINT</a>
+    <span class='bottom-nav-sep'> |</span>
     <a>MY ACCOUNT</a>
-    |
+    <span class='bottom-nav-sep'> |</span>
     <a>MY REPORTS</a>
-    |
+    <span class='bottom-nav-sep'> |</span>
     <a>CONTACT US</a>
   </nav>
   <nav class="ml-auto">

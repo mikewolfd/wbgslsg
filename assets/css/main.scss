@@ -15,10 +15,16 @@
   --column_1: rgba(102, 196, 202, 1);
   --column_2: rgba(102, 162, 150, 1);
   --column_3: rgba(152, 37, 43, 1);
+  --black: black;
   --column_4: rgba(102, 102, 102, 1);
   --column_5: rgba(212, 186, 119, 1);
+  --weirdGold: rgba(184, 140, 29, 1);
+  --superOrange: rgba(233, 110, 45, 1);
   --prep: rgba(0, 100, 80, 1);
-}
+  --chickenGray: rgba(144, 140, 150, 1);
+  --annoyingTeal: rgba(0, 156, 167, 1);
+  --randomPurple: rgba(97, 71, 118, 1);
+} 
 
 @import "bootstrap/bootstrap";
 @import "backgrounds.scss";
@@ -27,9 +33,16 @@
 
 @import url({{"/assets/fonts/stylesheet.css"|relative_url}});
 
+body {
+  min-width: 100vw !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow-x: hidden !important;
+}
 @media (min-width: 768px) {
   .grid-container {
-    grid-template-rows: auto 316px auto;
+    grid-template-rows: auto 276px auto;
     grid-template-areas:
       "topnav topnav topnav topnav"
       "jumbo jumbo sidenav sidenav"
@@ -44,7 +57,7 @@
 
 @media (min-width: 992px) {
   .grid-container {
-    grid-template-rows: auto 316px auto;
+    grid-template-rows: auto 276px auto;
     grid-template-areas:
       "topnav topnav topnav topnav"
       "jumbo jumbo jumbo sidenav"
@@ -57,9 +70,9 @@
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .container {
-    max-width: 1370px;
+    max-width: 1340px;
   }
 }
 
@@ -75,7 +88,7 @@
   }
 
   100% {
-    background-color: rgba(234, 233, 235, 1);
+    background-color: rgba(229, 229, 229, 1);
   }
 }
 
@@ -85,7 +98,7 @@
   }
 
   0% {
-    background-color: rgba(234, 233, 235, 1);
+    background-color: rgba(229, 229, 229, 1);
   }
 }
 
@@ -101,11 +114,44 @@
 .breadcrumb-item br {
   display: none;
 }
-.breadcrumb.fadein {
-  animation: nav-fade-in 0.5s;
-  background-color: rgba(234, 233, 235, 1);
+/* This is the sticky data nav */
+.nav-bread {
+  border-radius: 10px;
 }
 
-.breadcrumb.fadeout {
-  animation: nav-fade-out 0.5s;
+.nav-bread.fadein {
+  animation: nav-fade-in 0.3s;
+  background-color: rgba(229, 229, 229, 1);
+}
+
+.nav-bread.fadeout {
+  animation: nav-fade-out 0.3s;
+}
+
+.list-group {
+  font-weight: 300;
+  line-height: 16pt;
+  font-size: 16px;
+  color: rgba(78, 79, 84, 1);
+  position: sticky;
+  position: -webkit-sticky;
+  align-self: flex-end;
+  bottom: 5em;
+}
+
+.list-group-item.active {
+  background-color: rgba(107, 138, 21, 1) !important;
+  border-color: rgba(107, 138, 21, 1);
+}
+
+.list-group-item {
+  background-color: rgba(234, 233, 235, 1);
+  border-radius: 0.5em !important;
+  max-width: 9em;
+}
+
+.nav-tabs .nav-link {
+  text-decoration: none;
+  color: var(--grey_copy);
+  opacity: .8;
 }

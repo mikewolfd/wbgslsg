@@ -57,8 +57,8 @@
 
     @media (min-width: 1200px) {
         .col-row {
-            max-width: 60em;
-            min-width: 60em;
+            max-width: 58em;
+            min-width: 58em;
 
         }
     }
@@ -78,7 +78,7 @@
         {% include wave.html %}
         {% include navbar.html %}
         <div class='row justify-content-center'>
-            <div class='col-auto col-card context-col d-flex flex-column flex-wrap'>
+            <div class='col-auto d-flex flex-column flex-wrap mb-md-0 mb-5' >
                 {% for item in site.data.print.col %}
                 <div class="card context-card ">
                     <a class="card-body d-flex align-items-center" href="context_{{forloop.index}}.html">
@@ -87,14 +87,29 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class='col-auto col-row col-card context-col d-flex flex-row flex-wrap mt-xl-auto mb-xl-auto'>
-                {% for item in site.data.print.row %}
+            <div class='col-auto d-flex flex-column'>
+            <div class='row no-gutters mb-5'>
+                <div class='col-auto col-row d-flex flex-row flex-wrap'>
+                {% for item in site.data.print.row1 %}
                 <div class="card context-card ">
                     <a class="card-body d-flex align-items-center" href="context_{{forloop.index}}.html">
                         <p> {{ item }} </p>
                     </a>
                 </div>
                 {% endfor %}
+                </div>
+            </div>
+                <div class='row mt-xl-auto no-gutters'>
+                <div class='col-auto col-row d-flex flex-row flex-wrap'>
+
+                {% for item in site.data.print.row2 %}
+                <div class="card context-card ">
+                    <a class="card-body d-flex align-items-center" href="context_{{forloop.index}}.html">
+                        <p> {{ item }} </p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
             </div>
         </div>
     </div>

@@ -18,6 +18,7 @@
 <nav class="footer navbar mt-auto">
   <nav class="mr-auto">
     <img src="{{ "/assets/images/wb_logo.png" | relative_url }}" height='15' style='padding-right: 1em;'>
+    {% if include.included != "false" %}
     <a href=" {{ 'entry.html' | relative_url }}">HOME</a>
     <span class='bottom-nav-sep'> |</span>
     <a>ABOUT</a>
@@ -31,6 +32,7 @@
     <a>MY REPORTS</a>
     <span class='bottom-nav-sep'> |</span>
     <a>CONTACT US</a>
+    {% endif %}
   </nav>
   <nav class="ml-auto">
     <a style="font-size: xx-small;">© 2020 The World Bank Group, All Rights Reserved</a>

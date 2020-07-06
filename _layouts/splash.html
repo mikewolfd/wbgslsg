@@ -12,7 +12,7 @@
     }
 
     .main-text {
-        font-weight: 500;
+        font-weight: 300;
         color: var(--grey_copy);
         font-size: 26px;
         text-align: center;
@@ -24,7 +24,8 @@
     }
 
     .splash-text-link {
-        color: var(--weird_green);
+        color: var(--prep);
+        font-weight: 500;
         text-decoration: none;
         padding: 4px;
     }
@@ -38,6 +39,8 @@
                     href="{{'entry.html' | relative_url }}">ENTER</a>
             </p>
         </main>
+        {% include bottom_nav.html included="false" %}
     </div>
 </body>
+
 {% include footer.html %}

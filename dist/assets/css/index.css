@@ -11,7 +11,7 @@
     }
 
     .main-text {
-        font-weight: 500;
+        font-weight: 300;
         color: var(--grey_copy);
         font-size: 26px;
         text-align: center;
@@ -24,7 +24,8 @@
     }
 
     .splash-text-link {
-        color: var(--weird_green);
+        color: var(--prep);
+        font-weight: 500;
         text-decoration: none;
         padding: 4px;
     }
@@ -57,3 +58,19 @@
     /* padding-top: 37px; */
     height: 100%;
   }
+
+  .footer a {
+    font-size: x-small;
+    color: black !important;
+    text-decoration: none;
+
+  }
+
+  .footer {
+    padding-top: 30px;
+  }
+
+  .bottom-nav-sep {
+    font-size: 9px;
+  }
+

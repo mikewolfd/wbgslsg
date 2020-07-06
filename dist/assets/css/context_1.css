@@ -177,6 +177,32 @@
   height: min-content;
 }
 
+    .jumbo-image {
+        z-index: -1;
+        border-radius: .3em;
+        max-width: 95%;
+        /* max-width: 916px; */
+        /* max-height: 364px; */
+    }
+    .color-block {
+        background: var(--prep);
+        min-width: 4%;
+        margin-right: 4px;
+        border-radius: .3em;
+    }
+    .img-container {
+        grid-area: image;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        margin-top: 2em;
+        margin-bottom: 1em;
+    }
+
   .sidenavr {
     z-index: 2;
     grid-area: midnav;

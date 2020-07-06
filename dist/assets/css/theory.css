@@ -43,6 +43,14 @@
         margin-top: -15px;
     }
 
+
+    .header div img,svg {
+        -webkit-filter: opacity(.5);
+                filter: opacity(.5);
+    }
+
+
+
     .content {
         font-weight: 300;
         line-height: 21pt;

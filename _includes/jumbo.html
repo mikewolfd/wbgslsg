@@ -135,7 +135,10 @@
     <nav class='nav' id='breadcrumb-nav' aria-label="breadcrumb">
       <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ '/entry.html' | relative_url }}">HOME</a></li>
-          <li class="breadcrumb-item active" aria-current="page">{{ page.title}}</li>
+          {% if include.include_theory =='true' %}
+          <li class="breadcrumb-item"><a href="{{ '/theory.html' | relative_url }}">THEORY</a></li>
+          {% endif %} 
+          <li class="breadcrumb-item active" aria-current="page">{{ page.title | upcase }}</li>
       </ol>
   </nav>
   {% else %}
@@ -156,7 +159,10 @@
       <nav class='nav' id='breadcrumb-nav' aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ '/entry.html' | relative_url }}">HOME</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ page.title}}</li>
+            {% if include.include_theory =='true' %}
+            <li class="breadcrumb-item"><a href="{{ '/theory.html' | relative_url }}">THEORY</a></li>
+            {% endif %} 
+            <li class="breadcrumb-item active" aria-current="page">{{ page.title | upcase}}</li>
         </ol>
     </nav>
     <h5  id='intro' class='sub_title'>{{page.intro}}</h5>
@@ -173,7 +179,10 @@
       <nav class='nav' id='breadcrumb-nav' aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ '/entry.html' | relative_url }}">HOME</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ page.title}}</li>
+            {% if include.include_theory =='true' %}
+            <li class="breadcrumb-item"><a href="{{ '/theory.html' | relative_url }}">THEORY</a></li>
+            {% endif %} 
+            <li class="breadcrumb-item active" aria-current="page">{{ page.title | upcase}}</li>
         </ol>
     </nav>
     {% endif %}

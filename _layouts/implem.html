@@ -290,26 +290,36 @@
             breadcrumb.getElementsByTagName('a')[0].classList.remove('dropdown-toggle');
         }
 
-        setTimeout(function () {
-            // This sections enables the animated hiding
-            if (cardAnimationSettings.active == true) {
+        if (cardAnimationSettings.active == true) {
+
+            setTimeout(function () {
+                // This sections enables the animated hiding
                 const cardSection = document.getElementById('card-section');
                 if (cardAnimationSettings.partial == true) {
                     cardSection.classList.add('reduced');
                 } else {
                     cardSection.classList.add('hidden-object');
                 }
-            }
-            // Un-hides the content section
+                // Un-hides the content section
+                Object.values(document.getElementsByClassName('data-section')).forEach(function (item) {
+                    item.classList.remove('hidden-object')
+                })
+                // scrolls down to the data section
+                setTimeout(() => {
+                    breadcrumb.parentElement.scrollIntoView({ behavior: "smooth", block: "start" });
+                }, 700)
+            }, 700)
+        } else {
             Object.values(document.getElementsByClassName('data-section')).forEach(function (item) {
                 item.classList.remove('hidden-object')
-            })
-            // scrolls down to the data section
+            });
             setTimeout(() => {
                 breadcrumb.parentElement.scrollIntoView({ behavior: "smooth", block: "start" });
-            }, 700)
-        }, 700)
+            }, 850)
+        };
     }
+
+
 
     // for the intervention button selection, happens first, at the end of this is when 
     // you can modify which cards you want in the context-section
@@ -353,7 +363,7 @@
             let first = e.getBoundingClientRect()
             const deltaX = first.left - last.left;
             const deltaY = first.top - last.top;
-            let animated = false; 
+            let animated = false;
             // iterates over non-clicked buttons
             interventions.filter(item => item != e).forEach(function (item) {
                 // removes hover styling
@@ -363,21 +373,21 @@
                 // hides cards, and initiates the slide up animation
                 setTimeout(function () {
                     item.classList.add('hidden-object')
-                    if (!animated) { 
-                    animated = true;
-                    e.animate([{
-                        transformOrigin: 'bottom right',
-                        transform: `
+                    if (!animated) {
+                        animated = true;
+                        e.animate([{
+                            transformOrigin: 'bottom right',
+                            transform: `
                         translate(${deltaX}px, ${deltaY}px)
                                 `
-                    }, {
-                        transformOrigin: 'top left',
-                        transform: 'none'
-                    }], {
-                        duration: 500,
-                        easing: 'ease-in-out',
-                        fill: 'both'
-                    });
+                        }, {
+                            transformOrigin: 'top left',
+                            transform: 'none'
+                        }], {
+                            duration: 500,
+                            easing: 'ease-in-out',
+                            fill: 'both'
+                        });
                     }
                 }, 1000);
             });
@@ -404,7 +414,7 @@
             if (cardAnimationSettings.active == false) {
                 setTimeout(() => {
                     hidCol.scrollIntoView({ behavior: "smooth", block: "end" });
-                }, 600)
+                }, 250)
             }
         }, 900)
     }

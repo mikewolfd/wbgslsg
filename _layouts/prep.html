@@ -65,17 +65,6 @@
     })
     const pageState = { context: undefined, objectives: undefined, interventions: undefined };
 
-    const objectivesMatrix = {
-        '1': [1, 2, 3, 4, 5], '2': [1, 2, 3, 4, 5],
-        '3': [1, 2, 3, 4, 5], '4': [1, 2, 3, 4, 5],
-        '5': [1, 2, 3, 4, 5], '6': [1, 2, 3, 4, 5]
-    }
-    const interventionsMatrix = {
-        '1': [1, 2, 3, 4], '2': [1, 2, 3, 4],
-        '3': [1, 2, 3, 4], '4': [1, 2, 3, 4],
-        '5': [1, 2, 3, 4]
-    }
-
     const hide = true;
 
     const highlightFunction = (e) => {
@@ -152,29 +141,21 @@
                 //if there are more hidden columns
             } else {
                 //This is where you would modify the cards in the column
-
-                const unHide = (query, matrix) => {
-                    const cards = matrix[e.getAttribute('index')]
-                    Object.values(document.querySelectorAll(query)).map(i => {
-                        if (cards.includes(parseInt(i.getAttribute('index')))) {
-                            i.style.display = 'block'
-                        }
-                    })
-                }
+                const index = e.getAttribute('index')
                 if (parent.id == 'context-data') {
 
                     // Unhides all the cards and dropdown cards that correspond to the chosen context
-                    unHide('#obj-data .card, #obj-header .card li', objectivesMatrix)
+                    unHide('#obj-data .card, #obj-header .card li', objectivesMatrix, index)
 
                     // Updates the page object state
                     pageState.context = e.getAttribute('index')
 
                 } else if (parent.id == 'obj-data') {
                     // Unhides all the cards and dropdown cards that correspond to the chosen objective
-                    unHide('#inter-data .card, #inter-header .card li', interventionsMatrix)
+                    unHide('#inter-data .card, #inter-header .card li', interventionsMatrix, index)
 
                     // Updates the page object state
-                    pageState.objectives = e.getAttribute('index')
+                    pageState.objectives = index;
                 }
 
                 //get next column, unhide and animate it. 

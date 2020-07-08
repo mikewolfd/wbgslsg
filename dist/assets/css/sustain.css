@@ -1,5 +1,5 @@
 
-        .scroll-buttons .list-group-item:not(.collapsed){
+    .scroll-buttons .list-group-item:not(.collapsed) {
         background-color: var(--prep) !important;
         border-color: var(--prep);
         color: white !important;
@@ -202,6 +202,7 @@
         -webkit-box-direction: normal;
             -ms-flex-direction: row;
                 flex-direction: row;
+        align-self: baseline;
         margin-top: 2em;
         margin-bottom: 1em;
     }

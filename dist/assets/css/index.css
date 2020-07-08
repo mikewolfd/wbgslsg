@@ -30,6 +30,10 @@
         padding: 4px;
     }
 
+    .footer nav a {
+        color: white !important;
+    }
+
 
   .grid-container {
     display: grid;

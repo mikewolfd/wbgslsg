@@ -3,7 +3,7 @@
         // for the scrolling breadcrumb nav with relevant card selections
         window.addEventListener('scroll', function () { toggleScrollClass() });
     })
-    const prep_state = { context: undefined, interventions: undefined };
+    const pageState = { context: undefined, interventions: undefined };
 
     // Animation settings for this page, active: true hides all the cards when done, partial leaves the selected cards viewable. 
     // If animations are disabled, scrolling nav dropdown will be disabled aswell 
@@ -14,6 +14,14 @@
 
         // highlights button
         e.classList.add('selected');
+        
+        // get intervention index value
+        const index = e.getAttribute('index');
+
+        // Sets the pageState variable  
+        pageState.context = index;
+
+
         // get context column
         let parent = document.getElementById('context-section')
 
@@ -28,11 +36,14 @@
 
         // gets scrolling breadcrumb nav with relevant card selections
         let breadcrumb = document.getElementById(parent.attributes['data-target'].value)
+
         // Update span with selected card text
         breadcrumb.getElementsByTagName('span')[0].innerText = e.innerText
+
         // Search and remove selected card from dropdown 
         let dropdown = breadcrumb.getElementsByTagName('div')[0]
-        dropdown.getElementsByClassName(e.attributes['index'].value)[0].remove()
+        let duplicateItem = dropdown.querySelector("li[index='" + e.getAttribute('index') + "']").remove()
+
         // if animation is disabled, disables the scrolling nav dropdown feature
         if (cardAnimationSettings.active == false) {
             breadcrumb.classList.add('unclickable');
@@ -68,14 +79,18 @@
         };
     }
 
-
-
     // for the intervention button selection, happens first, at the end of this is when 
     // you can modify which cards you want in the context-section
 
     const interventionFunction = (e) => {
         // highlights button
         e.classList.add('selected');
+
+        // get intervention index value
+        const index = e.getAttribute('index');
+
+        // Sets the pageState variable
+        pageState.interventions = index;
 
         // get internvention column
         let parent = document.getElementById('intervention-section')
@@ -84,24 +99,26 @@
         const interventions = Object.values(parent.getElementsByClassName('button-card'))
 
         // gets scrolling breadcrumb nav with relevant card selections
-        let breadcrumb = document.getElementById(parent.attributes['data-target'].value)
+        let breadcrumb = document.getElementById(parent.getAttribute('data-target'))
 
         // Update span with selected card text
         breadcrumb.getElementsByTagName('span')[0].innerText = e.innerText
 
-        // Search and remove selected card from dropdown 
-        let dropdown = breadcrumb.getElementsByTagName('div')[0]
-        let duplicateItem = dropdown.getElementsByClassName(e.attributes['index'].value)[0].remove()
+        if (cardAnimationSettings.active == true) {
+            // Search and remove selected card from dropdown 
+            let dropdown = breadcrumb.getElementsByTagName('div')[0]
+            let duplicateItem = dropdown.querySelector("li[index='" + index + "']").remove()
 
-        // Color the dropdown text based on the column colors, it gets the id value and 
-        // adds it as a class, which I have added as a css style
-        breadcrumb.getElementsByTagName('a')[0].classList.add(e.closest('.parent').id)
+            // Color the dropdown text based on the column colors, it gets the id value and 
+            // adds it as a class, which I have added as a css style
+            breadcrumb.getElementsByTagName('a')[0].classList.add(e.closest('.parent').id)
+        } else
 
-        // if animation is disabled, disables the scrolling nav dropdown feature
-        if (cardAnimationSettings.active == false) {
-            breadcrumb.classList.add('unclickable');
-            breadcrumb.getElementsByTagName('a')[0].classList.remove('dropdown-toggle');
-        }
+            // if animation is disabled, disables the scrolling nav dropdown feature
+            if (cardAnimationSettings.active == false) {
+                breadcrumb.classList.add('unclickable');
+                breadcrumb.getElementsByTagName('a')[0].classList.remove('dropdown-toggle');
+            }
 
         // if animated
         if (cardAnimationSettings.active == true) {
@@ -154,11 +171,17 @@
         // Here is where is unhides the context card section
         // Here is where you could modify which cards in there
         setTimeout(function () {
-            //finds context card section
+            // finds context card section
             const hidCol = document.getElementById('context-section');
+
+            // Unhides all the cards and dropdown cards that correspond to the chosen intervention
+
+            unHide('#context-data .card, #context-header .card li', contextMatrix, index);
+
             //unhides and animates it
             hidCol.classList.remove('hidden-object');
             hidCol.classList.add('fadeInUp');
+
             // if not animated, it scrolls down to the context section, as the intervention section is tall
             if (cardAnimationSettings.active == false) {
                 setTimeout(() => {

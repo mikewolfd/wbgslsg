@@ -55,6 +55,11 @@
         max-width: 0 !important;
     }
 
+    /* disables clicking events */
+    .unclickable {
+        pointer-events: none;
+    }
+
 
     .wave {
         opacity: 20%;

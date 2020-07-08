@@ -3,27 +3,26 @@
         // for the scrolling breadcrumb nav with relevant card selections
         window.addEventListener('scroll', function () { toggleScrollClass() });
     })
-    const prep_state = { context: undefined, objectives: undefined, interventions: undefined };
+    const pageState = { context: undefined, objectives: undefined, interventions: undefined };
 
     const hide = true;
 
     const highlightFunction = (e) => {
+        const parent = e.parentElement;
+        // disables button
+        e.onclick = null;
 
         // if animated
-        if (hide == true) {
-
-            // disables button
-            e.onclick = null
-
+        if (hide === true) {
             // finds the difference between the position of the clicked button and the first button in it's column
-            let last = e.parentElement.children[0].getBoundingClientRect();
+            let last = parent.children[0].getBoundingClientRect();
             let first = e.getBoundingClientRect()
             const deltaX = first.left - last.left;
             const deltaY = first.top - last.top;
             let animated = false;
 
             // iterates over non-clicked buttons in immediate parent column
-            Object.values(e.parentElement.children).filter(item => item != e).forEach(function (item) {
+            Object.values(parent.children).filter(item => item != e).forEach(function (item) {
                 // disables button
                 item.onclick = null;
                 // animates unclicked cards
@@ -53,7 +52,7 @@
             // highlights button
             e.classList.add('selected')
             // loops over all the cards
-            Object.values(e.parentElement.children).forEach(function (item) {
+            Object.values(parent.children).forEach(function (item) {
                 //removes hover and disables clicking
                 item.classList.remove('card-hover')
                 item.onclick = null;
@@ -65,6 +64,8 @@
             const hidCol = document.getElementsByClassName('hidden-section animated card-col')
             // if it's the last column
             if (hidCol.length == 0) {
+                // Updates the page object state
+                pageState.interventions = e.getAttribute('index')
                 // if animated, it hides the cards
                 if (hide == true) {
                     document.getElementById('card-section').classList.remove('card-section-max')
@@ -79,8 +80,25 @@
                 }
                 //if there are more hidden columns
             } else {
-                //get next column, unhide and animate it. 
                 //This is where you would modify the cards in the column
+                const index = e.getAttribute('index')
+                if (parent.id == 'context-data') {
+
+                    // Unhides all the cards and dropdown cards that correspond to the chosen context
+                    unHide('#obj-data .card, #obj-header .card li', objectivesMatrix, index)
+
+                    // Updates the page object state
+                    pageState.context = e.getAttribute('index')
+
+                } else if (parent.id == 'obj-data') {
+                    // Unhides all the cards and dropdown cards that correspond to the chosen objective
+                    unHide('#inter-data .card, #inter-header .card li', interventionsMatrix, index)
+
+                    // Updates the page object state
+                    pageState.objectives = index;
+                }
+
+                //get next column, unhide and animate it. 
                 const col = hidCol[0]
                 col.classList.remove('hidden-section')
                 col.classList.add('fadeInLeft')
@@ -91,9 +109,14 @@
         let breadcrumb = document.getElementById(e.parentElement.attributes['data-target'].value)
         // Update span with selected card text
         breadcrumb.getElementsByTagName('span')[0].innerText = e.innerText
-        let dropdown = breadcrumb.getElementsByTagName('div')[0]
-        let duplicateItem = dropdown.getElementsByClassName(e.attributes['index'].value)[0].remove()
-
+        if (hide == false) {
+            breadcrumb.classList.add('unclickable');
+            breadcrumb.querySelector('.dropdown-toggle').classList.remove('dropdown-toggle');
+        } else {
+            let dropdown = breadcrumb.getElementsByTagName('div')[0]
+            // Remove duplicate selection in dropdown list
+            let duplicateItem = dropdown.querySelector("li[index='" + e.getAttribute('index') + "']").remove()
+        }
     }
 
   let switchNavMenuItem = () => {

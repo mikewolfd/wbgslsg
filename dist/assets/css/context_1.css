@@ -23,6 +23,12 @@
         position: sticky;
         top: 3em;
     }
+    .returnButton {
+        -moz-text-align-last: justify;
+             text-align-last: justify;
+        cursor: pointer;
+    }
+
 
 
     .wave {

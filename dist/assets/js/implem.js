@@ -66,6 +66,13 @@
             breadcrumb.getElementsByTagName('a')[0].classList.remove('dropdown-toggle');
         }
 
+        // const interventions = islGuide.filter(i => i.Intervention == parseInt(pageState.Intervention) && i.Context == parseInt(pageState.Context)).map(i => i.Guidance)[0];
+        // let enviroG = document.getElementById('envrioGuidance');
+        // let aniG = document.getElementById('aniGuidance');
+
+        // fetch("/assets/data/guidance/e/guidance_index_" + interventions +".html").then(i => i.text()).then(i => enviroG.innerHTML = i)
+        // fetch('/assets/data/guidance/ah/guidance_index_' + interventions +'.html').then(i => i.text()).then(i => aniG.innerHTML = i)
+
         if (cardAnimationSettings.active == true) {
 
             setTimeout(function () {
@@ -86,6 +93,7 @@
                 }, 700)
             }, 700)
         } else {
+            
             Object.values(document.getElementsByClassName('data-section')).forEach(function (item) {
                 item.classList.remove('hidden-object')
             });

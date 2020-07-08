@@ -3,7 +3,23 @@
         // for the scrolling breadcrumb nav with relevant card selections
         window.addEventListener('scroll', function () { toggleScrollClass() });
     })
-    const pageState = { context: undefined, interventions: undefined };
+    const pageState = { Context: undefined, Intervention: undefined };
+
+    const unHide = (query, state) => {
+        const interventions = islGuide.filter(i => i.Intervention == parseInt(state.Intervention));
+        const cards = interventions.map(i => i.Context);
+        Object.values(document.querySelectorAll(query)).map(i => {
+            if (cards.includes(parseInt(i.getAttribute('index')))) {
+                if (i.tagName === 'LI') {
+                    i.style.display = 'list-item'
+
+                } else {
+                    i.style.display = 'block'
+                }
+            }
+        })
+    }
+
 
     // Animation settings for this page, active: true hides all the cards when done, partial leaves the selected cards viewable. 
     // If animations are disabled, scrolling nav dropdown will be disabled aswell 
@@ -19,7 +35,7 @@
         const index = e.getAttribute('index');
 
         // Sets the pageState variable  
-        pageState.context = index;
+        pageState.Context = index;
 
 
         // get context column
@@ -90,7 +106,7 @@
         const index = e.getAttribute('index');
 
         // Sets the pageState variable
-        pageState.interventions = index;
+        pageState.Intervention = index;
 
         // get internvention column
         let parent = document.getElementById('intervention-section')
@@ -168,15 +184,15 @@
                 item.onclick = null;
             })
         }
-        // Here is where is unhides the context card section
-        // Here is where you could modify which cards in there
+        // Hides the context card section
+        // Here is where you could modify which cards is there
         setTimeout(function () {
             // finds context card section
             const hidCol = document.getElementById('context-section');
 
             // Unhides all the cards and dropdown cards that correspond to the chosen intervention
 
-            unHide('#context-data .card, #context-header .card li', contextMatrix, index);
+            unHide('#context-data .card, #context-header .card li', pageState);
 
             //unhides and animates it
             hidCol.classList.remove('hidden-object');

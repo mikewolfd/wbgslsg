@@ -3,7 +3,29 @@
         // for the scrolling breadcrumb nav with relevant card selections
         window.addEventListener('scroll', function () { toggleScrollClass() });
     })
-    const pageState = { context: undefined, objectives: undefined, interventions: undefined };
+    const unHidePrep = (query, state) => {
+        const interventions = islGuide.filter(i => i.Context == parseInt(state.Context) && i.Objective == parseInt(state.Objective));
+        const cards = interventions.map(i => i.Intervention);
+        console.log(cards)
+        Object.values(document.querySelectorAll(query)).map(i => {
+            if (cards.includes(parseInt(i.getAttribute('index')))) {
+                if (i.tagName === 'LI') {
+                    i.style.display = 'list-item'
+
+                } else {
+                    i.style.display = 'block'
+                }
+            }
+        })
+    }
+
+    const getGuidancePrep = (state) => {
+        const interventions = islGuide.filter(i => i.Context == parseInt(state.Context) && i.Objective == parseInt(state.Objective) && i.Intervention == parseInt(state.Intervention));
+        const cards = interventions.map(i => i.Guidance);
+        return cards[0]
+    };
+
+    const pageState = { Context: undefined, Objective: undefined, Intervention: undefined };
 
     const hide = true;
 
@@ -15,7 +37,8 @@
         // if animated
         if (hide === true) {
             // finds the difference between the position of the clicked button and the first button in it's column
-            let last = parent.children[0].getBoundingClientRect();
+            let zeroCard = [... parent.children].filter(i => i.style.display != 'none')[0];
+            let last = zeroCard.getBoundingClientRect();
             let first = e.getBoundingClientRect()
             const deltaX = first.left - last.left;
             const deltaY = first.top - last.top;
@@ -65,7 +88,7 @@
             // if it's the last column
             if (hidCol.length == 0) {
                 // Updates the page object state
-                pageState.interventions = e.getAttribute('index')
+                pageState.Intervention = e.getAttribute('index')
                 // if animated, it hides the cards
                 if (hide == true) {
                     document.getElementById('card-section').classList.remove('card-section-max')
@@ -82,21 +105,19 @@
             } else {
                 //This is where you would modify the cards in the column
                 const index = e.getAttribute('index')
+
                 if (parent.id == 'context-data') {
-
-                    // Unhides all the cards and dropdown cards that correspond to the chosen context
-                    unHide('#obj-data .card, #obj-header .card li', objectivesMatrix, index)
-
                     // Updates the page object state
-                    pageState.context = e.getAttribute('index')
+                    pageState.Context = e.getAttribute('index')
 
-                } else if (parent.id == 'obj-data') {
-                    // Unhides all the cards and dropdown cards that correspond to the chosen objective
-                    unHide('#inter-data .card, #inter-header .card li', interventionsMatrix, index)
+                } else
+                    if (parent.id == 'obj-data') {
+                        // Updates the page object state
+                        pageState.Objective = index;
+                        // Unhides all the cards and dropdown cards that correspond to the chosen objective
+                        unHidePrep('#inter-data .card, #inter-header .card li', pageState, index)
 
-                    // Updates the page object state
-                    pageState.objectives = index;
-                }
+                    }
 
                 //get next column, unhide and animate it. 
                 const col = hidCol[0]

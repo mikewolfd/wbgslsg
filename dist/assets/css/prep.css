@@ -363,6 +363,15 @@
     font-size: 18px;
     color: var(--grey_copy);
 }
+ .nav-tabs img.svg {
+        -webkit-filter: opacity(.5);
+                filter: opacity(.5);
+    }
+
+.nav-tabs .active img.svg {
+        -webkit-filter: opacity(1);
+                filter: opacity(1);
+    }
 
   .footer a {
     font-size: x-small;

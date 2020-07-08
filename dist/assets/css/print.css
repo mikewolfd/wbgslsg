@@ -33,6 +33,17 @@
 
     .col-row {
         max-width: 23em;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+    }
+
+    .row-col {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
     }
 
     @media (min-width: 576px) {
@@ -50,7 +61,17 @@
     @media (min-width: 992px) {
         .col-row {
             max-width: 44em;
-            
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                    flex-direction: row;
+        }
+
+        .row-col {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
         }
     }
 
@@ -68,8 +89,6 @@
             min-width: 1023px;
         }
     }
-
-
 
 
     .wave {

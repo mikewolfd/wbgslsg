@@ -14,7 +14,7 @@
 
         // highlights button
         e.classList.add('selected');
-        
+
         // get intervention index value
         const index = e.getAttribute('index');
 

@@ -35,16 +35,20 @@
         font-weight: 500;
         font-size: 18px;
         color: rgba(150, 146, 157, 1);
+        margin-bottom: 0;
+        -ms-flex-item-align: center;
+            align-self: center;
+
     }
 
     .header div img {
-        width: 37px;
-        height: 37px;
-        margin-top: -15px;
+        width: 30px;
+        height: 30px;
     }
 
 
-    .header div img,svg {
+    .header div img,
+    svg {
         -webkit-filter: opacity(.5);
                 filter: opacity(.5);
     }

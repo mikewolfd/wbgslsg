@@ -15,10 +15,12 @@
 
 <body>
     <div class='container'>
-        {% include wave.html %}
-        {% include navbar.html %}
+        <div>
+            {% include wave.html %}
+            {% include navbar.html %}
+        </div>
         <div class='row content-container'>
-            <div class='col content'> 
+            <div class='col content'>
                 {{ content }}
             </div>
         </div>

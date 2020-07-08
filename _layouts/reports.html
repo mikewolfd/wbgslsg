@@ -3,15 +3,17 @@
     .card:not(.no-hover):hover p {
         color: white !important;
     }
-    
+
     #active-cards .card:not(.no-hover):hover {
         background-color: var(--weirdGold);
         border-color: var(--weirdGold);
     }
+
     #prev-cards .card:not(.no-hover):hover {
         background-color: var(--grey_copy);
         border-color: var(--grey_copy);
     }
+
     .card {
         width: 136px;
         height: 136px;
@@ -29,6 +31,7 @@
         padding: 10px;
 
     }
+
     .card a p {
         font-size: 13px;
         line-height: 17px;
@@ -37,38 +40,42 @@
         color: var(--grey_copy);
         text-decoration: none;
     }
+
     .card:hover span {
         color: white !important;
     }
-    
+
     .card span:hover a {
         color: var(--column_1) !important;
 
         cursor: pointer;
     }
+
     .card span {
         font-size: 14px;
-    margin-bottom: 11px;
-    font-weight: 500;
-    color: var(--grey_copy);
-    opacity: .7;
+        margin-bottom: 11px;
+        font-weight: 500;
+        color: var(--grey_copy);
+        opacity: .7;
 
-    }  
-    #active-cards .card span{
+    }
+
+    #active-cards .card span {
         color: var(--weirdGold);
     }
 
     .card span a {
-    padding: 0;
-    padding-right: 2px;
-    padding-right: 2px;
-    
+        padding: 0;
+        padding-right: 2px;
+        padding-right: 2px;
+
     }
+
     #active-cards .card a:not(.title) p {
         color: var(--weirdGold);
     }
 
-    .card a.title p{
+    .card a.title p {
         font-size: 18px;
         font-weight: 400;
         opacity: .5;
@@ -77,14 +84,14 @@
     .card-body p {
         color: black;
     }
-
 </style>
 
 <body>
     <div class='container'>
-        {% include wave.html %}
-        {% include navbar.html %}
-
+        <div>
+            {% include wave.html %}
+            {% include navbar.html %}
+        </div>
         <div class='row card-section mt-5'>
             <div class='col-6 d-flex flex-row flex-wrap' id='active-cards'>
                 <div class="card no-hover context-card ">

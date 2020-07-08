@@ -120,8 +120,10 @@
 
 <body>
     <div class='container d-flex flex-column'>
-        {% include wave.html %}
-        {% include navbar.html %}
+        <div>
+            {% include wave.html %}
+            {% include navbar.html %}
+        </div>
         <div class='row content mt-5 mt-lg-0'>
             <div class='col'>
                 {{ content}}

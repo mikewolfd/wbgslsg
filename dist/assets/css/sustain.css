@@ -59,7 +59,7 @@
   .jumbo .jumbo-title {
     color: var(--aquamarine);
     grid-area: jumbo-title;
-    font-size: 7vw;
+    font-size: 6vw;
     font-weight: 200;
     line-height: .8em;
   }
@@ -231,17 +231,39 @@
     color: var(--aquamarine);
   }
 
-/* Text Scroll Buttons */
-.content-scroll .nav-link a {
-    font-size: 18px;
-    color: var(--grey_copy);
-}
- .nav-tabs img.svg {
+    /* Text Scroll Buttons */
+    .content-scroll .nav-link a {
+        font-size: 18px;
+        color: var(--grey_copy);
+    }
+
+    .nav-tabs img.svg {
         -webkit-filter: opacity(.5);
                 filter: opacity(.5);
     }
 
-.nav-tabs .active img.svg {
+    .nav-tabs .nav-item {
+        min-width: 379px;
+    }
+
+    @media (max-width: 992px) {
+
+        .nav-tabs .nav-link {
+            border-color: #dee2e6 #dee2e6 #fff !important;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #dee2e6 !important;
+        }
+    }
+
+    @media (min-width: 992px) {
+
+        .nav-tabs .nav-item {
+            min-width: 0;
+        }
+    }
+
+    .nav-tabs .active img.svg {
         -webkit-filter: opacity(1);
                 filter: opacity(1);
     }

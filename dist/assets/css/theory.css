@@ -166,7 +166,7 @@
   .jumbo .jumbo-title {
     color: var(--aquamarine);
     grid-area: jumbo-title;
-    font-size: 7vw;
+    font-size: 6vw;
     font-weight: 200;
     line-height: .8em;
   }

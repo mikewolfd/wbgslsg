@@ -1,3 +1,5 @@
+
+// This is for the implementation page, describing which contexts are visible based on what intervention you choose
 const contextMatrix = {
     '1': [1, 2, 3], '2': [1, 2, 3, 4, 5], '3': [1, 2, 3, 4, 5],
     '4': [1, 2, 3, 4, 5], '5': [1, 2, 3, 4, 5], '6': [1, 2, 3, 4, 5],
@@ -8,14 +10,17 @@ const contextMatrix = {
     '19': [1, 2, 3, 4, 5], '20': [1, 2, 3, 4, 5], '21': [1, 2, 3, 4, 5],
 }
 
+// This is for the prepraration page, describing which objectives are visible based on the context you choose
 const objectivesMatrix = {
     '1': [1, 2, 3, 4, 5], '2': [1, 2, 3, 4, 5],
     '3': [1, 2, 3, 4, 5], '4': [1, 2, 3, 4, 5],
     '5': [1, 2, 3, 4, 5], '6': [1, 2, 3, 4, 5]
 }
 
+// This is for the prepraration page, describing which interventions are visible based on the objectives you choose
 const interventionsMatrix = {
     '1': [1, 2, 3, 4], '2': [1, 2, 3, 4],
     '3': [1, 2, 3, 4], '4': [1, 2, 3, 4],
     '5': [1, 2, 3, 4]
 }
+

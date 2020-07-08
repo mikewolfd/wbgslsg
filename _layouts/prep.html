@@ -149,6 +149,12 @@
             if (hidCol.length == 0) {
                 // Updates the page object state
                 pageState.Intervention = e.getAttribute('index')
+
+                // let enviroG = document.getElementById('envrioGuidance');
+                // let aniG = document.getElementById('aniGuidance');
+                // fetch("/assets/data/guidance/e/guidance_index_" + pageState.Intervention +".html").then(i => i.text()).then(i => enviroG.innerHTML = i)
+                // fetch('/assets/data/guidance/ah/guidance_index_' + pageState.Intervention +'.html').then(i => i.text()).then(i => aniG.innerHTML = i)
+
                 // if animated, it hides the cards
                 if (hide == true) {
                     document.getElementById('card-section').classList.remove('card-section-max')

@@ -34,6 +34,11 @@
 
     .col-row {
         max-width: 23em;
+        flex-direction: column;
+    }
+
+    .row-col {
+        flex-direction: row;
     }
 
     @media (min-width: 576px) {
@@ -51,7 +56,11 @@
     @media (min-width: 992px) {
         .col-row {
             max-width: 44em;
-            
+            flex-direction: row;
+        }
+
+        .row-col {
+            flex-direction: column;
         }
     }
 
@@ -69,8 +78,6 @@
             min-width: 1023px;
         }
     }
-
-
 </style>
 
 <body>
@@ -78,7 +85,7 @@
         {% include wave.html %}
         {% include navbar.html %}
         <div class='row justify-content-center'>
-            <div class='col-auto d-flex flex-column flex-wrap mb-md-0 mb-5' >
+            <div class='col-auto d-flex flex-column flex-wrap mb-md-0 mb-5'>
                 {% for item in site.data.print.col %}
                 <div class="card context-card ">
                     <a class="card-body d-flex align-items-center" href="context_{{forloop.index}}.html">
@@ -87,33 +94,33 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class='col-auto d-flex flex-column'>
-            <div class='row no-gutters mb-5'>
-                <div class='col-auto col-row d-flex flex-row flex-wrap'>
-                {% for item in site.data.print.row1 %}
-                <div class="card context-card ">
-                    <a class="card-body d-flex align-items-center" href="context_{{forloop.index}}.html">
-                        <p> {{ item }} </p>
-                    </a>
+            <div class='col-auto d-flex row-col'>
+                <div class='row no-gutters mb-5'>
+                    <div class='col-auto col-row d-flex flex-wrap mx-lg-0 mx-4'>
+                        {% for item in site.data.print.row1 %}
+                        <div class="card context-card ">
+                            <a class="card-body d-flex align-items-center" href="context_{{forloop.index}}.html">
+                                <p> {{ item }} </p>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
-                {% endfor %}
-                </div>
-            </div>
                 <div class='row mt-xl-auto no-gutters'>
-                <div class='col-auto col-row d-flex flex-row flex-wrap'>
+                    <div class='col-auto col-row d-flex flex-wrap'>
 
-                {% for item in site.data.print.row2 %}
-                <div class="card context-card ">
-                    <a class="card-body d-flex align-items-center" href="context_{{forloop.index}}.html">
-                        <p> {{ item }} </p>
-                    </a>
+                        {% for item in site.data.print.row2 %}
+                        <div class="card context-card ">
+                            <a class="card-body d-flex align-items-center" href="context_{{forloop.index}}.html">
+                                <p> {{ item }} </p>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
-                {% endfor %}
-            </div>
             </div>
         </div>
-    </div>
-    {% include bottom_nav.html %}
+        {% include bottom_nav.html %}
 
 </body>
 {% include footer.html %}

@@ -17,7 +17,11 @@
 </style>
 <nav class="footer navbar mt-auto">
   <nav class="mr-auto">
+    {% if include.inverted == "true" %}
+    <img src="{{ "/assets/images/WBLOGO_INVERT.svg" | relative_url }}" height='15' style='padding-right: 1em;'>
+    {% else %}
     <img src="{{ "/assets/images/wb_logo.png" | relative_url }}" height='15' style='padding-right: 1em;'>
+    {% endif %}
     {% if include.included != "false" %}
     <a href=" {{ 'entry.html' | relative_url }}">HOME</a>
     <span class='bottom-nav-sep'> |</span>

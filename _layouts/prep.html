@@ -63,7 +63,29 @@
         // for the scrolling breadcrumb nav with relevant card selections
         window.addEventListener('scroll', function () { toggleScrollClass() });
     })
-    const pageState = { context: undefined, objectives: undefined, interventions: undefined };
+    const unHidePrep = (query, state) => {
+        const interventions = islGuide.filter(i => i.Context == parseInt(state.Context) && i.Objective == parseInt(state.Objective));
+        const cards = interventions.map(i => i.Intervention);
+        console.log(cards)
+        Object.values(document.querySelectorAll(query)).map(i => {
+            if (cards.includes(parseInt(i.getAttribute('index')))) {
+                if (i.tagName === 'LI') {
+                    i.style.display = 'list-item'
+
+                } else {
+                    i.style.display = 'block'
+                }
+            }
+        })
+    }
+
+    const getGuidancePrep = (state) => {
+        const interventions = islGuide.filter(i => i.Context == parseInt(state.Context) && i.Objective == parseInt(state.Objective) && i.Intervention == parseInt(state.Intervention));
+        const cards = interventions.map(i => i.Guidance);
+        return cards[0]
+    };
+
+    const pageState = { Context: undefined, Objective: undefined, Intervention: undefined };
 
     const hide = true;
 
@@ -75,7 +97,8 @@
         // if animated
         if (hide === true) {
             // finds the difference between the position of the clicked button and the first button in it's column
-            let last = parent.children[0].getBoundingClientRect();
+            let zeroCard = [... parent.children].filter(i => i.style.display != 'none')[0];
+            let last = zeroCard.getBoundingClientRect();
             let first = e.getBoundingClientRect()
             const deltaX = first.left - last.left;
             const deltaY = first.top - last.top;
@@ -125,7 +148,7 @@
             // if it's the last column
             if (hidCol.length == 0) {
                 // Updates the page object state
-                pageState.interventions = e.getAttribute('index')
+                pageState.Intervention = e.getAttribute('index')
                 // if animated, it hides the cards
                 if (hide == true) {
                     document.getElementById('card-section').classList.remove('card-section-max')
@@ -142,21 +165,19 @@
             } else {
                 //This is where you would modify the cards in the column
                 const index = e.getAttribute('index')
+
                 if (parent.id == 'context-data') {
-
-                    // Unhides all the cards and dropdown cards that correspond to the chosen context
-                    unHide('#obj-data .card, #obj-header .card li', objectivesMatrix, index)
-
                     // Updates the page object state
-                    pageState.context = e.getAttribute('index')
+                    pageState.Context = e.getAttribute('index')
 
-                } else if (parent.id == 'obj-data') {
-                    // Unhides all the cards and dropdown cards that correspond to the chosen objective
-                    unHide('#inter-data .card, #inter-header .card li', interventionsMatrix, index)
+                } else
+                    if (parent.id == 'obj-data') {
+                        // Updates the page object state
+                        pageState.Objective = index;
+                        // Unhides all the cards and dropdown cards that correspond to the chosen objective
+                        unHidePrep('#inter-data .card, #inter-header .card li', pageState, index)
 
-                    // Updates the page object state
-                    pageState.objectives = index;
-                }
+                    }
 
                 //get next column, unhide and animate it. 
                 const col = hidCol[0]
@@ -216,7 +237,7 @@
                     <div class='col col-card d-flex flex-row flex-wrap' id='obj-data' data-target='obj-header'
                         data-holder="interventionsMatrix">
                         {% for item in site.data.objectives %}
-                        <div class="card card-hover animated" onclick="highlightFunction(this)" style='display:none;'
+                        <div class="card card-hover animated" onclick="highlightFunction(this)"
                             index="{{forloop.index}}">
 
                             <div class="card-body  d-flex align-items-center">
@@ -234,14 +255,19 @@
                 </div>
                 <div class='row no-gutters'>
                     <div class='col col-card d-flex flex-row flex-wrap' id='inter-data' data-target='inter-header'>
-                        {% for item in site.data.interventions.column_1 %}
+
+                        {% assign my_variable = 0 %}
+                        {% for item in site.data.interventions %}
+                        {% for col in item[1] %}
+                        {% assign my_variable = 1 | plus: my_variable %}
                         <div class="card card-hover animated" onclick="highlightFunction(this)" style='display:none;'
-                            index="{{forloop.index}}">
+                            index="{{ my_variable }}">
 
                             <div class="card-body  d-flex align-items-center">
-                                <p> {{ item.text }} </p>
+                                <p> {{ col.text }} </p>
                             </div>
                         </div>
+                        {% endfor %}
                         {% endfor %}
                     </div>
                 </div>
@@ -274,7 +300,7 @@
                             <div class='card card-body'>
                                 <ul>
                                     {% for item in site.data.objectives %}
-                                    <li index="{{ forloop.index }}" href="#" style='display:none;'>
+                                    <li index="{{ forloop.index }}" href="#">
                                         {{ item.text }}</li>
                                     {% endfor %}
                                 </ul>
@@ -288,10 +314,15 @@
                         <div class="collapse" id="collapseInterventions">
                             <div class='card card-body'>
                                 <ul>
-                                    {% for item in site.data.interventions.column_1 %}
-                                    <li index="{{ forloop.index }}" href="#" style='display:none;'>
-                                        {{ item.text }}</li>
+                                    {% assign my_variable = 0 %}
+                                    {% for item in site.data.interventions %}
+                                    {% for col in item[1] %}
+                                    {% assign my_variable = 1 | plus: my_variable %}
+                                    <li index="{{ my_variable }}" href="#" style='display:none;'>
+                                        {{ col.text }}</li>
                                     {% endfor %}
+                                    {% endfor %}
+
                                 </ul>
                             </div>
                         </div>
@@ -303,4 +334,5 @@
         {% include bottom_nav.html %}
     </div>
 </body>
+<script src="{{ '/assets/data/guidance.js' | relative_url }}"></script>
 {% include footer.html %}

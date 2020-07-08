@@ -9,17 +9,3 @@ function toggleScrollClass() {
         $('.nav-bread').addClass('fadein').removeClass('fadeout')
     }
 }
-
-const unHide = (query, matrix, index) => {
-    const cards = matrix[index]
-    Object.values(document.querySelectorAll(query)).map(i => {
-        if (cards.includes(parseInt(i.getAttribute('index')))) {
-            if (i.tagName === 'LI'){
-                i.style.display = 'list-item'
-
-            } else {
-            i.style.display = 'block'
-            }
-        }
-    })
-}

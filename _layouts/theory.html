@@ -36,16 +36,19 @@
         font-weight: 500;
         font-size: 18px;
         color: rgba(150, 146, 157, 1);
+        margin-bottom: 0;
+        align-self: center;
+
     }
 
     .header div img {
-        width: 37px;
-        height: 37px;
-        margin-top: -15px;
+        width: 30px;
+        height: 30px;
     }
 
 
-    .header div img,svg {
+    .header div img,
+    svg {
         filter: opacity(.5);
     }
 
@@ -117,8 +120,8 @@
 
 <body>
     <div class='container d-flex flex-column'>
-            {% include wave.html %}
-            {% include navbar.html %}
+        {% include wave.html %}
+        {% include navbar.html %}
         <div class='row content mt-5 mt-lg-0'>
             <div class='col'>
                 {{ content}}
@@ -151,9 +154,8 @@
                     <div class='col '>
                         <div class="row header">
                             <div class='col  d-flex data-row flew-row flex-wrap'>
+                                <img class='svg mr-2' src="{{ '/assets/images/Leaf.svg' | relative_url }}">
                                 <h5>PRINCIPLES FOR ENVIRONMENTAL SUSTAINABILITY &nbsp</h5>
-                                <img class='svg'
-                                src="{{ '/assets/images/Leaf.svg' | relative_url }}"                                    >
                             </div>
                         </div>
                         <div class='row'>
@@ -174,9 +176,9 @@
                     <div class='col'>
                         <div class="row header mt-3">
                             <div class='col d-flex data-row flew-row flex-wrap-reverse'>
-                                <h5>PRINCIPLES FOR ANIMAL HEALTH &nbsp</h5>
-                                <img class='svg'
-                                src="{{ '/assets/images/briefcase_symb.svg' | relative_url }}"                                    >
+                                <img class='svg mr-3' src="{{ '/assets/images/briefcase_symb.svg' | relative_url }}">
+                                <h5>
+                                    PRINCIPLES FOR ANIMAL HEALTH &nbsp</h5>
                             </div>
                         </div>
                         <div class='row'>

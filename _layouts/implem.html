@@ -259,16 +259,7 @@
     const unHide = (query, state) => {
         const interventions = islGuide.filter(i => i.Intervention == parseInt(state.Intervention));
         const cards = interventions.map(i => i.Context);
-        Object.values(document.querySelectorAll(query)).map(i => {
-            if (cards.includes(parseInt(i.getAttribute('index')))) {
-                if (i.tagName === 'LI') {
-                    i.style.display = 'list-item'
-
-                } else {
-                    i.style.display = 'block'
-                }
-            }
-        })
+        unhideCards(query, cards)
     }
 
 
@@ -317,13 +308,10 @@
             breadcrumb.getElementsByTagName('a')[0].classList.remove('dropdown-toggle');
         }
 
-        // const interventions = islGuide.filter(i => i.Intervention == parseInt(pageState.Intervention) && i.Context == parseInt(pageState.Context)).map(i => i.Guidance)[0];
-        // let enviroG = document.getElementById('envrioGuidance');
-        // let aniG = document.getElementById('aniGuidance');
-
-        // fetch("/assets/data/guidance/e/guidance_index_" + interventions +".html").then(i => i.text()).then(i => enviroG.innerHTML = i)
-        // fetch('/assets/data/guidance/ah/guidance_index_' + interventions +'.html').then(i => i.text()).then(i => aniG.innerHTML = i)
-
+        guidance = islGuide.filter(i => i.Intervention == parseInt(pageState.Intervention) && i.Context == parseInt(pageState.Context)).map(i => i.Guidance)[0];
+        
+        updateGuidance(guidance);
+        
         if (cardAnimationSettings.active == true) {
 
             setTimeout(function () {
@@ -623,5 +611,4 @@
         {% include bottom_nav.html %}
     </div>
 </body>
-<script src="{{ '/assets/data/guidance.js' | relative_url }}"></script>
 {% include footer.html %}

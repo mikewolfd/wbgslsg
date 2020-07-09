@@ -100,3 +100,21 @@ const islGuide = [
   { Context: 6, Objective: 5, Intervention: 19, Guidance: 99 },
   { Context: 6, Objective: 5, Intervention: 20, Guidance: 100 },
 ];
+
+
+const iconMatrix = [
+  {Icon: '32px_AH_Principle 1.svg', Principle: 1, Type: 'a'},
+  {Icon: '32px_AH_Principle 2.svg', Principle: 2, Type: 'a'},
+  {Icon: '32px_AH_Principle 3.svg', Principle: 3, Type: 'a'},
+  {Icon: '32px_AH_Principle 4.svg', Principle: 4, Type: 'a'},
+  {Icon: '32px_AH_Principle 5.svg', Principle: 5, Type: 'a'},
+  {Icon: '32px_AH_Principle 6.svg', Principle: 6, Type: 'a'},
+  {Icon: '32px_AH_Principle 7.svg', Principle: 7, Type: 'a'},
+  {Icon: '32px_AH_Principle 1.svg', Principle: 1, Type: 'e'},
+  {Icon: '32px_Principle 2.svg', Principle: 2, Type: 'e'},
+  {Icon: '32px_Principle 3.svg', Principle: 3, Type: 'e'},
+  {Icon: '32px_Principle 4.svg', Principle: 4, Type: 'e'},
+  {Icon: '32px_Principle 5.svg', Principle: 5, Type: 'e'},
+  {Icon: '32px_Principle 6.svg', Principle: 6, Type: 'e'},
+  {Icon: '32px_AH_Principle 7.svg', Principle: 7, Type: 'e'},
+]

@@ -4,52 +4,99 @@
         position: sticky;
         top: 19vh;
     }
+
+    .hide {
+        opacity: 0 !important;
+    }
+
     /* Principle Icons */
-    .rel-princp .card img {
+    #rel-princp .card a {
         width: 63px;
         height: 63px;
     }
-    .rel-princp .card {
+
+    #rel-princp .card {
         margin: 3px;
         border: 0;
     }
-    .rel-princp {
+
+    #rel-princp {
         max-width: 142px;
+        opacity: 1;
+        transition: opacity 0.2s;
     }
-    .rel-princp p {
+
+    #rel-princp p {
         font-weight: 500;
     }
 </style>
 <script>
+    $(document).ready(function () {
+        //Changes the principle icons on each tab press
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+            swapPrincp(e.target.getAttribute('href'))
+        })
+    });
+
+    // this is kinda a hack, searched the contents of the page using a regex for "P1."
+    // format principle text, and returns unique principles. 
+    // You could do a database lookup here or something
+    const swapPrincp = (initPage) => {
+        const page = document.querySelector(initPage);
+        const type = page.id.charAt(0)
+        let re = new RegExp('[P][0-7]\.', 'g')
+        const principles = page.innerHTML.match(re).map(i => parseInt(i.replace('.', '').replace('P', '')))
+        const uniquePrinc = new Set(principles);
+        iconSwap([...uniquePrinc], type)
+
+    }
+
+    // Actually swaps the icons with the respective url/type from iconMatrix in /assets/data/map.js
+    const iconSwap = (principles = [], type) => {
+        const princSection = document.getElementById('rel-princp')
+        princSection.classList.add('hide');
+        setTimeout(function () {
+        princSection.innerHTML = ""
+        const icons = iconMatrix.filter(i => principles.includes(i.Principle) && i.Type == type)
+        icons.map(i =>
+            document.getElementById('rel-princp').innerHTML += cardIcon(i.Icon, i.Type, i.Principle)
+        )
+        princSection.classList.remove('hide');
+        $('[data-toggle="tooltip"]').tooltip()
+        }, 300);
+    }
+
+    // The icon template
+    const cardIcon = (icon, type, index) => {
+        return `<div class='card' data-toggle="tooltip" data-placement="top" title="Principle ${index}">
+                <a href="{{ '/' | relative_url }}principle_${type}_${index}.html"> 
+                    <img class='card-img' src="{{ '/assets/images/icons/' | relative_url }}${icon}">
+                    </a>
+                    </div>`
+    }
+
     // Reset Button
     const refreshFunction = () => {
         location.reload()
     };
+
 </script>
 <div class='row data-section hidden-object'>
     {% include tabbed-scroll.html %}
     <div class='col-2 col-lg-auto'>
         <div class='d-flex flex-column scroll-container'>
-        <div class='d-flex flex-row flex-wrap rel-princp'>
-            <p>RELEVANT PRINCIPALS</p>
-            <div class='card'>
-                <img class='card-img' src="{{ '/assets/images/icons/32px_Principle 3.svg' | relative_url }}">
+            <p>RELEVANT PRINCIPLES</p>
+            <div class='d-flex flex-row flex-wrap' id='rel-princp'>
             </div>
-            <div class='card'>
-                <img class='card-img' src="{{ '/assets/images/icons/32px_Principle 3.svg' | relative_url }}">
+            <div class="d-flex flex-column scroll-buttons mt-auto mb-auto">
+                <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="#topic-{{ forloop.index }}">ADD
+                    TO
+                    MY REPORTS</a>
+                <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="#topic-{{ forloop.index }}">GO TO
+                    MY REPORTS</a>
+                <a class="list-group-item list-group-item-action py-1 px-2 my-1" href='#'
+                    onclick=refreshFunction()>RESET</a>
             </div>
-            <div class='card'>
-                <img class='card-img' src="{{ '/assets/images/icons/32px_Principle 3.svg' | relative_url }}">
-            </div>
-        </div>
-        <div class="d-flex flex-column scroll-buttons mt-auto mb-auto">
-            <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="#topic-{{ forloop.index }}">ADD TO
-                MY REPORTS</a>
-            <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="#topic-{{ forloop.index }}">GO TO
-                MY REPORTS</a>
-            <a class="list-group-item list-group-item-action py-1 px-2 my-1" href='#'
-                onclick=refreshFunction()>RESET</a>
-        </div>
         </div>
     </div>
 </div>

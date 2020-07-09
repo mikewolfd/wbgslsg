@@ -35,10 +35,20 @@
     }
 </style>
 
+<script>
+     const updateTabs = (guidance) => {
+                const enviroG = document.getElementById('envrioGuidance');
+                const aniG = document.getElementById('aniGuidance');
+                return new Promise(resolve => {
+                fetch("/assets/data/guidance/e/guidance_index_" + guidance +".html").then(i => i.text()).then(i => enviroG.innerHTML = i).then(z => 
+                fetch('/assets/data/guidance/ah/guidance_index_' + guidance +'.html').then(i => i.text()).then(i => aniG.innerHTML = i)).then(o => resolve('resolved'))
+                })
+    }
+</script>
 <div class='col content-scroll'>
     <ul class="nav nav-tabs justify-content-end" id="myTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="envrioGuidance-tab" data-toggle="tab" href="#envrioGuidance" role="tab"
+            <a class="nav-link active px-2" id="envrioGuidance-tab" data-toggle="tab" href="#envrioGuidance" role="tab"
                 aria-controls="envrioGuidance" aria-selected="true"> <img class='svg'
                     src="{{ '/assets/images/Leaf.svg' | relative_url }}" height=30>
                 ENVIRONMENTAL
@@ -46,7 +56,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="aniGuidance-tab" data-toggle="tab" href="#aniGuidance" role="tab"
+            <a class="nav-link px-2" id="aniGuidance-tab" data-toggle="tab" href="#aniGuidance" role="tab"
                 aria-controls="aniGuidance" aria-selected="false">
                 <img class='svg' src="{{ '/assets/images/briefcase_symb.svg' | relative_url }}" height=30> ANIMAL HEALTH
                 SUSTAINABILITY ISSUES

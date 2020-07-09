@@ -97,6 +97,30 @@
     }
 </style>
 
+<script>
+    let guidance;
+    // This is run when the final guidanceID is chosen, 
+    // waits for the markdown to be updated, 
+    // and then updates the icons.
+    const updateGuidance = async (guidanceID) => {
+        await updateTabs(guidanceID);
+        swapPrincp('#envrioGuidance');
+        }
+    
+    // Unhides cards / list-items as needed
+    const unhideCards = (query, cards) => {
+        Object.values(document.querySelectorAll(query)).map(i => {
+            if (cards.includes(parseInt(i.getAttribute('index')))) {
+                if (i.tagName === 'LI') {
+                    i.style.display = 'list-item'
+
+                } else {
+                    i.style.display = 'block'
+                }
+            }
+        })
+    }
+</script>
 <div class='row content'>
     <div class='col'>
         {{ content}}

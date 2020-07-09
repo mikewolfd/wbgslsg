@@ -30,7 +30,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "bundle install",
-    "build": "jekyll build && sleep 2 && gulp",
+    "build": "rm -rf dist && jekyll clean && jekyll b && gulp build && mv _site dist",
     "clean": "jekyll clean"
   },
   "repository": {

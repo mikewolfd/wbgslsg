@@ -546,19 +546,30 @@
         position: sticky;
         top: 19vh;
     }
+
+    .hide {
+        opacity: 0 !important;
+    }
+
     /* Principle Icons */
-    .rel-princp .card img {
+    #rel-princp .card a {
         width: 63px;
         height: 63px;
     }
-    .rel-princp .card {
+
+    #rel-princp .card {
         margin: 3px;
         border: 0;
     }
-    .rel-princp {
+
+    #rel-princp {
         max-width: 142px;
+        opacity: 1;
+        -webkit-transition: opacity 0.2s;
+        transition: opacity 0.2s;
     }
-    .rel-princp p {
+
+    #rel-princp p {
         font-weight: 500;
     }
 

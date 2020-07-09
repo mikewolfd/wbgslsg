@@ -140,6 +140,7 @@
         </div>
         
 
+
 <div class="row content">
     <div class="col">
         <p>
@@ -606,16 +607,17 @@
 <div class="row data-section hidden-object">
     
 
+
 <div class="col content-scroll">
     <ul class="nav nav-tabs justify-content-end" id="myTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="envrioGuidance-tab" data-toggle="tab" href="#envrioGuidance" role="tab" aria-controls="envrioGuidance" aria-selected="true"> <img class="svg" src="/assets/images/Leaf.svg" height="30">
+            <a class="nav-link active px-2" id="envrioGuidance-tab" data-toggle="tab" href="#envrioGuidance" role="tab" aria-controls="envrioGuidance" aria-selected="true"> <img class="svg" src="/assets/images/Leaf.svg" height="30">
                 ENVIRONMENTAL
                 SUSTAINABILITY ISSUES
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="aniGuidance-tab" data-toggle="tab" href="#aniGuidance" role="tab" aria-controls="aniGuidance" aria-selected="false">
+            <a class="nav-link px-2" id="aniGuidance-tab" data-toggle="tab" href="#aniGuidance" role="tab" aria-controls="aniGuidance" aria-selected="false">
                 <img class="svg" src="/assets/images/briefcase_symb.svg" height="30"> ANIMAL HEALTH
                 SUSTAINABILITY ISSUES
             </a>
@@ -632,25 +634,17 @@
 </div>
     <div class="col-2 col-lg-auto">
         <div class="d-flex flex-column scroll-container">
-        <div class="d-flex flex-row flex-wrap rel-princp">
-            <p>RELEVANT PRINCIPALS</p>
-            <div class="card">
-                <img class="card-img" src="/assets/images/icons/32px_Principle%203.svg">
+            <p>RELEVANT PRINCIPLES</p>
+            <div class="d-flex flex-row flex-wrap" id="rel-princp">
             </div>
-            <div class="card">
-                <img class="card-img" src="/assets/images/icons/32px_Principle%203.svg">
+            <div class="d-flex flex-column scroll-buttons mt-auto mb-auto">
+                <a class="list-group-item list-group-item-action py-1 px-2 my-1" onclick="addReport()">ADD
+                    TO
+                    MY REPORTS</a>
+                <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="/reports.html">GO TO
+                    MY REPORTS</a>
+                <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="#" onclick="refreshFunction()">RESET</a>
             </div>
-            <div class="card">
-                <img class="card-img" src="/assets/images/icons/32px_Principle%203.svg">
-            </div>
-        </div>
-        <div class="d-flex flex-column scroll-buttons mt-auto mb-auto">
-            <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="#topic-">ADD TO
-                MY REPORTS</a>
-            <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="#topic-">GO TO
-                MY REPORTS</a>
-            <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="#" onclick="refreshFunction()">RESET</a>
-        </div>
         </div>
     </div>
 </div>
@@ -682,5 +676,4 @@
 </nav>
     </div>
 
-<script src="/assets/data/guidance.js"></script>
   </body></html>

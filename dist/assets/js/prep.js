@@ -3,20 +3,11 @@
         // for the scrolling breadcrumb nav with relevant card selections
         window.addEventListener('scroll', function () { toggleScrollClass() });
     })
-    const unHidePrep = (query, state) => {
+    const unHide = (query, state) => {
         const interventions = islGuide.filter(i => i.Context == parseInt(state.Context) && i.Objective == parseInt(state.Objective));
         const cards = interventions.map(i => i.Intervention);
-        console.log(cards)
-        Object.values(document.querySelectorAll(query)).map(i => {
-            if (cards.includes(parseInt(i.getAttribute('index')))) {
-                if (i.tagName === 'LI') {
-                    i.style.display = 'list-item'
+        unhideCards(query, cards);
 
-                } else {
-                    i.style.display = 'block'
-                }
-            }
-        })
     }
 
     const getGuidancePrep = (state) => {
@@ -37,7 +28,7 @@
         // if animated
         if (hide === true) {
             // finds the difference between the position of the clicked button and the first button in it's column
-            let zeroCard = [... parent.children].filter(i => i.style.display != 'none')[0];
+            let zeroCard = [...parent.children].filter(i => i.style.display != 'none')[0];
             let last = zeroCard.getBoundingClientRect();
             let first = e.getBoundingClientRect()
             const deltaX = first.left - last.left;
@@ -90,10 +81,9 @@
                 // Updates the page object state
                 pageState.Intervention = e.getAttribute('index')
 
-                // let enviroG = document.getElementById('envrioGuidance');
-                // let aniG = document.getElementById('aniGuidance');
-                // fetch("/assets/data/guidance/e/guidance_index_" + pageState.Intervention +".html").then(i => i.text()).then(i => enviroG.innerHTML = i)
-                // fetch('/assets/data/guidance/ah/guidance_index_' + pageState.Intervention +'.html').then(i => i.text()).then(i => aniG.innerHTML = i)
+                guidance = getGuidancePrep(pageState);
+
+                updateGuidance(guidance);
 
                 // if animated, it hides the cards
                 if (hide == true) {
@@ -121,8 +111,7 @@
                         // Updates the page object state
                         pageState.Objective = index;
                         // Unhides all the cards and dropdown cards that correspond to the chosen objective
-                        unHidePrep('#inter-data .card, #inter-header .card li', pageState, index)
-
+                        unHide('#inter-data .card, #inter-header .card li', pageState, index)
                     }
 
                 //get next column, unhide and animate it. 
@@ -160,7 +149,87 @@
     switchNavMenuItem()
   })
 
+    let guidance;
+    // This is run when the final guidanceID is chosen, 
+    // waits for the markdown to be updated, 
+    // and then updates the icons.
+    const updateGuidance = async (guidanceID) => {
+        await updateTabs(guidanceID);
+        swapPrincp('#envrioGuidance');
+        }
+    
+    // Unhides cards / list-items as needed
+    const unhideCards = (query, cards) => {
+        Object.values(document.querySelectorAll(query)).map(i => {
+            if (cards.includes(parseInt(i.getAttribute('index')))) {
+                if (i.tagName === 'LI') {
+                    i.style.display = 'list-item'
+
+                } else {
+                    i.style.display = 'block'
+                }
+            }
+        })
+    }
+
+    $(document).ready(function () {
+        //Changes the principle icons on each tab press
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+            swapPrincp(e.target.getAttribute('href'))
+        })
+    });
+
+    // this is kinda a hack, searched the contents of the page using a regex for "P1."
+    // format principle text, and returns unique principles. 
+    // You could do a database lookup here or something
+    const swapPrincp = (initPage) => {
+        const page = document.querySelector(initPage);
+        const type = page.id.charAt(0)
+        let re = new RegExp('[P][0-7]\.', 'g')
+        const principles = page.innerHTML.match(re).map(i => parseInt(i.replace('.', '').replace('P', '')))
+        const uniquePrinc = new Set(principles);
+        iconSwap([...uniquePrinc], type)
+
+    }
+
+    // Actually swaps the icons with the respective url/type from iconMatrix in /assets/data/map.js
+    const iconSwap = (principles = [], type) => {
+        const princSection = document.getElementById('rel-princp')
+        princSection.classList.add('hide');
+        setTimeout(function () {
+        princSection.innerHTML = ""
+        const icons = iconMatrix.filter(i => principles.includes(i.Principle) && i.Type == type)
+        icons.map(i =>
+            document.getElementById('rel-princp').innerHTML += cardIcon(i.Icon, i.Type, i.Principle)
+        )
+        princSection.classList.remove('hide');
+        $('[data-toggle="tooltip"]').tooltip()
+        }, 300);
+    }
+
+    // The icon template
+    const cardIcon = (icon, type, index) => {
+        return `<div class='card' data-toggle="tooltip" data-placement="top" title="Principle ${index}">
+                <a href="/principle_${type}_${index}.html"> 
+                    <img class='card-img' src="/assets/images/icons/${icon}">
+                    </a>
+                    </div>`
+    }
+
     // Reset Button
     const refreshFunction = () => {
         location.reload()
     };
+
+    const addReport = () => {
+        console.log(guidance);
+    }
+
+     const updateTabs = (guidance) => {
+                const enviroG = document.getElementById('envrioGuidance');
+                const aniG = document.getElementById('aniGuidance');
+                return new Promise(resolve => {
+                fetch("/assets/data/guidance/e/guidance_index_" + guidance +".html").then(i => i.text()).then(i => enviroG.innerHTML = i).then(z => 
+                fetch('/assets/data/guidance/ah/guidance_index_' + guidance +'.html').then(i => i.text()).then(i => aniG.innerHTML = i)).then(o => resolve('resolved'))
+                })
+    }

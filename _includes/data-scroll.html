@@ -29,6 +29,17 @@
     #rel-princp p {
         font-weight: 500;
     }
+
+    #scroll-buttons a:hover {
+        background-color: var(--aquamarine);
+        color: white;
+    }
+    .returnButton {
+        text-align-last: justify;
+        cursor: pointer;
+        background-color: var(--aquamarine);
+        color: white;
+    }
 </style>
 <script>
     $(document).ready(function () {
@@ -92,14 +103,20 @@
             <p>RELEVANT PRINCIPLES</p>
             <div class='d-flex flex-row flex-wrap' id='rel-princp'>
             </div>
-            <div class="d-flex flex-column scroll-buttons mt-auto mb-auto">
+            <div class="d-flex flex-column mt-auto mb-auto" id='scroll-buttons'>
                 <a class="list-group-item list-group-item-action py-1 px-2 my-1" onclick="addReport()">ADD
                     TO
                     MY REPORTS</a>
                 <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="{{ 'reports.html' | relative_url }}">GO TO
                     MY REPORTS</a>
-                <a class="list-group-item list-group-item-action py-1 px-2 my-1" href='#'
-                    onclick=refreshFunction()>RESET</a>
+                <a class="list-group-item list-group-item-action py-1 px-2 my-1 returnButton" id='returnButton' href='#'
+                    onclick=refreshFunction()><span>RESET</span> <svg width="1em" height="1em"
+                    viewBox="0 0 16 16" class="bi bi-back" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2z" />
+                </svg> </a>
+
             </div>
         </div>
     </div>

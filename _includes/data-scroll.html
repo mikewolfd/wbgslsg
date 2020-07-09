@@ -80,6 +80,9 @@
         location.reload()
     };
 
+    const addReport = () => {
+        console.log(guidance);
+    }
 </script>
 <div class='row data-section hidden-object'>
     {% include tabbed-scroll.html %}
@@ -89,10 +92,10 @@
             <div class='d-flex flex-row flex-wrap' id='rel-princp'>
             </div>
             <div class="d-flex flex-column scroll-buttons mt-auto mb-auto">
-                <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="#topic-{{ forloop.index }}">ADD
+                <a class="list-group-item list-group-item-action py-1 px-2 my-1" onclick="addReport()">ADD
                     TO
                     MY REPORTS</a>
-                <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="#topic-{{ forloop.index }}">GO TO
+                <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="{{ 'reports.html' | relative_url }}">GO TO
                     MY REPORTS</a>
                 <a class="list-group-item list-group-item-action py-1 px-2 my-1" href='#'
                     onclick=refreshFunction()>RESET</a>

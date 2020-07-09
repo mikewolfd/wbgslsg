@@ -36,13 +36,26 @@
 </style>
 
 <script>
-     const updateTabs = (guidance) => {
-                const enviroG = document.getElementById('envrioGuidance');
-                const aniG = document.getElementById('aniGuidance');
-                return new Promise(resolve => {
-                fetch("{{ '/assets/data/guidance' | relative_url }}" + '/e/guidance_index_' + guidance +".html").then(i => i.text()).then(i => enviroG.innerHTML = i).then(z => 
-                fetch("{{ '/assets/data/guidance' | relative_url }}" + '/ah/guidance_index_' + guidance +'.html').then(i => i.text()).then(i => aniG.innerHTML = i)).then(o => resolve('resolved'))
-                })
+    const updateTabs = (guidance) => {
+        const enviroG = document.getElementById('envrioGuidance');
+        const aniG = document.getElementById('aniGuidance');
+        return new Promise(resolve => {
+            fetch("{{ '/assets/data/guidance' | relative_url }}" + '/e/guidance_index_' + guidance + ".html").then(i => {
+                if (!i.ok) {
+                    throw new Error("Guidance Not Found")
+                } else {
+                    return i.text()
+                }
+            })
+                .then(i => enviroG.innerHTML = i).then(z =>
+                    fetch("{{ '/assets/data/guidance' | relative_url }}" + '/ah/guidance_index_' + guidance + '.html').then(i => {
+                        if (!i.ok) {
+                            throw new Error("Guidance Not Found")
+                        } else {
+                            return i.text()
+                        }
+                    }).then(i => aniG.innerHTML = i)).then(o => resolve('resolved'))
+        })
     }
 </script>
 <div class='col content-scroll'>

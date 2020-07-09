@@ -36,7 +36,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "bundle install",
     "build": "rm -rf dist && jekyll clean && jekyll b && gulp build && mv _site dist",
-    "deploy": "rm -rf docs && cp -rf dist docs",
+    "deploy": "jekyll clean && jekyll build --config '_config.yml,_config.ghpages.yml' && gulp build && rm -rf docs && cp -rf _site docs",
     "clean": "jekyll clean"
   },
   "repository": {

@@ -2064,29 +2064,29 @@ a.text-dark:hover, a.text-dark:focus { color: #1d2124 !important; }
 
 @media print { *, *::before, *::after { text-shadow: none !important; box-shadow: none !important; } a:not(.btn) { text-decoration: underline; } abbr[title]::after { content: " (" attr(title) ")"; } pre { white-space: pre-wrap !important; } pre, blockquote { border: 1px solid #999; page-break-inside: avoid; } thead { display: table-header-group; } tr, img { page-break-inside: avoid; } p, h2, h3 { orphans: 3; widows: 3; } h2, h3 { page-break-after: avoid; } @page { size: a3; } body { min-width: 992px !important; } .container { min-width: 992px !important; } .navbar { display: none; } .badge { border: 1px solid #000; } .table { border-collapse: collapse !important; } .table td, .table th { background-color: #fff !important; } .table-bordered th, .table-bordered td { border: 1px solid #ddd !important; } }
 
-@media (min-width: 560px) { #splash-container { background-image: var(--splashgrade), url("/assets/images/splash/herd-sheep-800w.jpg") !important; } }
+@media (min-width: 560px) { #splash-container { background-image: var(--splashgrade), url("/wbgslsg/wbgslsg/assets/images/splash/herd-sheep-800w.jpg") !important; } }
 
-@media (min-width: 960px) { #splash-container { background-image: var(--splashgrade), url("/assets/images/splash/herd-sheep-1280w.jpg") !important; } }
+@media (min-width: 960px) { #splash-container { background-image: var(--splashgrade), url("/wbgslsg/assets/images/splash/herd-sheep-1280w.jpg") !important; } }
 
-@media (min-width: 1300px) { #splash-container { background-image: var(--splashgrade), url("/assets/images/splash/herd-sheep-1600w.jpg") !important; } }
+@media (min-width: 1300px) { #splash-container { background-image: var(--splashgrade), url("/wbgslsg/assets/images/splash/herd-sheep-1600w.jpg") !important; } }
 
-@media (min-width: 1690px) { #splash-container { background-image: var(--splashgrade), url("/assets/images/splash/herd-sheep-2000w.jpg") !important; } }
+@media (min-width: 1690px) { #splash-container { background-image: var(--splashgrade), url("/wbgslsg/assets/images/splash/herd-sheep-2000w.jpg") !important; } }
 
-@media (min-width: 2100px) { #splash-container { background-image: var(--splashgrade), url("/assets/images/splash/herd-sheep-2560w.jpg") !important; } }
+@media (min-width: 2100px) { #splash-container { background-image: var(--splashgrade), url("/wbgslsg/assets/images/splash/herd-sheep-2560w.jpg") !important; } }
 
-@media (min-width: 2650px) { #splash-container { background-image: var(--splashgrade), url("/assets/images/splash/herd-sheep-3070w.jpg") !important; } }
+@media (min-width: 2650px) { #splash-container { background-image: var(--splashgrade), url("/wbgslsg/assets/images/splash/herd-sheep-3070w.jpg") !important; } }
 
-@media (min-width: 560px) { #entry-container { background-image: var(--entrygrade), url("/assets/images/splash/sheep-fog-800w.jpg") !important; } }
+@media (min-width: 560px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/sheep-fog-800w.jpg") !important; } }
 
-@media (min-width: 960px) { #entry-container { background-image: var(--entrygrade), url("/assets/images/splash/sheep-fog-1280w.jpg") !important; } }
+@media (min-width: 960px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/sheep-fog-1280w.jpg") !important; } }
 
-@media (min-width: 1300px) { #entry-container { background-image: var(--entrygrade), url("/assets/images/splash/sheep-fog-1600w.jpg") !important; } }
+@media (min-width: 1300px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/sheep-fog-1600w.jpg") !important; } }
 
-@media (min-width: 1690px) { #entry-container { background-image: var(--entrygrade), url("/assets/images/splash/sheep-fog-2000w.jpg") !important; } }
+@media (min-width: 1690px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/sheep-fog-2000w.jpg") !important; } }
 
-@media (min-width: 2100px) { #entry-container { background-image: var(--entrygrade), url("/assets/images/splash/sheep-fog-2560w.jpg") !important; } }
+@media (min-width: 2100px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/sheep-fog-2560w.jpg") !important; } }
 
-@media (min-width: 2650px) { #entry-container { background-image: var(--entrygrade), url("/assets/images/splash/sheep-fog-3070w.jpg") !important; } }
+@media (min-width: 2650px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/sheep-fog-3070w.jpg") !important; } }
 
 .box-fill a { text-decoration: none; transition: all 2s; position: relative; }
 

@@ -53,6 +53,7 @@
 
     // Actually swaps the icons with the respective url/type from iconMatrix in /assets/data/map.js
     const iconSwap = (principles = [], type) => {
+        $('[data-toggle="tooltip"]').tooltip('dispose')
         const princSection = document.getElementById('rel-princp')
         princSection.classList.add('hide');
         setTimeout(function () {

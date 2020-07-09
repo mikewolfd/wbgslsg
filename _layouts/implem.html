@@ -1,5 +1,17 @@
 {% include header.html %}
 <style type="text/css">
+    /* Bump Nav */
+
+    .breadcrumb-nav {
+        color: var(--aquamarine);
+        font-weight: 600;
+        font-size: 17px;
+    }
+
+    .breadcrumb-nav {
+        margin: 0;
+    }
+
     /* Card Column Coloring */
     #context-data .card-hover:hover {
         background-color: var(--aquamarine);
@@ -167,6 +179,7 @@
         color: white !important;
     }
 
+
     /* Column auto-sizing for columns with 5+ items */
     @media (min-width: 1200px) {
         .double-col-card {
@@ -256,41 +269,94 @@
     })
     const pageState = { Context: undefined, Intervention: undefined };
 
-    const unHide = (query, state) => {
-        const interventions = islGuide.filter(i => i.Intervention == parseInt(state.Intervention));
+    let activeState = false;
+    let renderedPage = false;
+
+    const getCards = () => {
+        const interventions = islGuide.filter(i => i.Intervention == parseInt(pageState.Intervention));
         const cards = interventions.map(i => i.Context);
-        unhideCards(query, cards)
+        return cards
     }
 
+    const unHide = (query) => {
+        unhideCards(query, getCards())
+    }
 
-    // Animation settings for this page, active: true hides all the cards when done, partial leaves the selected cards viewable. 
-    // If animations are disabled, scrolling nav dropdown will be disabled aswell 
-    const cardAnimationSettings = { active: false, partial: false }
+    const resetFunction = (e) => {
 
+        const interParent = document.getElementById('intervention-section')
+        const contextParent = document.getElementById('context-section')
+        const contextCards = Object.values(contextParent.getElementsByClassName('button-card'))
+        const cardIndexMap = getCards();
+
+        guidance = undefined;
+        pageState.Context = undefined;
+
+        contextCards.map(i => {
+            if (!cardIndexMap.includes(parseInt(i.getAttribute('index')))) {
+                if (i.style.display === 'block') {
+                    i.classList.add("flipOutY");
+                    setTimeout(function () {
+                        i.style.display = 'none'
+                        i.classList.remove("flipOutY");
+                    }, 800)
+                }
+            } else {
+                if (i.style.display === 'none') {
+                    i.classList.add('fadeInUp');
+                    i.style.display = 'block'
+                    setTimeout(function () {
+                        i.classList.remove("fadeInUp");
+                    }, 1000)
+                }
+            }
+        });
+
+        interParent.parentElement.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        Object.values(interParent
+            .getElementsByClassName('button-card')).filter(i => e !== i)
+            .forEach(function (item) {
+                item.classList.remove('selected');
+                item.classList.add('card-hover');
+                item.setAttribute('onclick', "interventionFunction(this)");
+            })
+        renderedPage = false;
+        Object.values(document.getElementsByClassName('data-section')).forEach(function (item) {
+            item.classList.add('hidden-object')
+        });
+
+        contextCards.forEach(function (item) {
+            item.setAttribute('onclick', "contextFunction(this)");
+            item.classList.add('card-hover');
+            item.classList.remove('selected');
+        })
+
+    }
     // for the context button selection, happens last before data is shown
     const contextFunction = (e) => {
+        Object.values(e.parentElement.getElementsByClassName('button-card')).filter(i => e !== i).map(item => {
+            item.setAttribute('onclick', "contextFunction(this)");
+            item.classList.add('card-hover');
+            item.classList.remove('selected');
+        })
 
         // highlights button
         e.classList.add('selected');
+        e.onclick = null;
+        e.classList.remove('card-hover');
 
         // get intervention index value
         const index = e.getAttribute('index');
 
         // Sets the pageState variable  
-        pageState.Context = index;
-
+        pageState.Context = parseInt(index);
 
         // get context column
         let parent = document.getElementById('context-section')
 
-        // disables buttons, removes hover animation, hides cards if active
-        Object.values(parent.getElementsByClassName('button-card')).forEach(function (item) {
-            item.onclick = null;
-            if (cardAnimationSettings.active == true && item != e) {
-                item.classList.add("flipOutY");
-            }
-            item.classList.remove('card-hover');
-        })
+        e.onclick = null;
+        e.classList.remove('card-hover');
 
         // gets scrolling breadcrumb nav with relevant card selections
         let breadcrumb = document.getElementById(parent.attributes['data-target'].value)
@@ -300,66 +366,42 @@
 
         // Search and remove selected card from dropdown 
         let dropdown = breadcrumb.getElementsByTagName('div')[0]
-        let duplicateItem = dropdown.querySelector("li[index='" + e.getAttribute('index') + "']").remove()
-
-        // if animation is disabled, disables the scrolling nav dropdown feature
-        if (cardAnimationSettings.active == false) {
-            breadcrumb.classList.add('unclickable');
-            breadcrumb.getElementsByTagName('a')[0].classList.remove('dropdown-toggle');
-        }
-
         guidance = islGuide.filter(i => i.Intervention == parseInt(pageState.Intervention) && i.Context == parseInt(pageState.Context)).map(i => i.Guidance)[0];
-        
-        updateGuidance(guidance);
-        
-        if (cardAnimationSettings.active == true) {
 
-            setTimeout(function () {
-                // This sections enables the animated hiding
-                const cardSection = document.getElementById('card-section');
-                if (cardAnimationSettings.partial == true) {
-                    cardSection.classList.add('reduced');
-                } else {
-                    cardSection.classList.add('hidden-object');
-                }
-                // Un-hides the content section
-                Object.values(document.getElementsByClassName('data-section')).forEach(function (item) {
-                    item.classList.remove('hidden-object')
-                })
-                // scrolls down to the data section
-                setTimeout(() => {
-                    breadcrumb.parentElement.scrollIntoView({ behavior: "smooth", block: "start" });
-                }, 700)
-            }, 700)
-        } else {
-            
+        updateGuidance(guidance);
+
+        if (!renderedPage) {
             Object.values(document.getElementsByClassName('data-section')).forEach(function (item) {
                 item.classList.remove('hidden-object')
             });
-            setTimeout(() => {
-                breadcrumb.parentElement.scrollIntoView({ behavior: "smooth", block: "start" });
-            }, 850)
-        };
-    }
+        }
+        setTimeout(() => {
+            breadcrumb.parentElement.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 850)
+        renderedPage = true;
+
+    };
+
 
     // for the intervention button selection, happens first, at the end of this is when 
     // you can modify which cards you want in the context-section
 
     const interventionFunction = (e) => {
-        // highlights button
-        e.classList.add('selected');
-
         // get intervention index value
         const index = e.getAttribute('index');
-
         // Sets the pageState variable
-        pageState.Intervention = index;
+        pageState.Intervention = parseInt(index);
+
+        if (activeState) {
+            resetFunction(e)
+        }
+        // highlights button
+        e.classList.add('selected');
+        e.classList.remove('card-hover');
+        e.onclick = null;
 
         // get internvention column
         let parent = document.getElementById('intervention-section')
-
-        //get all intervention cards
-        const interventions = Object.values(parent.getElementsByClassName('button-card'))
 
         // gets scrolling breadcrumb nav with relevant card selections
         let breadcrumb = document.getElementById(parent.getAttribute('data-target'))
@@ -367,91 +409,28 @@
         // Update span with selected card text
         breadcrumb.getElementsByTagName('span')[0].innerText = e.innerText
 
-        if (cardAnimationSettings.active == true) {
-            // Search and remove selected card from dropdown 
-            let dropdown = breadcrumb.getElementsByTagName('div')[0]
-            let duplicateItem = dropdown.querySelector("li[index='" + index + "']").remove()
-
-            // Color the dropdown text based on the column colors, it gets the id value and 
-            // adds it as a class, which I have added as a css style
-            breadcrumb.getElementsByTagName('a')[0].classList.add(e.closest('.parent').id)
-        } else
-
-            // if animation is disabled, disables the scrolling nav dropdown feature
-            if (cardAnimationSettings.active == false) {
-                breadcrumb.classList.add('unclickable');
-                breadcrumb.getElementsByTagName('a')[0].classList.remove('dropdown-toggle');
-            }
-
-        // if animated
-        if (cardAnimationSettings.active == true) {
-            // disables button
-            e.onclick = null;
-            // finds the difference between the position of the clicked button and the first button in it's column
-            let last = e.parentElement.children[0].getBoundingClientRect();
-            let first = e.getBoundingClientRect()
-            const deltaX = first.left - last.left;
-            const deltaY = first.top - last.top;
-            let animated = false;
-            // iterates over non-clicked buttons
-            interventions.filter(item => item != e).forEach(function (item) {
-                // removes hover styling
-                item.classList.remove('card-hover');
-                // hides unclicked cards
-                item.classList.add("flipOutY");
-                // hides cards, and initiates the slide up animation
-                setTimeout(function () {
-                    item.classList.add('hidden-object')
-                    if (!animated) {
-                        animated = true;
-                        e.animate([{
-                            transformOrigin: 'bottom right',
-                            transform: `
-                        translate(${deltaX}px, ${deltaY}px)
-                                `
-                        }, {
-                            transformOrigin: 'top left',
-                            transform: 'none'
-                        }], {
-                            duration: 500,
-                            easing: 'ease-in-out',
-                            fill: 'both'
-                        });
-                    }
-                }, 1000);
-            });
-            // Shrinks the intervention section
-            parent.classList.remove('intervention-section-max');
-        } else {
-            // If not animated
-            // loops over all the cards
-            interventions.forEach(function (item) {
-                //removes hover and disables clicking
-                item.classList.remove('card-hover');
-                item.onclick = null;
-            })
-        }
         // Hides the context card section
         // Here is where you could modify which cards is there
-        setTimeout(function () {
-            // finds context card section
-            const hidCol = document.getElementById('context-section');
+        if (!activeState) {
+            setTimeout(function () {
+                // finds context card section
+                const hidCol = document.getElementById('context-section');
 
-            // Unhides all the cards and dropdown cards that correspond to the chosen intervention
+                // Unhides all the cards and dropdown cards that correspond to the chosen intervention
 
-            unHide('#context-data .card, #context-header .card li', pageState);
+                unHide('#context-data .card');
 
-            //unhides and animates it
-            hidCol.classList.remove('hidden-object');
-            hidCol.classList.add('fadeInUp');
+                //unhides and animates it
+                hidCol.classList.remove('hidden-object');
+                hidCol.classList.add('fadeInUp');
 
-            // if not animated, it scrolls down to the context section, as the intervention section is tall
-            if (cardAnimationSettings.active == false) {
+                // It scrolls down to the context section, as the intervention section is tall
                 setTimeout(() => {
                     hidCol.scrollIntoView({ behavior: "smooth", block: "end" });
                 }, 250)
-            }
-        }, 900)
+            }, 900)
+        }
+        activeState = true;
     }
 </script>
 
@@ -489,7 +468,7 @@
                         <div class='col col-card d-flex flex-column flex-wrap'>
                             {% for item in site.data.interventions.column_2 %}
                             <div class="card card-hover animated button-card" onclick="interventionFunction(this)"
-                                index="{{ forloop.index | plus: 4  }} ">
+                                index="{{ forloop.index | plus: 4  }}">
                                 <div class="card-body  d-flex align-items-center">
                                     <p> {{ item.text }} </p>
                                 </div>
@@ -566,46 +545,15 @@
         </div>
         <nav class='row data-section hidden-object nav-bread sticky-top my-4'>
             <div class='col'>
-                <ul class='breadcrumb-data p-2'>
-                    <li id='inter-header'>
-                        <a class='dropdown-toggle' data-toggle="collapse" href="#collapseInterventions" role="button"
-                            aria-expanded="false" aria-controls="collapseInterventions"> INTERVENTION:
-                            <span></span>
-                        </a>
-                        <div class="collapse" id="collapseInterventions">
-                            <div class='card card-body'>
-                                <ul>
-                                    {% assign my_variable = 0 %}
-                                    {% for item in site.data.interventions %}
-                                    {% for col in item[1] %}
-                                    {% if forloop.first == true %}
-                                    {% assign my_variable = forloop.length | plus: my_variable %}
-                                    {% endif %}
-                                    <li class="{{ item[0] }}" index="{{ forloop.index | plus: my_variable }}" href="#">
-                                        {{ col.text }}</li>
-                                    {% endfor %}
-                                    {% endfor %}
-                                </ul>
-                            </div>
+                <div class='breadcrumb-nav p-2'>
+                    <div id='inter-header'>
+                        INTERVENTION:
+                        <span></span>
+                        <div id='context-header'>
+                            CONTEXT: <span></span>
                         </div>
-                    </li>
-                    <li id='context-header'>
-                        <a class='dropdown-toggle' data-toggle="collapse" href="#collapseContext" role="button"
-                            aria-expanded="false" aria-controls="collapseContext"> CONTEXT: <span></span>
-                        </a>
-                        <div class="collapse" id="collapseContext">
-                            <div class='card card-body'>
-                                <ul>
-                                    {% for item in site.data.context %}
-                                    <li index="{{ forloop.index }}" href="#" style='display: none;'>
-                                        {{ item.text }}</li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+                    </div>
+                </div>
         </nav>
         {% include data-scroll.html %}
         {% include bottom_nav.html %}

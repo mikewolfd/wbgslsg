@@ -4,6 +4,9 @@ const postcss = require("gulp-postcss");
 let autoprefixer = require("autoprefixer");
 var rename = require("gulp-rename");
 const babel = require("gulp-babel");
+const htmlmin = require('gulp-htmlmin');
+const cleanCSS = require('gulp-clean-css');
+const terser = require('gulp-terser');
 
 styleEditTask = () => {
   return src("_site/*.html")
@@ -31,6 +34,7 @@ styleExportTask = () => {
     )
     .pipe(rename({ extname: ".css" }))
     .pipe(postcss(plugins))
+    .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(dest("_site/assets/css"));
 };
 
@@ -45,6 +49,7 @@ jsEditTask = () => {
           });
       })
     )
+    .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(dest("_site"));
 };
 
@@ -63,9 +68,13 @@ jsExportTask = () => {
         })
       )
       .pipe(rename({ extname: ".js" }))
-      // .pipe(babel({
-      //   presets: ['@babel/env']
-      //   }))
+      .pipe(babel({
+        presets: ['@babel/env']
+        }))
+      .pipe(terser({
+          keep_fnames: false,
+          mangle: false
+        }))
       .pipe(dest("_site/assets/js"))
   );
 };

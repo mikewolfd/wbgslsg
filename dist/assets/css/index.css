@@ -1,7 +1,7 @@
 
     #splash-container {
         background-image: var(--splashgrade),
-        url("/assets/images/herd-sheep-400w.jpg");
+        url("/assets/images/splash/herd-sheep-400w.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;

@@ -72,7 +72,7 @@ jsExportTask = () => {
         presets: ['@babel/env']
         }))
       .pipe(terser({
-          keep_fnames: false,
+          keep_fnames: true,
           mangle: false
         }))
       .pipe(dest("_site/assets/js"))

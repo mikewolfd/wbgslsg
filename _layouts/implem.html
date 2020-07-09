@@ -282,7 +282,7 @@
         unhideCards(query, getCards())
     }
 
-    const resetFunction = (e) => {
+    const interResetFunction = (e) => {
 
         const interParent = document.getElementById('intervention-section')
         const contextParent = document.getElementById('context-section')
@@ -312,7 +312,7 @@
             }
         });
 
-        interParent.parentElement.scrollIntoView({ behavior: "smooth", block: "start" });
+        contextParent.scrollIntoView({ behavior: "smooth", block: "end" });
 
         Object.values(interParent
             .getElementsByClassName('button-card')).filter(i => e !== i)
@@ -393,7 +393,7 @@
         pageState.Intervention = parseInt(index);
 
         if (activeState) {
-            resetFunction(e)
+            interResetFunction(e)
         }
         // highlights button
         e.classList.add('selected');

@@ -13,7 +13,6 @@
   .bottom-nav-sep {
     font-size: 9px;
   }
-
 </style>
 <nav class="footer navbar mt-auto pb-3">
   <nav class="mr-auto">
@@ -25,15 +24,13 @@
     {% if include.included != "false" %}
     <a href=" {{ 'entry.html' | relative_url }}">HOME</a>
     <span class='bottom-nav-sep'> |</span>
-    <a>ABOUT</a>
-    <span class='bottom-nav-sep'> |</span>
     <a href="{{ 'sustain.html' | relative_url }}">SUSTAINABILITY ISSUES</a>
     <span class='bottom-nav-sep'> |</span>
     <a href="{{ 'print.html' | relative_url }}">PRINT</a>
     <span class='bottom-nav-sep'> |</span>
     <a>MY ACCOUNT</a>
     <span class='bottom-nav-sep'> |</span>
-    <a>MY REPORTS</a>
+    <a href="{{ 'reports.html' | relative_url }}">MY REPORTS</a>
     <span class='bottom-nav-sep'> |</span>
     <a>CONTACT US</a>
     {% endif %}

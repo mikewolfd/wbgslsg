@@ -1,0 +1,83 @@
+@media (min-width: 560px) {
+  #splash-container {
+    background-image: var(--splashgrade),
+      url("/assets/images/splash/herd-sheep-800w.jpg") !important;
+  }
+}
+
+@media (min-width: 960px) {
+  #splash-container {
+    background-image: var(--splashgrade),
+      url("/assets/images/splash/herd-sheep-1280w.jpg") !important;
+  }
+}
+
+@media (min-width: 1300px) {
+  #splash-container {
+    background-image: var(--splashgrade),
+      url("/assets/images/splash/herd-sheep-1600w.jpg") !important;
+  }
+}
+
+@media (min-width: 1690px) {
+  #splash-container {
+    background-image: var(--splashgrade),
+      url("/assets/images/splash/herd-sheep-2000w.jpg") !important;
+  }
+}
+
+@media (min-width: 2100px) {
+  #splash-container {
+    background-image: var(--splashgrade),
+      url("/assets/images/splash/herd-sheep-2560w.jpg") !important;
+  }
+}
+
+@media (min-width: 2650px) {
+  #splash-container {
+    background-image: var(--splashgrade),
+      url("/assets/images/splash/herd-sheep-3070w.jpg") !important;
+  }
+}
+
+@media (min-width: 560px) {
+  #entry-container {
+    background-image: var(--entrygrade),
+      url("/assets/images/splash/sheep-fog-800w.jpg") !important;
+  }
+}
+
+@media (min-width: 960px) {
+  #entry-container {
+    background-image: var(--entrygrade),
+      url("/assets/images/splash/sheep-fog-1280w.jpg") !important;
+  }
+}
+
+@media (min-width: 1300px) {
+  #entry-container {
+    background-image: var(--entrygrade),
+      url("/assets/images/splash/sheep-fog-1600w.jpg") !important;
+  }
+}
+
+@media (min-width: 1690px) {
+  #entry-container {
+    background-image: var(--entrygrade),
+      url("/assets/images/splash/sheep-fog-2000w.jpg") !important;
+  }
+}
+
+@media (min-width: 2100px) {
+  #entry-container {
+    background-image: var(--entrygrade),
+      url("/assets/images/splash/sheep-fog-2560w.jpg") !important;
+  }
+}
+
+@media (min-width: 2650px) {
+  #entry-container {
+    background-image: var(--entrygrade),
+      url("/assets/images/splash/sheep-fog-3070w.jpg") !important;
+  }
+}

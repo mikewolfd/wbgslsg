@@ -20,6 +20,11 @@
         color: white !important;
     }
 
+    .scroll-buttons .list-group-item {
+        max-width: 129px;
+    }
+
+
     .scroll-buttons {
         /* min-height: 80vh; */
         position: sticky;
@@ -60,12 +65,12 @@
             <div class='col-auto ml-2 d-flex flex-column'>
                 <div class="scroll-buttons" id="content-buttons">
                     {% for item in page.topic %}
-                    <a class="list-group-item list-group-item-action m-1 py-1 px-2 {% if forloop.first == false %} collapsed {% endif %}"
+                    <a class="list-group-item list-group-item-action m-1 py-1 px-1 {% if forloop.first == false %} collapsed {% endif %}"
                         id="tab-{{ forloop.index }}" data-toggle="collapse" role="button"
                         data-target="#tabbed-{{ forloop.index }}" aria-controls="tabbed-{{ forloop.index }}"
                         aria-expanded="{% if forloop.first %} true {% else %} false {% endif %}">{{item}}</a>
                     {% endfor %}
-                    <a class="list-group-item returnButton m-1 py-1 px-2" id="returnButton" role="button"
+                    <a class="list-group-item returnButton m-1 py-1 px-1" id="returnButton" role="button"
                         onclick="window.history.back()"><span>RETURN</span> <svg width="1em" height="1em"
                             viewBox="0 0 16 16" class="bi bi-back" fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg">

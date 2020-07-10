@@ -1,4 +1,23 @@
 <style type="text/css">
+    @media (max-width: 575px) {
+        #scroll-buttons {
+            flex-direction: row !important;
+        }
+
+        #rel-princp {
+            max-width: unset !important;
+            min-width: unset !important;
+        }
+
+        .scroll-container {
+            min-height: 0 !important;
+        }
+
+        .data-section {
+            flex-wrap: wrap-reverse;
+        }
+    }
+
     .scroll-container {
         min-height: 80vh;
         position: sticky;
@@ -21,7 +40,9 @@
     }
 
     #rel-princp {
-        max-width: 142px;
+        max-width: 138px;
+        min-width: 138px;
+
         opacity: 1;
         transition: opacity 0.2s;
     }
@@ -34,6 +55,11 @@
         background-color: var(--aquamarine);
         color: white;
     }
+
+    #scroll-buttons a {
+        min-width: 90px !important;
+    }
+
     .returnButton {
         text-align-last: justify;
         cursor: pointer;
@@ -68,13 +94,13 @@
         const princSection = document.getElementById('rel-princp')
         princSection.classList.add('hide');
         setTimeout(function () {
-        princSection.innerHTML = ""
-        const icons = iconMatrix.filter(i => principles.includes(i.Principle) && i.Type == type)
-        icons.map(i =>
-            document.getElementById('rel-princp').innerHTML += cardIcon(i.Icon, i.Type, i.Principle)
-        )
-        princSection.classList.remove('hide');
-        $('[data-toggle="tooltip"]').tooltip()
+            princSection.innerHTML = ""
+            const icons = iconMatrix.filter(i => principles.includes(i.Principle) && i.Type == type)
+            icons.map(i =>
+                document.getElementById('rel-princp').innerHTML += cardIcon(i.Icon, i.Type, i.Principle)
+            )
+            princSection.classList.remove('hide');
+            $('[data-toggle="tooltip"]').tooltip()
         }, 300);
     }
 
@@ -98,24 +124,24 @@
 </script>
 <div class='row data-section hidden-object'>
     {% include tabbed-scroll.html %}
-    <div class='col-2 col-lg-auto'>
+    <div class='col col-sm-2 col-lg-auto'>
         <div class='d-flex flex-column scroll-container'>
             <p>RELEVANT PRINCIPLES</p>
-            <div class='d-flex flex-row flex-wrap' id='rel-princp'>
+            <div class='d-flex flex-row flex-wrap mb-1 mb-sm-0' id='rel-princp'>
             </div>
-            <div class="d-flex flex-column mt-auto mb-auto" id='scroll-buttons'>
+            <div class="d-flex flex-column mt-sm-auto mb-1 mb-sm-auto" id='scroll-buttons'>
                 <a class="list-group-item list-group-item-action py-1 px-2 my-1" onclick="addReport()">ADD
                     TO
                     MY REPORTS</a>
-                <a class="list-group-item list-group-item-action py-1 px-2 my-1" href="{{ 'reports.html' | relative_url }}">GO TO
+                <a class="list-group-item list-group-item-action py-1 px-2 my-1"
+                    href="{{ 'reports.html' | relative_url }}">GO TO
                     MY REPORTS</a>
                 <a class="list-group-item list-group-item-action py-1 px-2 my-1 returnButton" id='returnButton' href='#'
-                    onclick=refreshFunction()><span>RESET</span> <svg width="1em" height="1em"
-                    viewBox="0 0 16 16" class="bi bi-back" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2z" />
-                </svg> </a>
+                    onclick=refreshFunction()><span>RESET</span> <svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-back" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2z" />
+                    </svg> </a>
 
             </div>
         </div>

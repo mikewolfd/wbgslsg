@@ -156,6 +156,10 @@
                 //scrolls to data section if cards aren't hidden
                 if (hide == false) {
                     document.getElementsByClassName('breadcrumb-data')[0].scrollIntoView({ behavior: "smooth", block: "start" });
+                    setTimeout(function () {
+
+                        toggleScrollClass()
+                    }, 150)
                 }
                 //if there are more hidden columns
             } else {

@@ -377,6 +377,9 @@
         }
         setTimeout(() => {
             breadcrumb.parentElement.scrollIntoView({ behavior: "smooth", block: "start" });
+            setTimeout(function () {
+                toggleScrollClass()
+            }, 150)
         }, 850)
         renderedPage = true;
 

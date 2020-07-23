@@ -1,4 +1,6 @@
 
+var elements = document.querySelectorAll('.sticky');
+Stickyfill.add(elements);
 
 function toggleScrollClass() {
     let nav = document.getElementsByClassName('nav-bread')[0];

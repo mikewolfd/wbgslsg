@@ -20,17 +20,25 @@
         color: white !important;
     }
 
-    @media (max-width: 769px) {
+    @media (max-width: 992px) {
         div.card-section-max {
-            height: 803px;
-            overflow: hidden;
+            height: 960px;
         }
     }
+    
+    @media (max-width: 769px) {
+        div.card-section-max {
+            height: 1431px;
+        }
+    }
+
+
 
     .card-section {
         height: 0;
         overflow: hidden;
         opacity: 0;
+        align-content: flex-start;
         transition: opacity 1s, height .6s ease-in;
         transition-delay: 1s;
     }
@@ -78,7 +86,7 @@
 
     const pageState = { Context: undefined, Objective: undefined, Intervention: undefined };
 
-    const hide = true;
+    const hide = Boolean({{ page.hide }});
 
     const highlightFunction = (e) => {
         const parent = e.parentElement;
@@ -153,13 +161,13 @@
                 Object.values(document.getElementsByClassName('data-section')).forEach((elm) => {
                     elm.classList.remove('hidden-object')
                 })
+                setTimeout(function () {
+                    toggleScrollClass()
+                }, 1200)
                 //scrolls to data section if cards aren't hidden
                 if (hide == false) {
-                    document.getElementsByClassName('breadcrumb-data')[0].scrollIntoView({ behavior: "smooth", block: "start" });
-                    setTimeout(function () {
-
-                        toggleScrollClass()
-                    }, 150)
+                    const bread = document.querySelector('.breadcrumb-data')
+                    bread.scrollIntoView({ behavior: "smooth", block: "start" });
                 }
                 //if there are more hidden columns
             } else {
@@ -272,16 +280,16 @@
                 </div>
             </div>
         </div>
-        <nav class='row data-section hidden-object nav-bread sticky-top my-4'>
-            <div class='col '>
+        <nav class='row data-section hidden-object nav-bread sticky my-lg-4 my-sm-2 fadeout'>
+            <div class='col'>
                 <ul class='breadcrumb-data p-2 '>
                     <li id='context-header'>
                         <a class='dropdown-toggle' data-toggle="collapse" href="#collapseContext" role="button"
-                            aria-expanded="false" aria-controls="collapseContext"> CONTEXT:
+                            aria-expanded="false" aria-controls="collapseContext"> <z>CONTEXT</z>: 
                             <span></span>
                         </a>
                         <div class="collapse" id="collapseContext">
-                            <div class='card card-body'>
+                            <div class='card card-body p-2'>
                                 <ul>
                                     {% for item in site.data.context %}
                                     <li index="{{ forloop.index }}" href="#">
@@ -293,10 +301,10 @@
                     </li>
                     <li id='obj-header'>
                         <a class='dropdown-toggle' data-toggle="collapse" href="#collapseObjectives" role="button"
-                            aria-expanded="false" aria-controls="collapseObjectives"> OBJECTIVES: <span></span>
+                            aria-expanded="false" aria-controls="collapseObjectives"> <z>OBJECTIVES</z>: <span></span>
                         </a>
                         <div class="collapse" id="collapseObjectives">
-                            <div class='card card-body'>
+                            <div class='card card-body p-2'>
                                 <ul>
                                     {% for item in site.data.objectives %}
                                     <li index="{{ forloop.index }}" href="#">
@@ -308,10 +316,10 @@
                     </li>
                     <li id='inter-header'>
                         <a class='dropdown-toggle' data-toggle="collapse" href="#collapseInterventions" role="button"
-                            aria-expanded="false" aria-controls="collapseInterventions"> INTERVENTIONS: <span></span>
+                            aria-expanded="false" aria-controls="collapseInterventions"> <z>INTERVENTIONS</z>: <span></span>
                         </a>
                         <div class="collapse" id="collapseInterventions">
-                            <div class='card card-body'>
+                            <div class='card card-body p-2'>
                                 <ul>
                                     {% assign my_variable = 0 %}
                                     {% for item in site.data.interventions %}

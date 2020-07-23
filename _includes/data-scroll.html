@@ -19,9 +19,17 @@
     }
 
     .scroll-container {
-        min-height: 80vh;
-        position: sticky;
-        top: 19vh;
+        min-height: 90vh;
+        /* position: sticky; */
+        top: 10vh !important; 
+        font-size: 14px;
+    }
+
+    @media (min-width: 992px) {
+        .scroll-container {
+            font-size: 16px !important;
+        }
+
     }
 
     .hide {
@@ -41,7 +49,7 @@
 
     #rel-princp {
         max-width: 138px;
-        min-width: 138px;
+        /* min-width: 138px; */
 
         opacity: 1;
         transition: opacity 0.2s;
@@ -124,8 +132,8 @@
 </script>
 <div class='row data-section hidden-object'>
     {% include tabbed-scroll.html %}
-    <div class='col col-sm-2 col-lg-auto'>
-        <div class='d-flex flex-column scroll-container'>
+    <div class='col-sm-25 col-sm col-sm-auto pl-1 pr-0'>
+        <div class='d-flex flex-column scroll-container sticky'>
             <p>RELEVANT PRINCIPLES</p>
             <div class='d-flex flex-row flex-wrap mb-1 mb-sm-0' id='rel-princp'>
             </div>

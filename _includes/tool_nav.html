@@ -1,5 +1,4 @@
 <style type="text/css">
-
     /* Card styling */
     .col-card .card {
         margin: 5px;
@@ -53,8 +52,8 @@
     /* Bump Nav */
     .breadcrumb-data>li {
         list-style: none;
-        font-size: 16px;
-        line-height: 25px;
+        font-size: 14px;
+        line-height: 20px;
         font-weight: 400;
     }
 
@@ -63,14 +62,55 @@
     }
 
     .breadcrumb-data .card {
-        background-color: rgba(229, 229, 229, .13);
+        background-color: rgba(241, 241, 241, 1);
     }
 
     .breadcrumb-data li a {
         color: var(--aquamarine);
-        font-weight: 600;
-        font-size: 17px;
+        font-weight: 400;
+        font-size: 14px;
     }
+
+    .breadcrumb-data li z {
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    .breadcrumb-nav div z {
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    .breadcrumb-nav div {
+        font-weight: 400;
+        font-size: 14px;
+    }
+
+
+
+    @media (min-width: 992px) {
+        .breadcrumb-data li a {
+            font-size: 15px;
+
+        }
+
+        .breadcrumb-data li z {
+            font-size: 16px;
+        }
+
+        .breadcrumb-nav div {
+            font-size: 15px;
+
+        }
+
+        .breadcrumb-nav div z {
+            font-size: 16px;
+
+
+        }
+
+    }
+
 
     .breadcrumb-data .dropdown-item {
         pointer-events: none;
@@ -105,8 +145,8 @@
     const updateGuidance = async (guidanceID) => {
         await updateTabs(guidanceID);
         swapPrincp('#envrioGuidance');
-        }
-    
+    }
+
     // Unhides cards / list-items as needed
     const unhideCards = (query, cards) => {
         Object.values(document.querySelectorAll(query)).map(i => {

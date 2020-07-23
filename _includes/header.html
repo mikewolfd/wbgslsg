@@ -7,11 +7,12 @@
     <title>{{ page.title | strip_html | capitalize_all }} - {{ site.title }}</title>
     <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
     <link rel="stylesheet" href="{{ page.name | remove: '.html' | append : '.css' | prepend: '/assets/css/' | relative_url }}">
-    <script src='{{ "/assets/js/jquery-3.5.1.slim.min.js" | relative_url }}'></script>
-    <script src='{{ "/assets/js/popper.min.js" | relative_url }}'></script>
-    <script src='{{ "/assets/js/smoothscroll.min.js" | relative_url }}'></script>
-    <script src="{{ '/assets/js/regenerator-runtime/runtime.js' | relative_url }}"></script>
-    <script src='{{ "/assets/js/bootstrap.min.js" | relative_url }}'></script>
+    <script src='{{ "/assets/js/packages/jquery-3.5.1.slim.min.js" | relative_url }}'></script>
+    <script src='{{ "/assets/js/packages/popper.min.js" | relative_url }}'></script>
+    <script src='{{ "/assets/js/packages/smoothscroll.min.js" | relative_url }}'></script>
+    <script src="{{ '/assets/js/packages/regenerator-runtime/runtime.js' | relative_url }}"></script>
+    <script src='{{ "/assets/js/packages/bootstrap.min.js" | relative_url }}'></script>
+    <script src='{{ "/assets/js/packages/stickyfill.min.js" | relative_url }}'></script>
     <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
     <script src="{{ '/assets/data/map.js' | relative_url }}"></script>
     <script src="{{ page.name | remove: '.html' | append : '.js' | prepend: '/assets/js/' | relative_url }}"></script>

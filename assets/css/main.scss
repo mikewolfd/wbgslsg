@@ -38,6 +38,8 @@ $baseurl: "{{site.baseurl}}"
   --annoyingTeal: var(--column_1);
 // neutral/cool 1
   --randomPurple: rgba(97, 71, 118, 1);
+// breadcrumbnav sticky color
+  --breadcrumbNav: rgba(229, 229, 229, 1);
 } 
 
 @import "bootstrap/bootstrap";
@@ -90,6 +92,12 @@ body {
   }
 }
 
+.container {
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
 .nav.flex-column li {
   padding: 0em;
   height: 20px;
@@ -102,7 +110,7 @@ body {
   }
 
   100% {
-    background-color: rgba(229, 229, 229, 1);
+    background-color: var(--breadcrumbNav);
   }
 }
 
@@ -112,10 +120,15 @@ body {
   }
 
   0% {
-    background-color: rgba(229, 229, 229, 1);
+    background-color: var(--breadcrumbNav);
   }
 }
-
+@media (min-width: 576px) {
+.col-sm-25 {
+  flex: 1 0 16.666667%;
+  max-width: 19.73%;
+}
+}
 .breadcrumb-item {
   z-index: 2;
 }
@@ -123,16 +136,22 @@ body {
   display: none;
 }
 /* This is the sticky data nav */
-.nav-bread {
+.nav-bread>div{
   border-radius: 10px;
+  z-index: 2; 
 }
 
-.nav-bread.fadein {
+.nav-bread {
+  z-index: 2;
+  margin-left: -30px;
+  margin-right: -30px;
+}
+
+.nav-bread.fadein>div{
   animation: nav-fade-in 0.3s;
-  background-color: rgba(229, 229, 229, 1);
+  background-color: var(--breadcrumbNav);
 }
-
-.nav-bread.fadeout {
+.nav-bread.fadeout>div{
   animation: nav-fade-out 0.3s;
 }
 
@@ -162,4 +181,16 @@ body {
   text-decoration: none;
   color: var(--grey_copy);
   opacity: .8;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.sticky:before,
+.sticky:after {
+    content: '';
+    display: table;
 }

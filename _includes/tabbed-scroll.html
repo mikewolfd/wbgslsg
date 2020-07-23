@@ -1,7 +1,7 @@
 <style>
     /* Text Scroll Buttons */
-    .content-scroll .nav-link a {
-        font-size: 18px;
+    .content-scroll a.nav-link {
+        font-size: 14px;
         color: var(--grey_copy);
     }
 
@@ -10,7 +10,7 @@
     }
 
     .nav-tabs .nav-item {
-        min-width: 379px;
+        /* min-width: 379px; */
     }
 
     @media (max-width: 992px) {
@@ -25,9 +25,13 @@
 
     @media (min-width: 992px) {
 
+        .nav-tabs a.nav-link {
+            font-size: 16px;
+        }
         .nav-tabs .nav-item {
             min-width: 0;
         }
+        
     }
 
     .nav-tabs .active img.svg {

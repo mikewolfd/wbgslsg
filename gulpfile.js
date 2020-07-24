@@ -1,13 +1,14 @@
 const { src, dest, parallel, series, watch, task } = require("gulp");
 const dom = require("gulp-jsdom");
 const postcss = require("gulp-postcss");
-let autoprefixer = require("autoprefixer");
-var rename = require("gulp-rename");
+const autoprefixer = require("autoprefixer");
+const rename = require("gulp-rename");
 const babel = require("gulp-babel");
 const htmlmin = require('gulp-htmlmin');
 const cleanCSS = require('gulp-clean-css');
 const terser = require('gulp-terser');
-var responsive = require('gulp-responsive')
+const responsive = require('gulp-responsive')
+const imagemin = require('gulp-imagemin');
 
 styleEditTask = () => {
   return src("_site/*.html")
@@ -35,7 +36,7 @@ styleExportTask = () => {
     )
     .pipe(rename({ extname: ".css" }))
     .pipe(postcss(plugins))
-    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(cleanCSS({ compatibility: 'ie8' }))
     .pipe(dest("_site/assets/css"));
 };
 
@@ -71,68 +72,79 @@ jsExportTask = () => {
       .pipe(rename({ extname: ".js" }))
       .pipe(babel({
         presets: ['@babel/env']
-        }))
+      }))
       .pipe(terser({
-          keep_fnames: true,
-          mangle: false
-        }))
+        keep_fnames: true,
+        mangle: false
+      }))
       .pipe(dest("_site/assets/js"))
   );
 };
 
+imageMin = () => {
+  return src('assets/images/background-original/*')
+    .pipe(imagemin({
+      interlaced: true,
+      quality: 85,
+      progressive: true,
+    })
+    )
+    .pipe(dest('assets/images/background'))
+
+}
 responsiveImageTask = () => {
   return src("assets/images/splash-original/*.jpg")
-  .pipe(
-    responsive(
-      {
-        // Resize all JPG images to three different sizes: 200, 500, and 630 pixels
-        '*.jpg': [
-          {
-            width: 400,
-            rename: { suffix: '-400w' }
-          },
-          {
-            width: 800,
-            rename: { suffix: '-800w' }
-          },
-          {
-            width: 1280,
-            rename: { suffix: '-1280w' }
-          },
-          {
-            width: 1600,
-            rename: { suffix: '-1600w' }
-          },
-          {
-            width: 2000,
-            rename: { suffix: '-2000w' }
-          },
-          {
-            width: 2560,
-            rename: { suffix: '-2560w' }
-          },
-          {
-            width: 3070,
-            rename: { suffix: '-3070w' }
-          },
-          {
-            // Compress, strip metadata, and rename original image
-            rename: { suffix: '-original' }
-          }
-        ]
-      },
-      {
-        // Global configuration for all images
-        // The output quality for JPEG, WebP and TIFF output formats
-        quality: 70,
-        // Use progressive (interlace) scan for JPEG and PNG output
-        progressive: true,
-        // Strip all metadata
-        withMetadata: false
-      }
+    .pipe(
+      responsive(
+        {
+          // Resize all JPG images to three different sizes: 200, 500, and 630 pixels
+          '*.jpg': [
+            {
+              width: 400,
+              rename: { suffix: '-400w' }
+            },
+            {
+              width: 800,
+              rename: { suffix: '-800w' }
+            },
+            {
+              width: 1280,
+              rename: { suffix: '-1280w' }
+            },
+            {
+              width: 1600,
+              rename: { suffix: '-1600w' }
+            },
+            {
+              width: 2000,
+              rename: { suffix: '-2000w' }
+            },
+            {
+              width: 2560,
+              rename: { suffix: '-2560w' }
+            },
+            {
+              width: 3070,
+              rename: { suffix: '-3070w' }
+            },
+            {
+              // Compress, strip metadata, and rename original image
+              rename: { suffix: '-original' }
+            }
+          ]
+        },
+        {
+          // Global configuration for all images
+          // The output quality for JPEG, WebP and TIFF output formats
+          quality: 70,
+          // Use progressive (interlace) scan for JPEG and PNG output
+          progressive: true,
+          // Strip all metadata
+          withMetadata: false
+        }
+      )
     )
-  )
-  .pipe(dest('assets/images/splash'))
+    .pipe(dest('assets/images/splash'))
 }
 exports.build = series(
   styleExportTask,
@@ -142,9 +154,11 @@ exports.build = series(
 );
 
 exports.responsiveImageTask = responsiveImageTask
+exports.imageMin = imageMin
 
-exports.default = function() { watch(
-  ["_layouts/", "_includes", "_data", 'assets', "./*.html"],
-   { delay: 600 },
-  series(styleExportTask, jsExportTask, jsEditTask, styleEditTask))
+exports.default = function () {
+  watch(
+    ["_layouts/", "_includes", "_data", 'assets', "./*.html"],
+    { delay: 600 },
+    series(styleExportTask, jsExportTask, jsEditTask, styleEditTask))
 };

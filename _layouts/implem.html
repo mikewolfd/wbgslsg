@@ -190,7 +190,7 @@
 
     .double-col-card {
         flex-direction: row !important;
-        max-width: 468px;
+        max-width: 315px;
     }
 
     @media (max-width: 767px) {
@@ -205,7 +205,7 @@
         }
 
         #column_5 .col-card {
-            max-width: 749px;
+            max-width: 729px;
         }
     }
 
@@ -213,21 +213,25 @@
         #column_5 .col-card {
             flex-direction: column !important;
         }
-
-        #context-data {
-            max-width: 930px;
-        }
     }
 
     /* Responsive Sizing for Context Card Section */
-    @media (min-width: 992px) {
-        #context-data {
-            max-width: max-content !important;
-        }
-    }
 
     #context-data {
-        max-width: 480px;
+        max-width: 330px;
+    }
+
+    @media (min-width: 768px) {
+        #context-data {
+            max-width: 729px;
+        }
+
+    }
+
+    @media (min-width: 992px) {
+        #context-data {
+            max-width: 930px;
+        }
     }
 
     /* Transition and animation stuff */

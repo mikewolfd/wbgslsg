@@ -9,7 +9,7 @@ $baseurl: "{{site.baseurl}}"
     rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 0.7)
   );
-  --entrygrade: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  --entrygrade: linear-gradient(rgba(60, 60, 60, 0.4), rgba(60, 60, 60, 0.4));
   
   
   --grey_copy: rgba(78, 79, 84, 1);
@@ -93,7 +93,7 @@ body {
 }
 
 .container {
-  min-height: 100vh !important;
+  min-height: 100vh;
   display: flex !important;
   flex-direction: column !important;
 }

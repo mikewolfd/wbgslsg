@@ -1,6 +1,6 @@
 {% include header.html %}
 <style type="text/css">
-    @media (max-width: 575px) {
+    /* @media (max-width: 575px) {
         .top-header {
             font-size: 59px !important;
         }
@@ -8,13 +8,13 @@
         .entry-buttons a {
             font-size: 20px !important;
         }
-    }
+    } */
 
     .container-fluid {
         min-width: 100vw;
         min-height: 100vh;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url("{{ '/assets/images/splash/sheep-fog-400w.jpg' | relative_url }}");
+        background-image: var(--entrygrade),
+        url("{{ '/assets/images/splash/corn-400w.jpg' | relative_url }}");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -22,7 +22,7 @@
 
     .main-text {
         font-weight: 500;
-        color: rgb(203, 200, 206) !important;
+        color: white !important;
         font-size: 15px;
     }
 
@@ -31,18 +31,23 @@
     }
 
     .top-header {
-        font-size: 76px;
-        font-weight: 300;
-        color: var(--weirdGold)
+        
+        font-size: max(50px, min(6.5vw, 85px));
+        font-weight: 100;
+        line-height: 67px;
+
     }
 
+    .text-content {
+        font-size: max(14px, min(1.5vw, 16px));
+    }
     .bottom-header {
-        font-size: 25px;
+        font-size: max(19px, min(2.5vw, 25px));
+        font-weight: 400;
     }
 
     .main-text .entry-buttons {
-        font-size: 40px;
-        margin-top: 1em;
+        font-size: max(29px, min(3vw, 40px));
         font-weight: 500;
     }
 
@@ -54,7 +59,7 @@
     .main-text .theory-button a {
         font-weight: 500;
         font-size: 17px;
-        color: rgb(203, 200, 206) !important;
+        color: white;
         text-decoration: none;
     }
 
@@ -67,6 +72,9 @@
         grid-template-areas:
             "topnav topnav topnav topnav" !important;
         grid-template-rows: auto !important;
+    }
+    .container {
+        min-height: 0 !important;
     }
 </style>
 
@@ -85,8 +93,8 @@
             </div>
             <div class='row'>
                 <div class='col'>
-                    <p class='bottom-header'>This web-based platform is both a practical instrument and an information
-                        resource for developing sustainable livestock production systems.</p>
+                    <p class='bottom-header'> <span>This web-based platform is both a practical instrument and an information </span>
+                        <span>resource for developing sustainable livestock production systems.</span></p>
                 </div>
             </div>
             <div class='row text-content'>
@@ -106,24 +114,20 @@
                         wherever you are
                         implementing, we have recommendations for you.</p>
                     <p>
-                        Interested in the theory behind the ISL Guide?, Click down below.
-                    </p>
+                        To apply the tool to an existing project (Project in Implementation) click on the left. <br>
+                        If you are developing a new project (Project in Preparation), click on the right.  <br>
+                        Interested in the theory behind the ISL Guide? or overview of the ISL Tool, Click down below.<br>
+                                            </p>
                 </div>
             </div>
             <div class='row entry-buttons'>
                 <div class='col-auto box-fill'>
-                    <p class='titles mb-0'>
-                        To apply the tool to an existing project use:
-                    </p>
                     <a class='button' href="{{ 'implem.html' | relative_url }}">
                         PROJECT IN IMPLEMENTATION
                         <span class='right-arrow'> &#10132;</span>
                     </a>
                 </div>
                 <div class='col-auto box-fill'>
-                    <p class='titles mb-0'>
-                        If you are developing a new project use:
-                    </p>
                     <a class='button' href="{{'/prep.html' | relative_url }}">
                         PROJECT IN PREPARATION
                         <span class='right-arrow'> &#10132;</span>

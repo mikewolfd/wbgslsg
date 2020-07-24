@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8">
     <title>{{ page.title | strip_html | capitalize_all }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "/assets/css/bootstrap.css" | relative_url }}">
     <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
     <link rel="stylesheet" href="{{ page.name | remove: '.html' | append : '.css' | prepend: '/assets/css/' | relative_url }}">
+
     <script src='{{ "/assets/js/packages/jquery-3.5.1.slim.min.js" | relative_url }}'></script>
     <script src='{{ "/assets/js/packages/popper.min.js" | relative_url }}'></script>
     <script src='{{ "/assets/js/packages/smoothscroll.min.js" | relative_url }}'></script>

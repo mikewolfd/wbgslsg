@@ -1,1 +1,120 @@
-.container-fluid{min-width:100vw;min-height:100vh;background-image:var(--entrygrade),url(/assets/images/splash/corn-400w.jpg);background-position:center;background-repeat:no-repeat;background-size:cover}.main-text{font-weight:500;color:#fff!important;font-size:15px}.footer nav a{color:#fff!important}.top-header{font-size:max(50px,min(6.5vw,85px));font-weight:100;line-height:67px}.text-content{font-size:max(14px,min(1.5vw,16px))}.bottom-header{font-size:max(19px,min(2.5vw,25px));font-weight:400}.main-text .entry-buttons{font-size:max(23px,min(2.7vw,40px));font-weight:500}.main-text .entry-buttons .titles{font-size:16px;font-weight:300}.main-text .theory-button a{font-weight:500;font-size:17px;color:#fff;text-decoration:none}.entry-buttons a{text-decoration:none;color:#fff}.grid-container{grid-template-areas:"topnav topnav topnav topnav"!important;grid-template-rows:auto!important}.container{min-height:0!important}.grid-container{display:grid;width:100%;grid-template-columns:3fr 1fr 1fr 2fr;grid-template-areas:"topnav topnav topnav topnav" 'midnav midnav midnav midnav' "jumbo jumbo jumbo jumbo" "image image image image"}.topnav{grid-area:topnav;padding-top:35px;margin-bottom:2em}.wb_logo{padding-right:2em}.jumbo-container{grid-area:jumbo;align-self:flex-end;height:100%}.footer a{font-size:x-small;color:#000!important;text-decoration:none}.footer{padding-top:30px}.bottom-nav-sep{font-size:9px}
+.container-fluid
+{
+    min-width: 100vw;
+    min-height: 100vh;
+    background-image: var(--entrygrade),url(/assets/images/splash/corn-400w.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-text
+{
+    font-weight: 500;
+    color: #fff!important;
+    font-size: 15px;
+}
+
+.footer nav a
+{
+    color: #fff!important;
+}
+
+.top-header
+{
+    font-size: max(50px,min(6.5vw,85px));
+    font-weight: 100;
+    line-height: 67px;
+}
+
+.text-content
+{
+    font-size: max(14px,min(1.5vw,16px));
+}
+
+.bottom-header
+{
+    font-size: max(19px,min(2.5vw,25px));
+    font-weight: 400;
+}
+
+.main-text .entry-buttons
+{
+    font-size: max(23px,min(2.7vw,40px));
+    font-weight: 500;
+}
+
+.main-text .entry-buttons .titles
+{
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.main-text .theory-button a
+{
+    font-weight: 500;
+    font-size: 17px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.entry-buttons a
+{
+    text-decoration: none;
+    color: #fff;
+}
+
+.grid-container
+{
+    grid-template-areas: "topnav topnav topnav topnav"!important;
+    grid-template-rows: auto!important;
+}
+
+.container
+{
+    min-height: 0!important;
+}
+
+.grid-container
+{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 3fr 1fr 1fr 2fr;
+    grid-template-areas: "topnav topnav topnav topnav" 'midnav midnav midnav midnav' "jumbo jumbo jumbo jumbo" "image image image image";
+}
+
+.topnav
+{
+    grid-area: topnav;
+    padding-top: 35px;
+    margin-bottom: 2em;
+}
+
+.wb_logo
+{
+    padding-right: 2em;
+}
+
+.jumbo-container
+{
+    grid-area: jumbo;
+    align-self: flex-end;
+    height: 100%;
+}
+
+.footer a
+{
+    font-size: x-small;
+    color: #000!important;
+    text-decoration: none;
+}
+
+.footer
+{
+    padding-top: 30px;
+}
+
+.bottom-nav-sep
+{
+    font-size: 9px;
+}

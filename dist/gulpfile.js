@@ -4,11 +4,13 @@ const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
 const rename = require("gulp-rename");
 const babel = require("gulp-babel");
-const htmlmin = require('gulp-htmlmin');
 const cleanCSS = require('gulp-clean-css');
-const terser = require('gulp-terser');
 const responsive = require('gulp-responsive')
 const imagemin = require('gulp-imagemin');
+const cssbeautify = require('gulp-cssbeautify');
+const htmlbeautify = require('gulp-html-beautify');
+const beautify = require('gulp-jsbeautifier');
+const purgecss = require('gulp-purgecss');
 
 styleEditTask = () => {
   return src("_site/*.html")
@@ -19,6 +21,7 @@ styleEditTask = () => {
         });
       })
     )
+    .pipe(htmlbeautify({ "preserve_newlines": false, }))
     .pipe(dest("_site"));
 };
 
@@ -35,8 +38,14 @@ styleExportTask = () => {
       })
     )
     .pipe(rename({ extname: ".css" }))
-    .pipe(postcss(plugins))
     .pipe(cleanCSS({ compatibility: 'ie8' }))
+    .pipe(purgecss({
+      content: ["_site/*.html"]
+    }))
+    .pipe(cssbeautify({
+      openbrace: 'separate-line',
+      autosemicolon: true
+    }))
     .pipe(dest("_site/assets/css"));
 };
 
@@ -51,7 +60,6 @@ jsEditTask = () => {
           });
       })
     )
-    .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(dest("_site"));
 };
 
@@ -70,13 +78,10 @@ jsExportTask = () => {
         })
       )
       .pipe(rename({ extname: ".js" }))
-      .pipe(babel({
-        presets: ['@babel/env']
-      }))
-      .pipe(terser({
-        keep_fnames: true,
-        mangle: false
-      }))
+      .pipe(beautify())
+      // .pipe(babel({
+      //   presets: ['@babel/env']
+      // }))
       .pipe(dest("_site/assets/js"))
   );
 };

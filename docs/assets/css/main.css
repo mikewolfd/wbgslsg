@@ -4,7 +4,7 @@
     rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 0.7)
-  ); --entrygrade: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); --grey_copy: rgba(78, 79, 84, 1); --chickenGray: rgba(144, 140, 150, 1); --black: black; --weird_green: rgba(0, 100, 80, 1); --aquamarine: rgba(0, 96, 104, 1); --column_1: rgba(102, 196, 202, 1); --column_3: rgba(0, 169, 150, 1); --column_2: rgba(152, 37, 43, 1); --column_4: rgba(102, 102, 102, 1); --column_5: rgba(253, 183, 20, 1); --weirdGold: rgba(184, 140, 29, 1); --superOrange: rgba(225, 106, 45, 1); --prep: rgba(0, 100, 80, 1); --annoyingTeal: var(--column_1); --randomPurple: rgba(97, 71, 118, 1); --breadcrumbNav: rgba(229, 229, 229, 1); }
+  ); --entrygrade: linear-gradient(rgba(60, 60, 60, 0.4), rgba(60, 60, 60, 0.4)); --grey_copy: rgba(78, 79, 84, 1); --chickenGray: rgba(144, 140, 150, 1); --black: black; --weird_green: rgba(0, 100, 80, 1); --aquamarine: rgba(0, 96, 104, 1); --column_1: rgba(102, 196, 202, 1); --column_3: rgba(0, 169, 150, 1); --column_2: rgba(152, 37, 43, 1); --column_4: rgba(102, 102, 102, 1); --column_5: rgba(253, 183, 20, 1); --weirdGold: rgba(184, 140, 29, 1); --superOrange: rgba(225, 106, 45, 1); --prep: rgba(0, 100, 80, 1); --annoyingTeal: var(--column_1); --randomPurple: rgba(97, 71, 118, 1); --breadcrumbNav: rgba(229, 229, 229, 1); }
 
 /*! Bootstrap v4.0.0 (https://getbootstrap.com) Copyright 2011-2018 The Bootstrap Authors Copyright 2011-2018 Twitter, Inc. Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */
 :root { --blue: #007bff; --indigo: #6610f2; --purple: #6f42c1; --pink: #e83e8c; --red: #dc3545; --orange: #fd7e14; --yellow: #ffc107; --green: #28a745; --teal: #20c997; --cyan: #17a2b8; --white: #fff; --gray: #6c757d; --gray-dark: #343a40; --primary: #007bff; --secondary: #6c757d; --success: #28a745; --info: #17a2b8; --warning: #ffc107; --danger: #dc3545; --light: #f8f9fa; --dark: #343a40; --breakpoint-xs: 0; --breakpoint-sm: 576px; --breakpoint-md: 768px; --breakpoint-lg: 992px; --breakpoint-xl: 1200px; --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
@@ -2076,17 +2076,17 @@ a.text-dark:hover, a.text-dark:focus { color: #1d2124 !important; }
 
 @media (min-width: 2650px) { #splash-container { background-image: var(--splashgrade), url("/wbgslsg/assets/images/splash/herd-sheep-3070w.jpg") !important; } }
 
-@media (min-width: 560px), (min-height: 373px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/sheep-fog-800w.jpg") !important; } }
+@media (min-width: 560px), (min-height: 373px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/corn-800w.jpg") !important; } }
 
-@media (min-width: 960px), (min-height: 640px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/sheep-fog-1280w.jpg") !important; } }
+@media (min-width: 960px), (min-height: 640px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/corn-1280w.jpg") !important; } }
 
-@media (min-width: 1300px), (min-height: 867px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/sheep-fog-1600w.jpg") !important; } }
+@media (min-width: 1300px), (min-height: 867px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/corn-1600w.jpg") !important; } }
 
-@media (min-width: 1690px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/sheep-fog-2000w.jpg") !important; } }
+@media (min-width: 1690px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/corn-2000w.jpg") !important; } }
 
-@media (min-width: 2100px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/sheep-fog-2560w.jpg") !important; } }
+@media (min-width: 2100px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/corn-2560w.jpg") !important; } }
 
-@media (min-width: 2650px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/sheep-fog-3070w.jpg") !important; } }
+@media (min-width: 2650px) { #entry-container { background-image: var(--entrygrade), url("/wbgslsg/assets/images/splash/corn-3070w.jpg") !important; } }
 
 .box-fill a { text-decoration: none; transition: all 2s; position: relative; }
 
@@ -2209,7 +2209,7 @@ body { min-width: 100vw !important; min-height: 100vh !important; display: flex 
 
 @media (min-width: 1400px) { .container { max-width: 1340px; } }
 
-.container { min-height: 100vh !important; display: flex !important; flex-direction: column !important; }
+.container { min-height: 100vh; display: flex !important; flex-direction: column !important; }
 
 .nav.flex-column li { padding: 0em; height: 20px; text-align: right; }
 

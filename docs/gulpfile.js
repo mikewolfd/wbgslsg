@@ -7,6 +7,7 @@ const babel = require("gulp-babel");
 const htmlmin = require('gulp-htmlmin');
 const cleanCSS = require('gulp-clean-css');
 const terser = require('gulp-terser');
+var responsive = require('gulp-responsive')
 
 styleEditTask = () => {
   return src("_site/*.html")
@@ -79,12 +80,68 @@ jsExportTask = () => {
   );
 };
 
+responsiveImageTask = () => {
+  return src("assets/images/splash-original/*.jpg")
+  .pipe(
+    responsive(
+      {
+        // Resize all JPG images to three different sizes: 200, 500, and 630 pixels
+        '*.jpg': [
+          {
+            width: 400,
+            rename: { suffix: '-400w' }
+          },
+          {
+            width: 800,
+            rename: { suffix: '-800w' }
+          },
+          {
+            width: 1280,
+            rename: { suffix: '-1280w' }
+          },
+          {
+            width: 1600,
+            rename: { suffix: '-1600w' }
+          },
+          {
+            width: 2000,
+            rename: { suffix: '-2000w' }
+          },
+          {
+            width: 2560,
+            rename: { suffix: '-2560w' }
+          },
+          {
+            width: 3070,
+            rename: { suffix: '-3070w' }
+          },
+          {
+            // Compress, strip metadata, and rename original image
+            rename: { suffix: '-original' }
+          }
+        ]
+      },
+      {
+        // Global configuration for all images
+        // The output quality for JPEG, WebP and TIFF output formats
+        quality: 70,
+        // Use progressive (interlace) scan for JPEG and PNG output
+        progressive: true,
+        // Strip all metadata
+        withMetadata: false
+      }
+    )
+  )
+  .pipe(dest('assets/images/splash'))
+}
 exports.build = series(
   styleExportTask,
   jsExportTask,
   jsEditTask,
   styleEditTask
 );
+
+exports.responsiveImageTask = responsiveImageTask
 
 exports.default = function() { watch(
   ["_layouts/", "_includes", "_data", 'assets', "./*.html"],

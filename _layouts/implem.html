@@ -266,6 +266,9 @@
     $(document).ready(function () {
         // for the scrolling breadcrumb nav with relevant card selections
         window.addEventListener('scroll', function () { toggleScrollClass() });
+        Object.values(document.querySelectorAll('#intervention-section .button-card')).map(i => i.addEventListener('click', function() { interventionFunction(this) }))
+        Object.values(document.querySelectorAll('#context-section .button-card')).map(i => i.addEventListener('click', function() { contextFunction(this) }))
+
     })
     const pageState = { Context: undefined, Intervention: undefined };
 
@@ -319,7 +322,6 @@
             .forEach(function (item) {
                 item.classList.remove('selected');
                 item.classList.add('card-hover');
-                item.setAttribute('onclick', "interventionFunction(this)");
             })
         renderedPage = false;
         Object.values(document.getElementsByClassName('data-section')).forEach(function (item) {
@@ -327,7 +329,6 @@
         });
 
         contextCards.forEach(function (item) {
-            item.setAttribute('onclick', "contextFunction(this)");
             item.classList.add('card-hover');
             item.classList.remove('selected');
         })
@@ -336,14 +337,12 @@
     // for the context button selection, happens last before data is shown
     const contextFunction = (e) => {
         Object.values(e.parentElement.getElementsByClassName('button-card')).filter(i => e !== i).map(item => {
-            item.setAttribute('onclick', "contextFunction(this)");
             item.classList.add('card-hover');
             item.classList.remove('selected');
         })
 
         // highlights button
         e.classList.add('selected');
-        e.onclick = null;
         e.classList.remove('card-hover');
 
         // get intervention index value
@@ -354,9 +353,6 @@
 
         // get context column
         let parent = document.getElementById('context-section')
-
-        e.onclick = null;
-        e.classList.remove('card-hover');
 
         // gets scrolling breadcrumb nav with relevant card selections
         let breadcrumb = document.getElementById(parent.attributes['data-target'].value)
@@ -398,7 +394,6 @@
         // highlights button
         e.classList.add('selected');
         e.classList.remove('card-hover');
-        e.onclick = null;
 
         // get internvention column
         let parent = document.getElementById('intervention-section')
@@ -453,7 +448,7 @@
                     <div class='row no-gutters'>
                         <div class='col col-card d-flex flex-column flex-wrap'>
                             {% for item in site.data.interventions.column_1 %}
-                            <div class="card card-hover animated button-card" onclick="interventionFunction(this)"
+                            <div class="card card-hover animated button-card"
                                 index="{{ forloop.index }}">
                                 <div class="card-body  d-flex align-items-center">
                                     <p> {{ item.text }} </p>
@@ -467,7 +462,7 @@
                     <div class='row no-gutters'>
                         <div class='col col-card d-flex flex-column flex-wrap'>
                             {% for item in site.data.interventions.column_2 %}
-                            <div class="card card-hover animated button-card" onclick="interventionFunction(this)"
+                            <div class="card card-hover animated button-card"
                                 index="{{ forloop.index | plus: 4  }}">
                                 <div class="card-body  d-flex align-items-center">
                                     <p> {{ item.text }} </p>
@@ -481,7 +476,7 @@
                     <div class='row no-gutters'>
                         <div class='col col-card d-flex flex-column flex-wrap'>
                             {% for item in site.data.interventions.column_3 %}
-                            <div class="card card-hover animated button-card" onclick="interventionFunction(this)"
+                            <div class="card card-hover animated button-card"
                                 index="{{ forloop.index | plus: 8}}">
                                 <div class="card-body  d-flex align-items-center">
                                     <p> {{ item.text }} </p>
@@ -495,7 +490,7 @@
                     <div class='row no-gutters'>
                         <div class='col col-card double-col-card d-flex flex-column flex-wrap'>
                             {% for item in site.data.interventions.column_4 %}
-                            <div class="card card-hover animated button-card" onclick="interventionFunction(this)"
+                            <div class="card card-hover animated button-card" 
                                 index="{{ forloop.index | plus: 11}}">
                                 <div class="card-body  d-flex align-items-center">
                                     <p> {{ item.text }} </p>
@@ -509,7 +504,7 @@
                     <div class='row no-gutters'>
                         <div class='col col-card double-col-card d-flex flex-column flex-wrap'>
                             {% for item in site.data.interventions.column_5 %}
-                            <div class="card card-hover animated button-card" onclick="interventionFunction(this)"
+                            <div class="card card-hover animated button-card" 
                                 index="{{ forloop.index | plus: 16}}">
                                 <div class="card-body  d-flex align-items-center">
                                     <p> {{ item.text }} </p>
@@ -530,7 +525,7 @@
                         <div class='row'>
                             <div class='col col-card d-flex flex-row flex-wrap' id='context-data'>
                                 {% for item in site.data.context %}
-                                <div class="card card-hover button-card animated" onclick="contextFunction(this)"
+                                <div class="card card-hover button-card animated"
                                     style='display: none;' index="{{forloop.index}}">
                                     <div class="card-body  d-flex align-items-center">
                                         <p> {{ item.text }} </p>

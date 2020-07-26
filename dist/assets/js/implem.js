@@ -46,14 +46,16 @@ const interResetFunction = (e) => {
                 setTimeout(function() {
                     i.style.display = 'none'
                     i.classList.remove("flipOutY");
-                }, 800)
+                }, 1000)
             }
         } else {
             if (i.style.display === 'none') {
-                i.classList.add('fadeInUp');
-                i.style.display = 'block'
                 setTimeout(function() {
-                    i.classList.remove("fadeInUp");
+                    i.classList.add('fadeInUp');
+                    i.style.display = 'block'
+                    setTimeout(function() {
+                        i.classList.remove("fadeInUp");
+                    }, 1000)
                 }, 1000)
             }
         }
@@ -71,9 +73,16 @@ const interResetFunction = (e) => {
             item.classList.add('card-hover');
         })
     renderedPage = false;
-    Object.values(document.getElementsByClassName('data-section')).forEach(function(item) {
-        item.classList.add('hidden-object')
+    document.querySelector('#card-section').scrollIntoView({
+        behavior: "smooth",
+        block: "start"
     });
+    setTimeout(function() {
+
+        Object.values(document.getElementsByClassName('data-section')).forEach(function(item) {
+            item.classList.add('hidden-object')
+        });
+    }, 300)
 
     contextCards.forEach(function(item) {
         item.classList.add('card-hover');

@@ -22,39 +22,6 @@
     color: #fff!important;
 }
 
-@media (max-width:992px)
-{
-    div.card-section-max
-    {
-        height: 960px;
-    }
-}
-
-@media (max-width:769px)
-{
-    div.card-section-max
-    {
-        height: 1431px;
-    }
-}
-
-.card-section
-{
-    height: 0;
-    overflow: hidden;
-    opacity: 0;
-    align-content: flex-start;
-    transition: opacity 1s,height .6s ease-in;
-    transition-delay: 1s;
-}
-
-.card-section-max
-{
-    height: 540px;
-    overflow: hidden;
-    opacity: 1;
-}
-
 .card-col
 {
     transition: opacity 1s,max-width 2s;
@@ -63,6 +30,12 @@
 .hidden-section
 {
     visibility: hidden;
+}
+
+#inter-data
+{
+    min-height: 450px!important;
+    align-content: flex-start;
 }
 
 .card.hidden-object

@@ -581,11 +581,17 @@
 
 .breadcrumb-data li a
 {
-    color: var(--aquamarine);
     font-weight: 400;
     font-size: 14px;
     display: inline-flex;
     align-items: center;
+}
+
+.breadcrumb-data li
+{
+    color: var(--aquamarine);
+    font-weight: 400;
+    font-size: 14px;
 }
 
 .breadcrumb-data li z
@@ -609,6 +615,11 @@
 @media (min-width:992px)
 {
     .breadcrumb-data li a
+    {
+        font-size: 15px;
+    }
+
+    .breadcrumb-data li
     {
         font-size: 15px;
     }

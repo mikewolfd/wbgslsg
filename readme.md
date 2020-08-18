@@ -30,7 +30,6 @@ To rebuild the github site:
 <br>
 If you want to continue using the Jekyll dev enviroment in a livereload/watch capacity, you will need to run Jekyll liveserver and gulp watch seperately as I have yet to integrate the two in the dev enviroment.
 <h4>jekyll serve --livereload</h4>
-<br>npm run
 <h4>gulp watch</h4>
 <br>
 Nothing is minified.
